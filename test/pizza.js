@@ -105,7 +105,7 @@ function draw(){
 function minute_filler(diameter, data) {
 
     fill(244,226,66)
-    arc(cx, cy, diameter, diameter, TWO_PI - HALF_PI, data, PIE)
+    arc(cx, cy, diameter, diameter, - HALF_PI , data + PI, PIE)
 
     // var lastAngle = 0;
     // for (var i = 0; i < data.length; i++) {

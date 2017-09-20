@@ -1,35 +1,38 @@
-var img;  // Declare variable 'img'.
-
-
+// var x = 20;
+// var y = 20;
+// var bw = 100;
+// var lengthBar = 400;
 
 function setup() {
-    fill(255)
-    createCanvas(1000, 1000);
-    img = loadImage("assets/asteroid.png");  // Load the image
+    createCanvas(480,430);
 }
 
+//this gets called every frame (about 60 frames per second)
 function draw() {
+    background(0);
+    fill(255, 0, 0);
 
-    background(255)
-    //timer
-    var s_color_r = map(second(), 0, 60, 0, 255)
-    var s_color_b = map(second(), 0 , 60, 0, 100)
-    var s_color_g = map(second(), 0 , 60, 100, 200)
-    fill(s_color_r, s_color_b, s_color_g);
-    strokeWeight(20);
-    ellipse(1000 - 240, 240, 400, 400);
-    var s_x = windowWidth/100 * second();
-    var s_y = windowWidth/30 * second()
+    var x = 20;
+    var y = 20;
+    var bw = 100;
+    var lengthBar = 400;
 
-    // Displays the image at its actual size at point (0,0)
-    //image(img, 0, 0);
-    // Displays the image at point (0, height/2) at half size
-    fill(0)
-    noFill()
-    //quad(s,30,s,20,s,12,s,20)
-    rect()
-    //fill(200)
-    //quad(s+1,30,s,20,s,12,s,20)
-    image(img, s_x, s_y, img.width/4, img.height/4);
+    var d = map(day(), 0, 31, 0, lengthBar);
+    var h = map(hour(), 0, 60, 0, lengthBar);
+    var m = map(minute(), 0, 60, 0, lengthBar);
+    var s = map(second(), 0, 60, 0, lengthBar);
 
+    var c_s = map(second(), 0, 60, 255, 0);
+    var c_m = map(minute(), 0, 60, 255, 0);
+    var c_h = map(hour(), 0, 24, 255, 0);
+    var c_d = map(day(), 0, 31, 255, 0);
+
+    fill(c_d);
+    rect(x,y, bw, d);
+    fill(c_h);
+    rect(x + bw + 10, y, bw, h);
+    fill(c_m);
+    rect(x + 2*bw + 20 ,y, bw,m);
+    fill(c_s);
+    rect(x + 3*bw + 30 ,y, bw,s);
 }

@@ -39,7 +39,8 @@ function hour_hole(x, y, r1, g1, b1, r2, g2, b2, _hour, big_hour_r){
 function draw(){
 
     var s = map(second(), 0, 60, 0, TWO_PI) - HALF_PI;
-    var s_minute = map(hour(), 0, 60, 0, TWO_PI) - HALF_PI;
+    var s_minute = map(minute(), 0, 60, 0, TWO_PI);
+    console.log(minute())
 
     //crust
     fill(150,100,20)
@@ -105,13 +106,6 @@ function draw(){
 function minute_filler(diameter, data) {
 
     fill(244,226,66)
-    arc(cx, cy, diameter, diameter, - HALF_PI , data + PI, PIE)
+    arc(cx, cy, diameter, diameter,  -1 * HALF_PI , data - HALF_PI, PIE)
 
-    // var lastAngle = 0;
-    // for (var i = 0; i < data.length; i++) {
-    //     var gray = map(i, 0, data.length, 0, 255);
-    //     fill(gray);
-    //     arc(width / 2, height / 2, diameter, diameter, lastAngle, lastAngle + radians(angles[i]));
-    //     lastAngle += radians(angles[i]);
-    // }
 }

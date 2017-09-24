@@ -13,19 +13,17 @@ function setup() {
 
 }
 
-//s = map(second(), 0, 60, 0, 30)
 
 function draw() {
   background(0);
   s = map(second(), 0, 60, 0, 60);
   h = map(hour(), 0, 23, 1, 24);
-  m = map(minute(), 0, 60, 0, 12);
-  numCirclesPerRow = h;
+  m = map(minute(),0, 60, 0, 12);
+  numCirclesPerRow = hour() % 12 + 1;
   numRows = m; //h;
   rad = 10;
   speed = 0.05;
-  numRows = h; //h;
-      
+
   for (var r=0; r<numRows; r++) {
     for (var i=0; i<=numCirclesPerRow; i++) {
       

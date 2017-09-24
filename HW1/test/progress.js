@@ -45,9 +45,9 @@ function draw(){
     fill(255)
     strokeWeight(1)
     for(i = 1; i < 6; i++){
-        line(0,i*windowHeight/6, m,i*windowHeight/6);
-        text(minute(), m, i*windowHeight/6);
-        image(img, m - 30, i*windowHeight/6,img.width/4, img.height/4);
+        line(0,i*windowHeight/6, m/2,i*windowHeight/6);
+        text(minute(), m/2, i*windowHeight/6);
+        //image(img, m - 30, i*windowHeight/6,img.width/4, img.height/4);
     }
 
 }

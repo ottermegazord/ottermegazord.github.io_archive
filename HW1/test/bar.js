@@ -7,7 +7,6 @@ function setup() {
     createCanvas(480,430);
 }
 
-//this gets called every frame (about 60 frames per second)
 function draw() {
     background(0);
     fill(255, 0, 0);

@@ -59,11 +59,18 @@ function gotData(data) {
   text(currentWeather.summary,20, yPos);
   yPos+=yGap;
   
+  // textSize(textSizeSmall);
+  // text("Temperature",20, yPos);
+  // yPos+=textSizeLarge;
+  // textSize(textSizeLarge);
+  // text(currentWeather.temperature + "º",20, yPos);
+  // yPos+=yGap;
+
   textSize(textSizeSmall);
-  text("Temperature",20, yPos);
+  text("Temperature suck it",20, yPos);
   yPos+=textSizeLarge;
   textSize(textSizeLarge);
-  text(currentWeather.temperature + "º",20, yPos);
+  text(currentWeather.time + "º",20, yPos);
   yPos+=yGap;
   
   textSize(textSizeSmall);

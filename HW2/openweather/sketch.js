@@ -17,16 +17,14 @@ var api = "https://api.darksky.net/forecast/";
 var city = 'Cambridge, MA';
 var lat = 42.3736;
 var long = -71.1097;
-
+var apiKey = "a0646b621a688dc51bdbab269421f606";
+var units = '&units=metric';
+var url = api + apiKey + '/' + lat + ',' + long;
 
 function changeLngLat(new_lng, new_lat){
     lat = new_lat;
     long = new_lng;
 }
-
-var apiKey = "a0646b621a688dc51bdbab269421f606";
-var units = '&units=metric';
-var url = api + apiKey + '/' + lat + ',' + long;
 
 var news_api = "https://newsapi.org/v1/articles?";
 var source = "source=techcrunch"
@@ -69,6 +67,36 @@ function hourConverter(UNIX_timestamp){
     return hour;
 }
 
+function dayConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp * 1000);
+    var day = a.getDay();
+    var word_day;
+    switch(day){
+        case 0:
+            return 'SUN';
+            break;
+        case 1:
+            return 'MON';
+            break;
+        case 2:
+            return 'TUE';
+            break;
+        case 3:
+            return 'WED';
+            break;
+        case 4:
+            return 'THU';
+            break;
+        case 5:
+            return 'FRI';
+            break;
+        case 6:
+            return 'SAT';
+            break;
+    }
+}
+
+
 function setup() {
     createCanvas(320, 568);
     askWeather()
@@ -90,6 +118,13 @@ function setup() {
 
     clear_day_icon = loadImage('images/clear-day.svg');
     clear_night_icon = loadImage('images/clear-night.svg');
+    cloudy_icon = loadImage('images/cloudy.svg');
+    fog_icon = loadImage('images/fog.svg');
+    partly_cloudy_day = loadImage('images/partly-cloudy-day.svg');
+    partly_cloudy_night = loadImage('images/partly-cloudy-night.svg');
+    rain_icon = loadImage('images/rain.svg');
+    snow_icon = loadImage('images/snow.svg');
+    thunderstorm_icon = loadImage('images/thunderstorm.svg');
 
 
 }
@@ -145,6 +180,48 @@ function weatherIcon4(iconString){
     }
 
 }
+
+function dweatherIcon1(iconString, x, y){
+    switch(iconString){
+        case 'clear-day':
+            image(clear_day_icon, x, y, clear_day_icon.width/12, clear_day_icon.width/12);
+            break;
+
+        case 'clear-night':
+            image(clear_night_icon, x, y, clear_night_icon.width/12, clear_night_icon.width/12);
+            break;
+
+        case 'cloudy':
+            image(cloudy_icon, x, y, cloudy_icon.width/12, cloudy_icon.width/12);
+            break;
+
+        case 'fog':
+            image(fog_icon, x, y, fog_icon.width/12, fog_icon.width/12);
+            break;
+
+        case 'partly-cloudy-day':
+            image(partly_cloudy_day, x, y, partly_cloudy_day.width/12, partly_cloudy_day.width/12);
+            break;
+
+        case 'partly-cloudy-night':
+            image(partly_cloudy_night, x, y, partly_cloudy_night.width/12, partly_cloudy_night.width/12);
+            break;
+
+        case 'rain':
+        image(rain_icon, x, y, rain_icon.width/12, rain_icon.width/12);
+            break;
+
+        case 'snow':
+            image(snow_icon, x, y, snow_icon.width/12, snow_icon.width/12);
+            break;
+
+        case 'thunderstorm':
+            image(thunderstorm_icon, x, y, thunderstorm_icon.width/12, thunderstorm_icon.width/12);
+            break;
+    }
+
+}
+
 function askWeather(){
     loadJSON(url, gotData, 'jsonp');
 }
@@ -198,13 +275,30 @@ function gotData(data) {
     icon_4 = weather.hourly.data[3].icon;
 
     time_1 = hourConverter(weather.hourly.data[0].time);
-    time_2 = hourConverter(weather.hourly.data[1].time)
-    time_3 = hourConverter(weather.hourly.data[2].time)
-    time_4 = hourConverter(weather.hourly.data[3].time)
+    time_2 = hourConverter(weather.hourly.data[1].time);
+    time_3 = hourConverter(weather.hourly.data[2].time);
+    time_4 = hourConverter(weather.hourly.data[3].time);
+
+    //daily
+
+    tempday_1 = weather.daily.data[0].apparentTemperatureMin;
+    tempday_2 = weather.daily.data[1].apparentTemperatureMin;
+    tempday_3 = weather.daily.data[2].apparentTemperatureMin;
+    tempday_4 = weather.daily.data[3].apparentTemperatureMin;
+
+    dicon_1 = weather.daily.data[0].icon;
+    dicon_2 = weather.daily.data[1].icon;
+    dicon_3 = weather.daily.data[2].icon;
+    dicon_4 = weather.daily.data[3].icon;
+
+    day_1 = dayConverter(weather.daily.data[0].time);
+    day_2 = dayConverter(weather.daily.data[1].time);
+    day_3 = dayConverter(weather.daily.data[2].time);
+    day_4 = dayConverter(weather.daily.data[3].time);
 
     //hours
 
-    console.log(icon_1);
+    console.log(dicon_2);
 }
 
 function greet(){
@@ -262,6 +356,27 @@ function draw() {
         weatherIcon2(icon_2);
         weatherIcon3(icon_3);
         weatherIcon4(icon_4);
+
+        //filter(INVERT);
+        fill(255);
+        text(day_1, 35, 7*height/8 - 15);
+        text(day_2, width/4 + 35, 7*height/8 - 15);
+        text(day_3, 2*width/4 + 35, 7*height/8 - 15);
+        text(day_4, 3*width/4 + 35, 7*height/8 - 15);
+        text(day_4, 3*width/4 + 35, 7*height/8 - 15);
+        text(tempday_1, 35, 7*height/8 + 50);
+        text(tempday_2, width/4 + 35, 7*height/8 + 50);
+        text(tempday_3, 2*width/4 + 35, 7*height/8 + 50);
+        text(tempday_4, 3*width/4 + 35, 7*height/8 + 50);
+        filter(INVERT);
+        dweatherIcon1(dicon_1, 12, 7*height/8 - 10);
+        dweatherIcon1(dicon_2, 12 + width/4, 7*height/8 - 10);
+        dweatherIcon1(dicon_3, 12 + 2*width/4, 7*height/8 - 10);
+        dweatherIcon1(dicon_4, 12 + 3*width/4, 7*height/8 - 10);
+        // weatherIcon2(dicon_2);
+        // weatherIcon3(dicon_3);
+        // weatherIcon4(dicon_4);
+        filter(INVERT);
 
 
     }

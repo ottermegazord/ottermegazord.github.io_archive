@@ -147,6 +147,36 @@ function weatherIcon1(iconString){
         case 'clear-night':
             image(clear_night_icon, 12, 5*height/8 + 40, clear_night_icon.width/12, clear_night_icon.width/12);
             break;
+
+        case 'clear-night':
+            image(clear_night_icon, 12, 5*height/8 + 40, clear_night_icon.width/12, clear_night_icon.width/12);
+            break;
+
+        case 'cloudy':
+            image(cloudy_icon, 12, 5*height/8 + 40, cloudy_icon.width/12, cloudy_icon.width/12);
+            break;
+
+        case 'fog':
+            image(fog_icon, 12, 5*height/8 + 40, fog_icon.width/12, fog_icon.width/12);
+            break;
+
+        case 'partly-cloud-night':
+            image(partly_cloudy_night_icon, 12, 5*height/8 + 40, partly_cloudy_night_icon.width/12, partly_cloudy_night_icon.width/12);
+            break;
+
+        case 'partly-cloudy-day':
+            image(partly_cloudy_day_icon, 12, 5*height/8 + 40, partly_cloudy_day_icon.width/12, partly_cloudy_day_icon.width/12);
+            break;
+
+        case 'rain':
+            image(rain_icon, 12, 5*height/8 + 40, rain_icon.width/12, rain_icon.width/12);
+            break;
+        case 'snow':
+            image(snow_icon, 12, 5*height/8 + 40, snow_icon.width/12, snow_icon.width/12);
+            break;
+        case 'thunderstorm':
+            image(thunderstorm_icon, 12, 5*height/8 + 40, thunderstorm_icon.width/12, thunderstorm_icon.width/12);
+            break;
     }
 
 }
@@ -158,7 +188,37 @@ function weatherIcon2(iconString){
             break;
 
         case 'clear-night':
-            image(clear_night_icon, 12 + width/4, 5*height/8 + 40, clear_night_icon.width/12, clear_night_icon.width/12);
+            image(clear_night_icon, 12+ width/4, 5*height/8 + 40, clear_night_icon.width/12, clear_night_icon.width/12);
+            break;
+
+        case 'clear-night':
+            image(clear_night_icon, 12+ width/4, 5*height/8 + 40, clear_night_icon.width/12, clear_night_icon.width/12);
+            break;
+
+        case 'cloudy':
+            image(cloudy_icon, 12+ width/4, 5*height/8 + 40, cloudy_icon.width/12, cloudy_icon.width/12);
+            break;
+
+        case 'fog':
+            image(fog_icon, 12+ width/4, 5*height/8 + 40, fog_icon.width/12, fog_icon.width/12);
+            break;
+
+        case 'partly-cloud-night':
+            image(partly_cloudy_night_icon, 12+ width/4, 5*height/8 + 40, partly_cloudy_night_icon.width/12, partly_cloudy_night_icon.width/12);
+            break;
+
+        case 'partly-cloudy-day':
+            image(partly_cloudy_day_icon, 12+ width/4, 5*height/8 + 40, partly_cloudy_day_icon.width/12, partly_cloudy_day_icon.width/12);
+            break;
+
+        case 'rain':
+            image(rain_icon, 12+ width/4, 5*height/8 + 40, rain_icon.width/12, rain_icon.width/12);
+            break;
+        case 'snow':
+            image(snow_icon, 12+ width/4, 5*height/8 + 40, snow_icon.width/12, snow_icon.width/12);
+            break;
+        case 'thunderstorm':
+            image(thunderstorm_icon, 12+ width/4, 5*height/8 + 40, thunderstorm_icon.width/12, thunderstorm_icon.width/12);
             break;
     }
 
@@ -171,7 +231,37 @@ function weatherIcon3(iconString){
             break;
 
         case 'clear-night':
-            image(clear_night_icon, 12 + 2*width/4, 5*height/8 + 40, clear_night_icon.width/12, clear_night_icon.width/12);
+            image(clear_night_icon, 12+ 2*width/4, 5*height/8 + 40, clear_night_icon.width/12, clear_night_icon.width/12);
+            break;
+
+        case 'clear-night':
+            image(clear_night_icon, 12+ 2*width/4, 5*height/8 + 40, clear_night_icon.width/12, clear_night_icon.width/12);
+            break;
+
+        case 'cloudy':
+            image(cloudy_icon, 12+ 2*width/4, 5*height/8 + 40, cloudy_icon.width/12, cloudy_icon.width/12);
+            break;
+
+        case 'fog':
+            image(fog_icon, 12+ 2*width/4, 5*height/8 + 40, fog_icon.width/12, fog_icon.width/12);
+            break;
+
+        case 'partly-cloud-night':
+            image(partly_cloudy_night_icon, 12+ 2*width/4, 5*height/8 + 40, partly_cloudy_night_icon.width/12, partly_cloudy_night_icon.width/12);
+            break;
+
+        case 'partly-cloudy-day':
+            image(partly_cloudy_day_icon, 12+ 2*width/4, 5*height/8 + 40, partly_cloudy_day_icon.width/12, partly_cloudy_day_icon.width/12);
+            break;
+
+        case 'rain':
+            image(rain_icon, 12+ 2*width/4, 5*height/8 + 40, rain_icon.width/12, rain_icon.width/12);
+            break;
+        case 'snow':
+            image(snow_icon, 12+ 2*width/4, 5*height/8 + 40, snow_icon.width/12, snow_icon.width/12);
+            break;
+        case 'thunderstorm':
+            image(thunderstorm_icon, 12+ 2*width/4, 5*height/8 + 40, thunderstorm_icon.width/12, thunderstorm_icon.width/12);
             break;
     }
 
@@ -184,7 +274,37 @@ function weatherIcon4(iconString){
             break;
 
         case 'clear-night':
-            image(clear_night_icon, 12 + 3*width/4, 5*height/8 + 40, clear_night_icon.width/12, clear_night_icon.width/12);
+            image(clear_night_icon, 12+ 3*width/4, 5*height/8 + 40, clear_night_icon.width/12, clear_night_icon.width/12);
+            break;
+
+        case 'clear-night':
+            image(clear_night_icon, 12+ 3*width/4, 5*height/8 + 40, clear_night_icon.width/12, clear_night_icon.width/12);
+            break;
+
+        case 'cloudy':
+            image(cloudy_icon, 12+ 3*width/4, 5*height/8 + 40, cloudy_icon.width/12, cloudy_icon.width/12);
+            break;
+
+        case 'fog':
+            image(fog_icon, 12+ 3*width/4, 5*height/8 + 40, fog_icon.width/12, fog_icon.width/12);
+            break;
+
+        case 'partly-cloud-night':
+            image(partly_cloudy_night_icon, 12+ 3*width/4, 5*height/8 + 40, partly_cloudy_night_icon.width/12, partly_cloudy_night_icon.width/12);
+            break;
+
+        case 'partly-cloudy-day':
+            image(partly_cloudy_day_icon, 12+ 3*width/44, 5*height/8 + 40, partly_cloudy_day_icon.width/12, partly_cloudy_day_icon.width/12);
+            break;
+
+        case 'rain':
+            image(rain_icon, 12+ 3*width/4, 5*height/8 + 40, rain_icon.width/12, rain_icon.width/12);
+            break;
+        case 'snow':
+            image(snow_icon, 12+ 3*width/4, 5*height/8 + 40, snow_icon.width/12, snow_icon.width/12);
+            break;
+        case 'thunderstorm':
+            image(thunderstorm_icon, 12+ 3*width/4, 5*height/8 + 40, thunderstorm_icon.width/12, thunderstorm_icon.width/12);
             break;
     }
 
@@ -349,11 +469,11 @@ function gotData(data) {
     windSpeed = weather.currently.windSpeed;
     windBearing = weather.currently.windBearing;
     humidity = weather.currently.humidity;
-    console.log(windSpeed);
+    //.log(icon_1);
 
     //hours
 
-    console.log(dicon_2);
+    //console.log(icon_2);
 }
 
 function mousePressed(){
@@ -401,7 +521,6 @@ function draw() {
             image(thunderstorm, 0, 0, width, 5*height/8);
             break;
     }
-
     if (weather) {
         fill(255);
         //console.log(timer);
@@ -437,10 +556,10 @@ function draw() {
         ticker_x = ticker_x + 1;
         rect(0, 5*height/8 + 12 + 12, width, 80);
         fill(0);
-        text(time_1, 35, 5*height/8 + 43);
-        text(time_2, width/4 + 35, 5*height/8 + 43);
-        text(time_3, 2*width/4 + 35, 5*height/8 + 43);
-        text(time_4, 3*width/4 + 35, 5*height/8 + 43);
+        text(time_1, 35, 5*height/8 + 38);
+        text(time_2, width/4 + 35, 5*height/8 + 38);
+        text(time_3, 2*width/4 + 35, 5*height/8 + 38);
+        text(time_4, 3*width/4 + 35, 5*height/8 + 38);
         text(temphour_1, 35, 5*height/8 + 92);
         text(temphour_2, width/4 + 35, 5*height/8 + 92);
         text(temphour_3, 2*width/4 + 35, 5*height/8 + 92);
@@ -449,6 +568,7 @@ function draw() {
         weatherIcon2(icon_2);
         weatherIcon3(icon_3);
         weatherIcon4(icon_4);
+        console.log(icon_1);
 
         //filter(INVERT);
         fill(255);

@@ -2,13 +2,20 @@
 var streams = [];
 var fadeInterval = 1.6;
 var symbolSize = 14;
+var newDrops;
 
 // sun parameters
-var cx, cy
+var cx, cy;
+
+var xcor = 0;
+var ycor = 0;
+var xvel = 5;
+var yvel = 3;
 
 //weather parameters
 
 var curr_temp;
+var visibility;
 var weather;
 var timer;
 var icon;
@@ -21,7 +28,7 @@ var temphour_4;
 var windSpeed;
 var summary;
 var day_temp;
-
+var boatPos;
 var y = 0;
 var x = 0;
 var xPos = 0;
@@ -115,17 +122,32 @@ function graphData(newData) {
 
 function setup() {
     // sun parameters
+    img = loadImage('images/8bitcloud.png');
+    boat = loadImage('images/boat.png');
+
+    boatPos = 0;
+
     var radius = min(width, height) / 2;
-    sradius = radius * 0.72;
-    cx = width/2;
-    cy = height/2;
+    sradius = radius * 2;
     askWeather();
-    console.log(summary);
+    //console.log(summary);
     //setInterval(askWeather, 60000);
     createCanvas(320, 568);
+    cx = width/2;
+    cy = height/2 - 100;
     textAlign(CENTER);
     textSize(50);
-    img = loadImage('images/cat.jpg');
+
+    //rain
+    newDrops = [];
+    for (var i = 0; i < 250; i++) {
+        newDrops.push(new Drop());
+    };
+
+    newSnow = [];
+    for (var i = 0; i < 250; i++) {
+        newSnow.push(new Snow());
+    };
 }
 
 
@@ -141,6 +163,7 @@ function askWeather(){
 function gotData(data) {
     weather = data;
     timer = weather.currently;
+    visibility = weather.currently.visibility;
     summary = weather.minutely.summary;
     minutely_icon = weather.minutely.icon;
     curr_temp = weather.currently.temperature;
@@ -185,12 +208,12 @@ function gotData(data) {
     windSpeed = weather.currently.windSpeed;
     windBearing = weather.currently.windBearing;
     humidity = weather.currently.humidity;
-    console.log(summary);
+    console.log(visibility);
     return summary;
 
     //hours
 
-    console.log(timer);
+    //console.log(timer);
 }
 
 function Symbol(x, y, speed) {
@@ -210,6 +233,20 @@ function Symbol(x, y, speed) {
     }
 }
 
+function eightbitcloud(icon, img, x, y){
+    if (icon == 'cloudy'|| icon == 'partly-cloudy-day' || icon == 'partly-cloudy-night'){
+        //image(img, x-20, y-20, img.width/5, img.height/5);
+        //image(img, x-40, y-40, img.width/5, img.height/5);
+        //image(img, x-40, y + 40, img.width/5, img.height/5);
+        image(img, x - 50, y - 30,  img.width/5, img.height/5);
+        image(img, x - 70, y - 40,  img.width/5, img.height/5);
+        image(img, x - 70, y - 10,  img.width/5, img.height/5);
+        image(img, x - 70, y - 10,  img.width/5, img.height/5);
+        image(img, x - 40, y - 10,  img.width/5, img.height/5);
+        //console.log('running');
+    }
+}
+
 function sun(time, px, py){
   translate(px, py);
   rotate(radians(time));
@@ -218,38 +255,124 @@ function sun(time, px, py){
 
 }
 
-function draw() {
-    background(255);
-    if(weather){
-        h = map(hour(), 0, 24, 0, PI) - 7*PI/12;
-        temperature = map(curr_temp, 0, 100, 0, 255);
-        fill(temperature);
-        stroke(200);
-        ellipse(cx + cos(h) * sradius, cy + sin(h) * sradius + 2*windSpeed*random(-5,5), 20, 20);
+function Snow(){
 
+    this.x = random(width);
+    this.y = random(-1000,-50);
+    this.z = random(0,20);
+    this.gravity = map(this.z,0,20,0.01,0.2);
+    this.length = map(this.z,0,20,10,30);
+    this.speed = map(this.z, 0, 20, 3,10);
+
+    this.fall = function(){
+
+        this.y += this.speed;
+        this.speed += this.gravity;
+        if (this.y > height){
+            this.y = random(-100,-200);
+            this.speed = map(this.z, 0, 20, 3,6);
+        }
+    }
+
+    this.show = function(){
+        //console.log(this.y);
+        stroke(50);
+        strokeWeight(map(this.z, 0, 20, 1, 3));
+        rect(this.x, this.y, 20, 20);
+    }
+}
+function snow() {
+    newSnow.forEach(function(snow){
+        snow.fall();
+        snow.show();
+    })
+}
+
+function Drop(){
+
+    this.x = random(width);
+    this.y = random(-1000,-50);
+    this.z = random(0,20);
+    this.gravity = map(this.z,0,20,0.01,0.2);
+    this.length = map(this.z,0,20,10,30);
+    this.speed = map(this.z, 0, 20, 3,10);
+
+    this.fall = function(){
+
+        this.y += this.speed;
+        this.speed += this.gravity;
+        if (this.y > height){
+            this.y = random(-100,-200);
+            this.speed = map(this.z, 0, 20, 3,6);
+        }
+    }
+
+    this.show = function(){
+        //console.log(this.y);
+        stroke(50);
+        strokeWeight(map(this.z, 0, 20, 1, 3));
+        line(this.x, this.y, this.x, this.y + this.length);
+    }
+}
+function rain() {
+    newDrops.forEach(function(drop){
+        drop.fall();
+        drop.show();
+    })
+}
+
+function draw() {
+    var h = map(hour(), 0, 23, 0, 2*PI) + PI/2;
+    var h;
+
+    // var h = 1/23 * 2*PI + PI/2;
+    background(200);
+    if(weather){
+        // temperature = map(curr_temp, 0, 100, 0, 255);
+        // fill(temperature);
+        stroke(200);
+
+        if (hour() > 6 || hour() < 19){
+            fill(255, 102, 0);
+        }
+
+        else{
+            fill(46, 64, 83);
+        }
+        ellipse(random(-1, 1) + cx + cos(h) * sradius, random(-1, 1) + cy + sin(h) * sradius, 60, 60);
+
+        if(minutely_icon == 'rain'){
+            //console.log(minutely_icon);
+            rain();
+        }
+
+        if(minutely_icon == 'thunderstorm'){
+            //console.log(minutely_icon);
+            setInterval()
+            rain();
+        }
+
+        if(minutely_icon == 'snow'){
+            //console.log(minutely_icon);
+            rain();
+        }
+        eightbitcloud(minutely_icon, img, random(-1, 1) + cx + cos(h) * sradius, random(-1, 1) + cy + sin(h) * sradius);
         textSize(15);
 
-        for (i = 0; i<5; i++){
-            text(summary, x+i, y-i);
-            text(summary, x+5*i, y+5*i);
-            text(summary, x+10*i, y-10*i);
-            y += windSpeed/30;
-            x += windSpeed/30;
-            if (y== height){
-                y = 0;
-                console.log("done");
-            }
-            if (x== width){
-                x = 0;
-                console.log("done");
-            }
-            graphData(random(0,1));
-            console.log(tempday_1, tempday_2);
+        fill(18, 130, 249);
+
+        triangle(60, height/2-20, width, height/2 - 10*visibility, width, height/2 + 10*visibility);
+        rect(40, height/2-40, 20, 40);
+        rect(20, height/2, 60, 370);
+        rect(0, 4*height/6 + boat.height/2 - 40, 120, 30);
+        rect(0, 4*height/6 + boat.height/2 - 20, width, 200);
+        image(boat, boatPos, 4*height/6, boat.width/2, boat.height/2);
+        boatPos += windSpeed;
+        if (boatPos>width){
+            boatPos = -10;
         }
-        // text(summary, width/2, y);
-        // y += 1;
-        var test = [40, 1.3, 20];
-        console.log(summary);
+
+        console.log(visibility);
     }
 
 }

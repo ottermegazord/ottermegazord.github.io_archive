@@ -40,6 +40,8 @@ var s;
 
 var api = "https://api.darksky.net/forecast/";
 var city = 'Cambridge, MA';
+// var lat = 1.290270;
+// var long = 103.851959;
 var lat = 42.3736;
 var long = -71.1097;
 var apiKey = "a0646b621a688dc51bdbab269421f606";
@@ -169,6 +171,7 @@ function askWeather(){
 
 function gotData(data) {
     weather = data;
+    console.log(weather);
     timer = weather.currently;
     visibility = weather.currently.visibility;
     summary = weather.minutely.summary;
@@ -351,12 +354,11 @@ function draw() {
     // var h = 1/23 * 2*PI + PI/2;
     background(200);
     if(weather){
-        // temperature = map(curr_temp, 0, 100, 0, 255);
-        // fill(temperature);
+        temperature = map(curr_temp, 0, 100, 0, 255);
         stroke(200);
 
         if (h > (7/23*2*PI-PI/2) && h < (19/23*2*PI-PI/2)){ //6 19
-            background(255, 102, 0);
+            background(204, 255, 255);
             //h = /24 * TWO_PI - HALF_PI;
             image(sun, cx + cos(h + PI) * sradius - 65, cy + sin(h + PI) * sradius - 60, sun.width*2, sun.height*2);
             eightbitcloud(minutely_icon, img, random(-1, 1) + cx + cos(h + PI) * sradius , random(-1, 1) + cy + sin(h + PI) * sradius + 20);
@@ -396,7 +398,7 @@ function draw() {
         // eightbitcloud('cloudy', img, random(-1, 1) + cx + cos(h) * sradius - 65, random(-1, 1) + cy + sin(h) * sradius);
         textSize(15);
 
-        fill(255, 255, 0);
+        fill(255, temperature, 0);
 
         triangle(60, height/2 - 52, width, height/2 - 5*visibility, width, height/2 + 5*visibility);
         fill(0, 0, 255);

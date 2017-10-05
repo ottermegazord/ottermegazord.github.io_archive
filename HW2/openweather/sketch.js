@@ -11,6 +11,9 @@ var temphour_2;
 var temphour_3;
 var temphour_4;
 var windSpeed;
+var windBearing;
+var Radius = 40;
+var datetime;
 
 //var searchBox = new google.maps.places.SearchBox();
 
@@ -38,6 +41,9 @@ var news_1;
 var news_2;
 var news_3;
 var news_4;
+var news_5;
+var news_6
+var news_7;
 
 var ticker_x = 320;
 
@@ -57,6 +63,9 @@ function timeConverter(UNIX_timestamp){
     var date = a.getDate();
     var hour = a.getHours();
     var min = a.getMinutes();
+    if (min < 10){
+        min = "0" + min;
+    }
     var sec = a.getSeconds();
     var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min ;
     return time;
@@ -123,6 +132,7 @@ function setup() {
     rain = loadImage('images/rain.jpg');
     snow = loadImage('images/snow.jpg');
     thunderstorm = loadImage('images/thunderstorm.jpg');
+    arrow = loadImage('images/arrow.png');
 
 
     clear_day_icon = loadImage('images/clear-day.svg');
@@ -294,7 +304,7 @@ function weatherIcon4(iconString){
             break;
 
         case 'partly-cloudy-day':
-            image(partly_cloudy_day_icon, 12+ 3*width/44, 5*height/8 + 40, partly_cloudy_day_icon.width/12, partly_cloudy_day_icon.width/12);
+            image(partly_cloudy_day_icon, 12+ 3*width/4, 5*height/8 + 40, partly_cloudy_day_icon.width/12, partly_cloudy_day_icon.width/12);
             break;
 
         case 'rain':
@@ -420,6 +430,9 @@ function gotNewsData(data1) {
     news_2 = news.articles[2].title;
     news_3 = news.articles[3].title;
     news_4 = news.articles[4].title;
+    news_5 = news.articles[5].title;
+    news_6 = news.articles[6].title;
+    news_7 = news.articles[7].title;
 
     //console.log(news.articles)
 }
@@ -476,19 +489,13 @@ function gotData(data) {
     //console.log(icon_2);
 }
 
-function mousePressed(){
-    var d = dist(mouseX, mouseY, width/2, height / 6);
-    if (d < 100){
-        city = 'Brazil';
-    }
-}
-
 function greet(){
     city = input.value();
     glocation = city;
 }
 
 function draw() {
+    var bear = map(windBearing, 0, 360, 0, PI*2) - HALF_PI;
     changeLngLat(103.851, 1.290270);
     background(0);
     switch(icon){
@@ -526,6 +533,7 @@ function draw() {
         //console.log(timer);
         textFont('Arial', 30);
         stroke(20);
+        strokeWeight(1);
         text(city.toUpperCase(), width/2, height / 6);
         textFont('Arial', 10);
         text(timeConverter(timer.time), 260, 20);
@@ -533,7 +541,12 @@ function draw() {
         //textFont('Arial', 8);
         //text(summary.toUpperCase(), width / 2, height / 2 + 10);
 
-        triangle(300, 100, 320, 100, 310, 80);
+        bear = PI;
+        ellipse(width/8 + 24, height / 3 + 120 - 5, 20,20);
+        strokeWeight(3);
+        fill(255);
+        line(width/8 + 10 + 12.5, height / 3 + 120 - 5, width/8 + cos(bear) * 9.5 + 22.5, height / 3 + 120 - 5 + sin(bear) * 9.5);
+        strokeWeight(1);
 
         textFont('Arial', 60);
         text(curr_temp.toFixed(0) + '\xB0F', 3 * width / 4, height / 3);
@@ -541,17 +554,17 @@ function draw() {
         mweatherIcon1(minutely_icon, width/4 - 60, height/3 - 85, 4);
         filter(INVERT);
         textSize(15);
-        text('\u21D1' + min_temp.toFixed(0) + '\xB0F ' + '\u21D1' + max_temp.toFixed(0) + '\xB0F', 3*width/4, height / 3 + 120);
+        text('\u21D3' + min_temp.toFixed(0) + '\xB0F ' + '\u21D1' + max_temp.toFixed(0) + '\xB0F', 3*width/4, height / 3 + 120);
         textSize(10);
-        text('Wind Speed: ' + windSpeed + '  ' + 'Bearing: ' + windBearing, 3*width/4, height / 3 + 100);
+        text('Wind Speed: ' + windSpeed + ' mph  ', width/4 - 10, height / 3 + 140);
         text('Humidity: ' + humidity + '%', 3*width/4, height / 3 + 140);
         //console.log(news_1, news_2, news_3, news_4);
 
         textFont('Arial', 10);
-        text(news_1 + '. ' + news_2 + '. ' + news_3 + '. ' + news_4 +'.', ticker_x, 5*height/8 + 16);
-        text(news_1 + '. ' + news_2 + '. ' + news_3 + '. ' + news_4 +'.', ticker_x - 3.2*width, 5*height/8 +16);
+        text(news_1 + '. ' + news_2 + '. ' + news_3 + '. ' + news_4 +'. ' + news_5 +'. ' + news_6 +'. ' + news_7 +'. ', ticker_x, 5*height/8 + 16);
+        //text(news_1 + '. ' + news_2 + '. ' + news_3 + '. ' + news_4 +'.', ticker_x - 3.2*width, 5*height/8 +16);
         if (ticker_x == width*2){
-            ticker_x = width;
+            ticker_x = -width + 20;
         }
         ticker_x = ticker_x + 1;
         rect(0, 5*height/8 + 12 + 12, width, 80);
@@ -560,15 +573,14 @@ function draw() {
         text(time_2, width/4 + 35, 5*height/8 + 38);
         text(time_3, 2*width/4 + 35, 5*height/8 + 38);
         text(time_4, 3*width/4 + 35, 5*height/8 + 38);
-        text(temphour_1, 35, 5*height/8 + 92);
-        text(temphour_2, width/4 + 35, 5*height/8 + 92);
-        text(temphour_3, 2*width/4 + 35, 5*height/8 + 92);
-        text(temphour_4, 3*width/4 + 35, 5*height/8 + 92);
+        text(temphour_1.toFixed(0) + '\xB0F', 35, 5*height/8 + 95);
+        text(temphour_2.toFixed(0) + '\xB0F', width/4 + 35, 5*height/8 + 95);
+        text(temphour_3.toFixed(0) + '\xB0F', 2*width/4 + 35, 5*height/8 + 95);
+        text(temphour_4.toFixed(0) + '\xB0F', 3*width/4 + 35, 5*height/8 + 95);
         weatherIcon1(icon_1);
         weatherIcon2(icon_2);
         weatherIcon3(icon_3);
         weatherIcon4(icon_4);
-        console.log(icon_1);
 
         //filter(INVERT);
         fill(255);
@@ -577,15 +589,17 @@ function draw() {
         text(day_3, 2*width/4 + 35, 7*height/8 - 15);
         text(day_4, 3*width/4 + 35, 7*height/8 - 15);
         text(day_4, 3*width/4 + 35, 7*height/8 - 15);
-        text(tempday_1, 35, 7*height/8 + 50);
-        text(tempday_2, width/4 + 35, 7*height/8 + 50);
-        text(tempday_3, 2*width/4 + 35, 7*height/8 + 50);
-        text(tempday_4, 3*width/4 + 35, 7*height/8 + 50);
+        text(tempday_1.toFixed(0) + '\xB0F', 35, 7*height/8 + 50);
+        text(tempday_2.toFixed(0) + '\xB0F', width/4 + 35, 7*height/8 + 50);
+        text(tempday_3.toFixed(0) + '\xB0F', 2*width/4 + 35, 7*height/8 + 50);
+        text(tempday_4.toFixed(0) + '\xB0F', 3*width/4 + 35, 7*height/8 + 50);
         filter(INVERT);
         dweatherIcon1(dicon_1, 12, 7*height/8 - 10);
         dweatherIcon1(dicon_2, 12 + width/4, 7*height/8 - 10);
         dweatherIcon1(dicon_3, 12 + 2*width/4, 7*height/8 - 10);
         dweatherIcon1(dicon_4, 12 + 3*width/4, 7*height/8 - 10);
+
+        console.log(bear);
         // weatherIcon2(dicon_2);
         // weatherIcon3(dicon_3);
         // weatherIcon4(dicon_4);

@@ -29,6 +29,7 @@ var windSpeed;
 var summary;
 var day_temp;
 var boatPos;
+var boat2Pos;
 var y = 0;
 var x = 0;
 var xPos = 0;
@@ -124,8 +125,14 @@ function setup() {
     // sun parameters
     img = loadImage('images/8bitcloud.png');
     boat = loadImage('images/boat.png');
+    boat2 = loadImage('images/boat2.png');
+    sun = loadImage('images/sun.png');
+    moon = loadImage('images/moon.png');
+    lighthouse = loadImage('images/lighthouse.png');
+    waves = loadImage('images/waves.png');
 
     boatPos = 0;
+    boat2Pos = width;
 
     var radius = min(width, height) / 2;
     sradius = radius * 2;
@@ -208,7 +215,7 @@ function gotData(data) {
     windSpeed = weather.currently.windSpeed;
     windBearing = weather.currently.windBearing;
     humidity = weather.currently.humidity;
-    console.log(visibility);
+    //console.log(visibility);
     return summary;
 
     //hours
@@ -235,14 +242,24 @@ function Symbol(x, y, speed) {
 
 function eightbitcloud(icon, img, x, y){
     if (icon == 'cloudy'|| icon == 'partly-cloudy-day' || icon == 'partly-cloudy-night'){
+        if (icon == 'cloudy'){
+            var i = 0;
+            for (i = 1; i <= 10; i++){
+                image(img, i*width/10 - 100 + i*10, random(-1,1),  img.width/3, img.height/3);
+                image(img, i*width/10 - 100 + i*22, random(-1,1) - 28,  img.width/3, img.height/3);
+            }
+
+        }
         //image(img, x-20, y-20, img.width/5, img.height/5);
         //image(img, x-40, y-40, img.width/5, img.height/5);
         //image(img, x-40, y + 40, img.width/5, img.height/5);
-        image(img, x - 50, y - 30,  img.width/5, img.height/5);
-        image(img, x - 70, y - 40,  img.width/5, img.height/5);
-        image(img, x - 70, y - 10,  img.width/5, img.height/5);
-        image(img, x - 70, y - 10,  img.width/5, img.height/5);
-        image(img, x - 40, y - 10,  img.width/5, img.height/5);
+        image(img, x - 50, y - 30,  img.width/3, img.height/3);
+        image(img, x - 70, y - 40,  img.width/3, img.height/3);
+        image(img, x - 70, y - 10,  img.width/3, img.height/3);
+        image(img, x - 70, y - 10,  img.width/3, img.height/3);
+        image(img, x - 40, y - 10,  img.width/3, img.height/3);
+        image(img, x, y,  img.width/3, img.height/3);
+        image(img, x + 10, y + 10,  img.width/3, img.height/3);
         //console.log('running');
     }
 }
@@ -260,9 +277,10 @@ function Snow(){
     this.x = random(width);
     this.y = random(-1000,-50);
     this.z = random(0,20);
-    this.gravity = map(this.z,0,20,0.01,0.2);
+    this.gravity = map(this.z,0,1,0.14,0.012);
+    // this.gravity = map(this.z,0,20,0.01,0.2);
     this.length = map(this.z,0,20,10,30);
-    this.speed = map(this.z, 0, 20, 3,10);
+    this.speed = map(this.z, 0, 100, 3,10);
 
     this.fall = function(){
 
@@ -283,6 +301,7 @@ function Snow(){
 }
 function snow() {
     newSnow.forEach(function(snow){
+        fill(255);
         snow.fall();
         snow.show();
     })
@@ -322,8 +341,12 @@ function rain() {
 }
 
 function draw() {
-    var h = map(hour(), 0, 23, 0, 2*PI) + PI/2;
-    var h;
+    var h = map(hour() + norm(minute(), 0, 60), 0, 23, 0, PI * 2) - HALF_PI;
+    //var h = map(minute() + norm(second(), 0, 60), 0, 60, 0, TWO_PI) - HALF_PI;
+    //var h = map(hour() + norm(minute(), 0, 60), 0, 24, 0, TWO_PI * 2) - HALF_PI;
+    //var h = map(second(), 0, 59, 0, 2*PI) + PI/2;
+    //var h = 10/23 * 2 * PI - PI/2;
+    console.log(second() % 12);
 
     // var h = 1/23 * 2*PI + PI/2;
     background(200);
@@ -332,14 +355,27 @@ function draw() {
         // fill(temperature);
         stroke(200);
 
-        if (hour() > 6 || hour() < 19){
-            fill(255, 102, 0);
+        if (h > (7/23*2*PI-PI/2) && h < (19/23*2*PI-PI/2)){ //6 19
+            background(255, 102, 0);
+            //h = /24 * TWO_PI - HALF_PI;
+            image(sun, cx + cos(h + PI) * sradius - 65, cy + sin(h + PI) * sradius - 60, sun.width*2, sun.height*2);
+            eightbitcloud(minutely_icon, img, random(-1, 1) + cx + cos(h + PI) * sradius , random(-1, 1) + cy + sin(h + PI) * sradius + 20);
+            textSize(15);
+            //ellipse(cx, cy, 40, 40);
         }
 
         else{
-            fill(46, 64, 83);
+            console.log('running');
+            background(46, 64, 83);
+            image(moon, cx + cos(h) * sradius - 65, cy + sin(h) * sradius, sun.width*2, sun.height*2);
+            eightbitcloud(minutely_icon, img, random(-1, 1) + cx + cos(h) * sradius - 65, random(-1, 1) + cy + sin(h) * sradius);
+            textSize(15);
         }
-        ellipse(random(-1, 1) + cx + cos(h) * sradius, random(-1, 1) + cy + sin(h) * sradius, 60, 60);
+
+        // image(sun, random(-1, 1) + cx + cos(test_h) * sradius, random(-1, 1) + cy + sin(test_h) * sradius, sun.width, sun.height);
+        // image(sun, random(-1, 1) + cx + cos(h) * sradius, random(-1, 1) + cy + sin(h) * sradius, sun.width, sun.height);
+
+        //ellipse(random(-1, 1) + cx + cos(h) * sradius, random(-1, 1) + cy + sin(h) * sradius, 200, 200);
 
         if(minutely_icon == 'rain'){
             //console.log(minutely_icon);
@@ -348,7 +384,6 @@ function draw() {
 
         if(minutely_icon == 'thunderstorm'){
             //console.log(minutely_icon);
-            setInterval()
             rain();
         }
 
@@ -356,23 +391,41 @@ function draw() {
             //console.log(minutely_icon);
             rain();
         }
-        eightbitcloud(minutely_icon, img, random(-1, 1) + cx + cos(h) * sradius, random(-1, 1) + cy + sin(h) * sradius);
+
+        //eightbitcloud(minutely_icon, img, random(-1, 1) + cx + cos(h) * sradius, random(-1, 1) + cy + sin(h) * sradius);
+        // eightbitcloud('cloudy', img, random(-1, 1) + cx + cos(h) * sradius - 65, random(-1, 1) + cy + sin(h) * sradius);
         textSize(15);
 
-        fill(18, 130, 249);
+        fill(255, 255, 0);
 
-        triangle(60, height/2-20, width, height/2 - 10*visibility, width, height/2 + 10*visibility);
-        rect(40, height/2-40, 20, 40);
-        rect(20, height/2, 60, 370);
-        rect(0, 4*height/6 + boat.height/2 - 40, 120, 30);
-        rect(0, 4*height/6 + boat.height/2 - 20, width, 200);
-        image(boat, boatPos, 4*height/6, boat.width/2, boat.height/2);
+        triangle(60, height/2 - 52, width, height/2 - 5*visibility, width, height/2 + 5*visibility);
+        fill(0, 0, 255);
+        image(lighthouse, -30, height/2 - 85, lighthouse.width * 5, lighthouse.height * 5);
+        //rect(40, height/2-40, 20, 40);
+        //rect(20, height/2, 60, 370);
+        //image(waves, - 20 + random(-1, 1), 4*height/6 - 50, waves.width*3, waves.height*3);
+        fill(100);
+        rect(0, 4*height/6 + boat.height/2 - 40, 100, 50);
+        //rect(0, 4*height/6 + boat.height/2 - 20, width, 200);
+        image(waves, -10 + random(-1, 1), 4*height/6, waves.width * 3, waves.height * 3);
+        image(waves, - 10 + random(-1, 1), 4*height/6 + 30, waves.width*3, waves.height*3);
+        image(waves, -20 + random(-1, 1), 4*height/6 + 60, waves.width*4, waves.height*4);
+
+        image(boat, boatPos, 4*height/6 - 45, boat.width * 4, boat.height * 4);
         boatPos += windSpeed;
         if (boatPos>width){
             boatPos = -10;
         }
 
-        console.log(visibility);
+        image(boat2, boat2Pos, 4*height/6 + 30, boat.width * 4, boat.height * 4);
+        boat2Pos -= 0.8*windSpeed;
+        if (boat2Pos < - 100){
+            boat2Pos = width;
+        }
+
+        console.log(minutely_icon);
+
+        // //console.log(visibility);
     }
 
 }

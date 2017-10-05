@@ -351,6 +351,7 @@ function draw() {
     //var h = 10/23 * 2 * PI - PI/2;
     console.log(second() % 12);
 
+    h = 19/23 * PI * 2 - HALF_PI;
     // var h = 1/23 * 2*PI + PI/2;
     background(200);
     if(weather){
@@ -394,8 +395,6 @@ function draw() {
             rain();
         }
 
-        console.log(minutely_icon);
-
         //eightbitcloud(minutely_icon, img, random(-1, 1) + cx + cos(h) * sradius, random(-1, 1) + cy + sin(h) * sradius);
         // eightbitcloud('cloudy', img, random(-1, 1) + cx + cos(h) * sradius - 65, random(-1, 1) + cy + sin(h) * sradius);
         textSize(15);
@@ -413,6 +412,7 @@ function draw() {
         //rect(0, 4*height/6 + boat.height/2 - 20, width, 200);
         image(waves, -10 + random(-1, 1), 4*height/6, waves.width * 3, waves.height * 3);
         image(waves, - 10 + random(-1, 1), 4*height/6 + 30, waves.width*3, waves.height*3);
+
         image(waves, -20 + random(-1, 1), 4*height/6 + 60, waves.width*4, waves.height*4);
 
         image(boat, boatPos, 4*height/6 - 45, boat.width * 4, boat.height * 4);
@@ -426,7 +426,7 @@ function draw() {
         if (boat2Pos < - 100){
             boat2Pos = width;
         }
-
+        rain();
         console.log(minutely_icon);
 
         // //console.log(visibility);

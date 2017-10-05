@@ -349,6 +349,7 @@ function draw() {
     //var h = map(hour() + norm(minute(), 0, 60), 0, 24, 0, TWO_PI * 2) - HALF_PI;
     //var h = map(second(), 0, 59, 0, 2*PI) + PI/2;
     //var h = 10/23 * 2 * PI - PI/2;
+    h = 10/23 * PI * 2 - HALF_PI;
     console.log(second() % 12);
 
     // var h = 1/23 * 2*PI + PI/2;
@@ -361,7 +362,7 @@ function draw() {
             background(204, 255, 255);
             //h = /24 * TWO_PI - HALF_PI;
             image(sun, cx + cos(h + PI) * sradius - 65, cy + sin(h + PI) * sradius - 60, sun.width*2, sun.height*2);
-            eightbitcloud(minutely_icon, img, random(-1, 1) + cx + cos(h + PI) * sradius , random(-1, 1) + cy + sin(h + PI) * sradius + 20);
+            eightbitcloud('cloudy', img, random(-1, 1) + cx + cos(h + PI) * sradius , random(-1, 1) + cy + sin(h + PI) * sradius + 20);
             textSize(15);
             //ellipse(cx, cy, 40, 40);
         }
@@ -394,8 +395,6 @@ function draw() {
             rain();
         }
 
-        console.log(minutely_icon);
-
         //eightbitcloud(minutely_icon, img, random(-1, 1) + cx + cos(h) * sradius, random(-1, 1) + cy + sin(h) * sradius);
         // eightbitcloud('cloudy', img, random(-1, 1) + cx + cos(h) * sradius - 65, random(-1, 1) + cy + sin(h) * sradius);
         textSize(15);
@@ -426,6 +425,8 @@ function draw() {
         if (boat2Pos < - 100){
             boat2Pos = width;
         }
+
+        snow()
 
         console.log(minutely_icon);
 

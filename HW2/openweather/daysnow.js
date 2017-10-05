@@ -170,9 +170,8 @@ function weatherIcon1(iconString){
             image(fog_icon, 12, 5*height/8 + 40, fog_icon.width/12, fog_icon.width/12);
             break;
 
-        case 'partly-cloudy-night':
+        case 'partly-cloud-night':
             image(partly_cloudy_night_icon, 12, 5*height/8 + 40, partly_cloudy_night_icon.width/12, partly_cloudy_night_icon.width/12);
-            console.log("test");
             break;
 
         case 'partly-cloudy-day':
@@ -214,7 +213,7 @@ function weatherIcon2(iconString){
             image(fog_icon, 12+ width/4, 5*height/8 + 40, fog_icon.width/12, fog_icon.width/12);
             break;
 
-        case 'partly-cloudy-night':
+        case 'partly-cloud-night':
             image(partly_cloudy_night_icon, 12+ width/4, 5*height/8 + 40, partly_cloudy_night_icon.width/12, partly_cloudy_night_icon.width/12);
             break;
 
@@ -257,7 +256,7 @@ function weatherIcon3(iconString){
             image(fog_icon, 12+ 2*width/4, 5*height/8 + 40, fog_icon.width/12, fog_icon.width/12);
             break;
 
-        case 'partly-cloudy-night':
+        case 'partly-cloud-night':
             image(partly_cloudy_night_icon, 12+ 2*width/4, 5*height/8 + 40, partly_cloudy_night_icon.width/12, partly_cloudy_night_icon.width/12);
             break;
 
@@ -300,7 +299,7 @@ function weatherIcon4(iconString){
             image(fog_icon, 12+ 3*width/4, 5*height/8 + 40, fog_icon.width/12, fog_icon.width/12);
             break;
 
-        case 'partly-cloudy-night':
+        case 'partly-cloud-night':
             image(partly_cloudy_night_icon, 12+ 3*width/4, 5*height/8 + 40, partly_cloudy_night_icon.width/12, partly_cloudy_night_icon.width/12);
             break;
 
@@ -578,8 +577,8 @@ function draw() {
         text(temphour_2.toFixed(0) + '\xB0F', width/4 + 35, 5*height/8 + 95);
         text(temphour_3.toFixed(0) + '\xB0F', 2*width/4 + 35, 5*height/8 + 95);
         text(temphour_4.toFixed(0) + '\xB0F', 3*width/4 + 35, 5*height/8 + 95);
-        weatherIcon1('partly-cloudy-night');
-        weatherIcon2('partly-cloudy-night');
+        weatherIcon1(icon_1);
+        weatherIcon2(icon_2);
         weatherIcon3(icon_3);
         weatherIcon4(icon_4);
 
@@ -600,7 +599,7 @@ function draw() {
         dweatherIcon1(dicon_3, 12 + 2*width/4, 7*height/8 - 10);
         dweatherIcon1(dicon_4, 12 + 3*width/4, 7*height/8 - 10);
 
-        console.log(icon_2);
+        console.log(bear);
         // weatherIcon2(dicon_2);
         // weatherIcon3(dicon_3);
         // weatherIcon4(dicon_4);

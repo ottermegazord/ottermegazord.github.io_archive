@@ -551,7 +551,7 @@ function draw() {
         textFont('Arial', 60);
         text(curr_temp.toFixed(0) + '\xB0F', 3 * width / 4, height / 3);
         filter(INVERT);
-        mweatherIcon1(minutely_icon, width/4 - 60, height/3 - 85, 4);
+        mweatherIcon1('snow', width/4 - 60, height/3 - 85, 4);
         filter(INVERT);
         textSize(15);
         text('\u21D3' + min_temp.toFixed(0) + '\xB0F ' + '\u21D1' + max_temp.toFixed(0) + '\xB0F', 3*width/4, height / 3 + 120);

@@ -497,6 +497,7 @@ function greet(){
 
 function draw() {
     var bear = map(windBearing, 0, 360, 0, PI*2) - HALF_PI;
+    bear = 2.2;
     changeLngLat(103.851, 1.290270);
     background(0);
     switch(icon){
@@ -548,6 +549,7 @@ function draw() {
         fill(255);
         line(width/8 + 10 + 12.5, height / 3 + 120 - 5, width/8 + cos(bear) * 9.5 + 22.5, height / 3 + 120 - 5 + sin(bear) * 9.5);
         strokeWeight(1);
+        console.log(windBearing);
 
         textFont('Arial', 60);
         text(curr_temp.toFixed(0) + '\xB0F', 3 * width / 4, height / 3);

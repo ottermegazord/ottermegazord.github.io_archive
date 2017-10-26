@@ -22,6 +22,7 @@ var counter;
 var mymap;
 var base;
 var val;
+var dropdown;
 
 var slider;
 
@@ -58,10 +59,6 @@ legend.onAdd = function (map) {
     return div;
 };
 
-function onMapClick(e) {
-    console.log("You clicked the map at " + e.latlng);
-}
-
 function setup() {
     // LEAFLET CODE
     // create your own map
@@ -94,7 +91,6 @@ function setup() {
 
     L.control.layers(baseMaps, overlayMaps).addTo(mymap);
     // get the tiles you need. Don't have to touch this
-    //mymap.on('click', onMapClick);
 
 
     drawDataPoints();
@@ -144,7 +140,33 @@ function setup() {
 
     people = [p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10];
 
+    dropdown = createSelect(); // or create dropdown?
+    dropdown.option('pear');
+    dropdown.option('kiwi');
+    dropdown.option('grape');
+    dropdown.option('apple');
+    //dropdown.select('value3');
+    dropdown.changed(mySelectEvent);
+
    //console.log(deca(0.94), rema(0.94));
+}
+
+function mySelectEvent() {
+    var selected = this.selected();
+    switch(selected) {
+        case 'pear':
+            console.log('this is a pear!');
+            break;
+        case 'kiwi':
+            console.log('this is a kiwi!');
+            break;
+        case 'grape':
+            console.log('this is a grape!');
+            break;
+        case 'grape':
+            console.log('this is a grape!');
+            break;
+    }
 }
 
 function deca(prob){
@@ -209,8 +231,8 @@ function drawDataPoints() {
                 radius: indian[i]/2
             }).addTo(mymap);
             var stringer = name[i] + '<br>' + 'Indians: ' + indian[i];
+            counter = i;
             circle.bindPopup(stringer);
-            circle.on('click', onMapClick);
         }
 
     }
@@ -226,7 +248,6 @@ function drawDataPoints() {
             }).addTo(mymap);
             var stringer = name[i] + '<br>' + 'Chinese: ' + chinese[i];
             circle.bindPopup(stringer);
-            circle.on('click', onMapClick);
         }
     }
 
@@ -242,7 +263,6 @@ function drawDataPoints() {
             }).addTo(mymap);
             var stringer = name[i] + '<br>' + 'Korean: ' + korean[i];
             circle.bindPopup(stringer);
-            circle.on('click', onMapClick);
         }
 
     }
@@ -258,7 +278,6 @@ function drawDataPoints() {
             }).addTo(mymap);
             var stringer = name[i] + '<br>' + 'Filipino: ' + filipino[i];
             circle.bindPopup(stringer);
-            circle.on('click', onMapClick);
         }
 
     }
@@ -356,6 +375,10 @@ function draw(){
     s = "are asians really everywhere?";
     textSize(35);
     text(s, 180, 55);
+    dropdown.position(width/2,3*height/2);
+    if (dropdown.selected === 'pear') {
+        console.log("megadeth");
+    }
 }
 
 function people_loader_1(prob){
@@ -458,6 +481,7 @@ function pieChart(diameter, angles) {
         fill(255,0,0);
         noFill()
     }
+
 }
 
 function displayData(){
@@ -472,6 +496,7 @@ function displayData(){
     pieChart(350, data);
     likelyAsian(t_name[val],t_tots[val],t_indian[val],t_chinese[val],t_filipino[val],t_japanese[val],t_korean[val],t_vietnamese[val],t_others[val]);
     people_loader_1(t_percent[val]);
+
     //people_loader_2(0.82213);
     //people_loader_3(0.323022);
     //image(seal[val], width/200+105, height/2-90, seal[val].width/10, seal[val].width/10);

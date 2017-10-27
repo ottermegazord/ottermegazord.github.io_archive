@@ -11,6 +11,7 @@ var america_asian = 19437463;
 var maxPop, minPop, maxLon, minLon;
 var margin = 100;
 var population;
+var average_low;
 
 // table as the data set
 var table;
@@ -22,9 +23,12 @@ var counter;
 var mymap;
 var base;
 var val;
-var dropdown;
+var dropdown, dropup;
 
 var slider;
+
+var r1, r2, r3, r4, r5, r6, r7, r8, r9,r10;
+var router, higher;
 
 // cities
 var new_york = L.marker([40.712775, -74.005973]).bindPopup('New York, New York'),
@@ -114,6 +118,24 @@ function setup() {
     p9 = loadImage('images/90.svg');
     p10 = loadImage('images/100.svg');
 
+    h1 = loadImage('images/high1.svg');
+    h2 = loadImage('images/high2.svg');
+    h3 = loadImage('images/high3.svg');
+    h4 = loadImage('images/high4.svg');
+    h5 = loadImage('images/high5.svg');
+
+
+    r1 = loadImage('images/route1.svg');
+    r2 = loadImage('images/route2.svg');
+    r3 = loadImage('images/route3.svg');
+    r4 = loadImage('images/route4.svg');
+    r5 = loadImage('images/route5.svg');
+    r6 = loadImage('images/route6.svg');
+    r7 = loadImage('images/route7.svg');
+    r8 = loadImage('images/route8.svg');
+    r9 = loadImage('images/route9.svg');
+    r10 = loadImage('images/route10.svg');
+
     seal_0 = loadImage('images/alameda.png');
     seal_1 = loadImage('images/los_angeles.png');
     seal_2 = loadImage('images/cook_county.png');
@@ -141,33 +163,36 @@ function setup() {
     people = [p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10];
 
     dropdown = createSelect(); // or create dropdown?
-    dropdown.option('pear');
-    dropdown.option('kiwi');
-    dropdown.option('grape');
-    dropdown.option('apple');
+    dropdown.option('Route 1');
+    dropdown.option('Route 2');
+    dropdown.option('Route 3');
+    dropdown.option('Route 4');
+    dropdown.option('Route 5');
+    dropdown.option('Route 6');
+    dropdown.option('Route 7');
+    dropdown.option('Route 8');
+    dropdown.option('Route 9');
+    dropdown.option('Route 10');
+
+    dropup = createSelect(); // or create dropdown?
+    dropup.option('Route 1');
+    dropup.option('Route 2');
+    dropup.option('Route 3');
+    dropup.option('Route 4');
+    dropup.option('Route 5');
+    dropup.option('Route 6');
+    dropup.option('Route 7');
+    dropup.option('Route 8');
+    dropup.option('Route 9');
+    dropup.option('Route 10');
+
     //dropdown.select('value3');
     dropdown.changed(mySelectEvent);
+    dropup.changed(yourSelectEvent);
 
    //console.log(deca(0.94), rema(0.94));
 }
 
-function mySelectEvent() {
-    var selected = this.selected();
-    switch(selected) {
-        case 'pear':
-            console.log('this is a pear!');
-            break;
-        case 'kiwi':
-            console.log('this is a kiwi!');
-            break;
-        case 'grape':
-            console.log('this is a grape!');
-            break;
-        case 'grape':
-            console.log('this is a grape!');
-            break;
-    }
-}
 
 function deca(prob){
     var num = int(prob*100);
@@ -376,9 +401,100 @@ function draw(){
     textSize(35);
     text(s, 180, 55);
     dropdown.position(width/2,3*height/2);
-    if (dropdown.selected === 'pear') {
-        console.log("megadeth");
+    dropup.position(width/2,3*height/2 + 80);
+    //image(r1, 180, 55, r1.width*2, r1.height*2);
+    //image(r2, 180, 55, r1.width*2, r1.height*2);
+
+    switch(higher) {
+        case 1:
+            image(h1, 180, 155, r1.width, r1.height);
+            average_low=0.001605854;
+            //console.log('this is dog!');
+            break;
+        case 2:
+            image(h2, 180, 155, r1.width, r1.height);
+            average_low=0.00309392;
+            break;
+        case 3:
+            image(h3, 180, 155, r1.width, r1.height);
+            average_low=0.00366869;
+            break;
+        case 4:
+            image(h4, 180, 155, r1.width, r1.height);
+            average_low=0.004168127;
+            break;
+        case 5:
+            image(h5, 180, 155, r1.width, r1.height);
+            average_low=0.004848032;
+            //console.log('this is dog!');
+            break;
+        case 6:
+            image(r6, 180, 155, r1.width, r1.height);
+            average_low=0.005394504;
+            break;
+        case 7:
+            image(r7, 180, 155, r1.width, r1.height);
+            average_low=0.005819418;
+            break;
+        case 8:
+            image(r8, 180, 155, r1.width, r1.height);
+            average_low=0.00638049;
+            break;
+        case 9:
+            image(r9, 180, 155, r1.width, r1.height);
+            average_low=0.007208688;
+            break;
+        case 10:
+            image(r10, 180, 155, r1.width, r1.height);
+            average_low=0.00782957;
+            break;
     }
+
+    switch(router) {
+        case 1:
+            image(r5, 180, 55, r1.width, r1.height);
+            average_low=0.001605854;
+            //console.log('this is dog!');
+            break;
+        case 2:
+            image(r2, 180, 55, r1.width, r1.height);
+            average_low=0.00309392;
+            break;
+        case 3:
+            image(r3, 180, 55, r1.width, r1.height);
+            average_low=0.00366869;
+            break;
+        case 4:
+            image(r4, 180, 55, r1.width, r1.height);
+            average_low=0.004168127;
+            break;
+        case 5:
+            image(r5, 180, 55, r1.width, r1.height);
+            average_low=0.004848032;
+            //console.log('this is dog!');
+            break;
+        case 6:
+            image(r6, 180, 55, r1.width, r1.height);
+            average_low=0.005394504;
+            break;
+        case 7:
+            image(r7, 180, 55, r1.width, r1.height);
+            average_low=0.005819418;
+            break;
+        case 8:
+            image(r8, 180, 55, r1.width, r1.height);
+            average_low=0.00638049;
+            break;
+        case 9:
+            image(r9, 180, 55, r1.width, r1.height);
+            average_low=0.007208688;
+            break;
+        case 10:
+            image(r10, 180, 55, r1.width, r1.height);
+            average_low=0.00782957;
+            break;
+    }
+
 }
 
 function people_loader_1(prob){
@@ -488,7 +604,7 @@ function displayData(){
     background(36,36,38);
     fill(255,0,0);
 
-    console.log(counter);
+    console.log(router);
     //console.log(angler(t_indian[val],t_chinese[val],t_filipino[val],t_japanese[val],t_korean[val],t_vietnamese[val],t_others[val]));
     text(t_name[val], 20, 30);
     data = angler(t_indian[val],t_chinese[val],t_filipino[val],t_japanese[val],t_korean[val],t_vietnamese[val],t_others[val]);
@@ -522,46 +638,101 @@ function displayData(){
     // }
 }
 
-// function displayData(){
-//         background(36,36,38);
-//         fill(255,0,0);
-//         ellipse(0,0, 40, 40);
-//
-//         //noStroke();
-//         // go through building count array
-//         // map the x value to floor height
-//         // map the y value to number of buildings
-//         for(var i=1; i<longitudes.length; i++){
-//             if(longitudes[i]<0){
-//                 //console.log(longitudes[i]);
-//                 var x = map(longitudes[i],minLon, maxLon, margin, width-margin);
-//                 var y = map(population[i], minPop, maxPop,height-margin,margin);
-//                 ellipse(x,y,5,5);
-//                 //var textDisplay = bldgCounts[i] + " buildings with " + i + " floors.";
-//             }
-//         }
-//
-//         for(var i=1; i<t_lon.length; i++){
-//             if(t_lon[i]<0){
-//
-//                 //console.log(t_lon[i]);
-//                 var x = map(t_lon[i],t_minLon, t_maxLon, margin, width-margin);
-//                 var y = map(t_pop[i], t_minPop, t_maxPop,height-margin,margin);
-//                 if (i == val){
-//                     var probs = t_pop[i] / t_tots[i];
-//                     textSize(10);
-//                     var meaner = "P(X = asians): " + probs.toFixed(3);
-//                     text(meaner, x+20, y+20);
-//                     fill(193, 12, 26);
-//                     ellipse(x,y,23,23);
-//                 }
-//                 else {
-//                     fill(93, 173, 226);
-//                     ellipse(x,y,20,20);
-//                 }
-//                 //var textDisplay = bldgCounts[i] + " buildings with " + i + " floors.";
-//             }
-//         }
-//
-// }
 
+function yourSelectEvent() {
+    var selected = this.selected();
+    switch(selected) {
+        case 'Route 1':
+            //console.log('this is dog!');
+            //image(r1, 180, 55, r1.width*2, r1.height*2);
+            //ellipse(200, 200, width, height);
+            higher = 1;
+            //console.log('this is dog!');
+            break;
+        case 'Route 2':
+            //image(r2, 180, 55, r1.width*2, r1.height*2);
+            higher = 2;
+            break;
+        case 'Route 3':
+            // image(r3, 180, 55, r1.width*2, r1.height*2);
+            higher = 3;
+            break;
+        case 'Route 4':
+            //console.log('this is a grape!');
+            higher = 4;
+            break;
+        case 'Route 5':
+            //image(r2, 180, 55, r1.width*2, r1.height*2);
+            higher = 5;
+            break;
+        case 'Route 6':
+            //image(r3, 180, 55, r1.width*2, r1.height*2);
+            higher = 6;
+            break;
+        case 'Route 7':
+            //console.log('this is a grape!');
+            higher = 7;
+            break;
+        case 'Route 8':
+            //image(r2, 180, 55, r1.width*2, r1.height*2);
+            higher = 8;
+            break;
+        case 'Route 9':
+            //image(r3, 180, 55, r1.width*2, r1.height*2);
+            higher = 9;
+            break;
+        case 'Route 10':
+            //console.log('this is a grape!');
+            higher = 10;
+            break;
+    }
+}
+
+function mySelectEvent() {
+    var selected = this.selected();
+    switch(selected) {
+        case 'Route 1':
+            //console.log('this is dog!');
+            //image(r1, 180, 55, r1.width*2, r1.height*2);
+            //ellipse(200, 200, width, height);
+            router = 1;
+            //console.log('this is dog!');
+            break;
+        case 'Route 2':
+            //image(r2, 180, 55, r1.width*2, r1.height*2);
+            router = 2;
+            break;
+        case 'Route 3':
+           // image(r3, 180, 55, r1.width*2, r1.height*2);
+            router = 3;
+            break;
+        case 'Route 4':
+            //console.log('this is a grape!');
+            router = 4;
+            break;
+        case 'Route 5':
+            //image(r2, 180, 55, r1.width*2, r1.height*2);
+            router = 5;
+            break;
+        case 'Route 6':
+            //image(r3, 180, 55, r1.width*2, r1.height*2);
+            router = 6;
+            break;
+        case 'Route 7':
+            //console.log('this is a grape!');
+            router = 7;
+            break;
+        case 'Route 8':
+            //image(r2, 180, 55, r1.width*2, r1.height*2);
+            router = 8;
+            break;
+        case 'Route 9':
+            //image(r3, 180, 55, r1.width*2, r1.height*2);
+            router = 9;
+            break;
+        case 'Route 10':
+            //console.log('this is a grape!');
+            router = 10;
+            break;
+    }
+}

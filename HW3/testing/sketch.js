@@ -11,7 +11,8 @@ var america_asian = 19437463;
 var maxPop, minPop, maxLon, minLon;
 var margin = 100;
 var population;
-var average_low;
+var average_low, average_high;
+var distance_low, distance_high;
 
 // table as the data set
 var table;
@@ -31,10 +32,10 @@ var r1, r2, r3, r4, r5, r6, r7, r8, r9,r10;
 var router, higher;
 
 // cities
-var new_york = L.marker([40.712775, -74.005973]).bindPopup('New York, New York'),
-    los_angeles = L.marker([34.052234, -118.243685]).bindPopup('This is Denver, CO.'),
-    chicago = L.marker([41.878114, -87.629798]).bindPopup('This is Aurora, CO.'),
-    boston = L.marker([42.360082, -71.058880]).bindPopup('This is Golden, CO.');
+// var new_york = L.marker([40.712775, -74.005973]).bindPopup('New York, New York'),
+//     los_angeles = L.marker([34.052234, -118.243685]).bindPopup('This is Denver, CO.'),
+//     chicago = L.marker([41.878114, -87.629798]).bindPopup('This is Aurora, CO.'),
+//     boston = L.marker([42.360082, -71.058880]).bindPopup('This is Golden, CO.');
 
 function preload() {
     //my table is comma separated value "csv"
@@ -68,7 +69,7 @@ function setup() {
     // create your own map
     //mymap = L.map('mapid').setView([51.505, -0.09], 2);
 
-    var cities = L.layerGroup([new_york, los_angeles, chicago, boston]);
+    //var cities = L.layerGroup([new_york, los_angeles, chicago, boston]);
 
     base = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
         maxZoom: 18,
@@ -82,18 +83,20 @@ function setup() {
     mymap = L.map('mapid', {
         center: [51.505, -0.09],
         zoom: 2,
-        layers: [base, cities]
+        layers: [base]
+        // layers: [base, cities]
     });
 
     var baseMaps = {
         "Base": base
     };
 
-    var overlayMaps = {
-        "Cities": cities,
-    };
+    // var overlayMaps = {
+    //     "Cities": cities,
+    // };
 
-    L.control.layers(baseMaps, overlayMaps).addTo(mymap);
+    //L.control.layers(baseMaps, overlayMaps).addTo(mymap);
+    L.control.layers(baseMaps).addTo(mymap);
     // get the tiles you need. Don't have to touch this
 
 
@@ -103,8 +106,8 @@ function setup() {
     //displayData();
 
     slider = createSlider(0, t_pop.length-1, 0);
-    slider.position(width/2 - 240, 1125);
-    slider.style('width', '500px');
+    slider.position(width/2 + 30, 1165);
+    slider.style('width', '300px');
 
     p0 = loadImage('images/0.svg');
     p1 = loadImage('images/10.svg');
@@ -397,103 +400,138 @@ function draw(){
     val = slider.value();
     //console.log(val);
     displayData();
-    s = "are asians really everywhere?";
+    fill(255,0,0);
+    s = "Are Asians everywhere?";
     textSize(35);
     text(s, 180, 55);
-    dropdown.position(width/2,3*height/2);
-    dropup.position(width/2,3*height/2 + 80);
+    dropup.position(80,890);
+    dropdown.position(235,890);
+    //console.log(3*height/2 + 80);
+    fill('#000000');
+    rect(30, 100, 330, 450);
+    fill('#ffff00');
+    textSize(18);
+    text('"So I think I have seen all the Asians on my last trip to America..."', 50, 118, 300, 100);
+    fill(36,36,38);
+    rect(50, 180, 135, 100);
+    rect(205, 180, 135, 100);
+    // rect(50, 350, average_high*280, 30);
+    // rect(50, 400, 280, 30);
+    // console.log(average_low);
+    // console.log(average_high);
+    //rect(width/2 + 180, height/2 + 70, 150, 100);
+    var high = map(average_high, 0, 19437463, 0, 220);
+    var low = map(average_low, 0, 19437463, 0, 220);
+    ellipse(200,425, 220, 220);
+    fill(100);
+    ellipse(200,425, high, high);
+    fill(55);
+    ellipse(200,425, low, low);
+
     //image(r1, 180, 55, r1.width*2, r1.height*2);
     //image(r2, 180, 55, r1.width*2, r1.height*2);
 
     switch(higher) {
         case 1:
-            image(h1, 180, 155, r1.width, r1.height);
-            average_low=0.001605854;
+            image(h1, 50, 170, 3/4*r1.width, 3/4*r1.height);
+            average_high = 3659314;
             //console.log('this is dog!');
             break;
         case 2:
-            image(h2, 180, 155, r1.width, r1.height);
-            average_low=0.00309392;
+            image(h2, 50, 170, 3/4*r1.width, 3/4*r1.height);
+            average_high=1349768;
             break;
         case 3:
-            image(h3, 180, 155, r1.width, r1.height);
-            average_low=0.00366869;
+            image(h3, 50, 170, 3/4*r1.width, 3/4*r1.height);
+            average_high=2991152;
             break;
         case 4:
-            image(h4, 180, 155, r1.width, r1.height);
-            average_low=0.004168127;
+            image(h4, 50, 170, 3/4*r1.width, 3/4*r1.height);
+            average_high=665313;
             break;
         case 5:
-            image(h5, 180, 155, r1.width, r1.height);
-            average_low=0.004848032;
+            image(h5, 50, 170, 3/4*r1.width, 3/4*r1.height);
+            average_high=665313;
             //console.log('this is dog!');
             break;
         case 6:
-            image(r6, 180, 155, r1.width, r1.height);
+            image(r6, 50, 170, 3/4*r1.width, 3/4*r1.height);
             average_low=0.005394504;
             break;
         case 7:
-            image(r7, 180, 155, r1.width, r1.height);
+            image(r7, 50, 170, 3/4*r1.width, 3/4*r1.height);
             average_low=0.005819418;
             break;
         case 8:
-            image(r8, 180, 155, r1.width, r1.height);
+            image(r8, 50, 170, 3/4*r1.width, 3/4*r1.height);
             average_low=0.00638049;
             break;
         case 9:
-            image(r9, 180, 155, r1.width, r1.height);
+            image(r9, 50, 170, 3/4*r1.width, 3/4*r1.height);
             average_low=0.007208688;
             break;
         case 10:
-            image(r10, 180, 155, r1.width, r1.height);
+            image(r10, 50, 170, 3/4*r1.width, 3/4*r1.height);
             average_low=0.00782957;
+            break;
+        default:
+            image(h1, 50, 170, 3/4*r1.width, 3/4*r1.height);
+            average_high=3659314 ;
             break;
     }
 
     switch(router) {
+        default:
+            image(r1, 205, 170, 3/4*r1.width, 3/4*r1.height);
+            average_low=4108;
+            break;
         case 1:
-            image(r5, 180, 55, r1.width, r1.height);
-            average_low=0.001605854;
+            image(r1, 205, 170, 3/4*r1.width, 3/4*r1.height);
+            average_low=4108;
             //console.log('this is dog!');
             break;
         case 2:
-            image(r2, 180, 55, r1.width, r1.height);
-            average_low=0.00309392;
+            image(r2, 205, 170, 3/4*r1.width, 3/4*r1.height);
+            average_low=3446;
             break;
         case 3:
-            image(r3, 180, 55, r1.width, r1.height);
-            average_low=0.00366869;
+            image(r3, 205, 170, 3/4*r1.width, 3/4*r1.height);
+            average_low=5071;
             break;
         case 4:
-            image(r4, 180, 55, r1.width, r1.height);
-            average_low=0.004168127;
+            image(r4, 205, 170, 3/4*r1.width, 3/4*r1.height);
+            average_low=4079;
             break;
         case 5:
-            image(r5, 180, 55, r1.width, r1.height);
-            average_low=0.004848032;
+            image(r5, 205, 170, 3/4*r1.width, 3/4*r1.height);
+            average_low=1341;
             //console.log('this is dog!');
             break;
         case 6:
-            image(r6, 180, 55, r1.width, r1.height);
+            image(r6, 205, 170, 3/4*r1.width, 3/4*r1.height);
             average_low=0.005394504;
             break;
         case 7:
-            image(r7, 180, 55, r1.width, r1.height);
+            image(r7, 205, 170, 3/4*r1.width, 3/4*r1.height);
             average_low=0.005819418;
             break;
         case 8:
-            image(r8, 180, 55, r1.width, r1.height);
+            image(r8, 205, 170, 3/4*r1.width, 3/4*r1.height);
             average_low=0.00638049;
             break;
         case 9:
-            image(r9, 180, 55, r1.width, r1.height);
+            image(r9, 205, 170, 3/4*r1.width, 3/4*r1.height);
             average_low=0.007208688;
             break;
         case 10:
-            image(r10, 180, 55, r1.width, r1.height);
+            image(r10, 205, 170, 3/4*r1.width, 3/4*r1.height);
             average_low=0.00782957;
             break;
     }
+
+    imageMode(CENTER);
+    image(seal[val], width/2 + 180, height/2 - 60, seal[val].width/10, seal[val].width/10);
+    imageMode(CORNER);
 
 }
 
@@ -503,14 +541,14 @@ function people_loader_1(prob){
     var last;
     var loc=-1;
 
-    textSize(50);
-    text("While", 90, height/4 + 60);
-    text("in ", 10*40 + 235, height/4 + 60);
-    text(t_name[val] , 90, height/4 + 120);
-    text("are Asians", 90, height/4 + 180);
+    // textSize(50);
+    // text("While", 90, height/4 + 60);
+    // text("in ", 10*40 + 235, height/4 + 60);
+    // text(t_name[val] , 90, height/4 + 120);
+    // text("are Asians", 90, height/4 + 180);
 
     for (var i = 0; i < dec; i++){
-        image(p10, i*40 + 220, height/4, people[i].width/2, people[i].height/2);
+        image(p10, i*40 + 370, height - 210, people[i].width/2, people[i].height/2);
         loc = i;
     }
 
@@ -518,9 +556,9 @@ function people_loader_1(prob){
     last = loc + 1;
     //console.log(last);
 
-    image(people[rem], loc*40 + 220, height/4, people[rem].width/2, people[rem].height/2);
+    image(people[rem], loc*40 + 370, height - 210, people[rem].width/2, people[rem].height/2);
     for (i = last; i<10; i++){
-        image(people[0], i*40 + 220, height/4, people[0].width/2, people[0].height/2);
+        image(people[0], i*40 + 370, height - 210, people[0].width/2, people[0].height/2);
     }
 }
 
@@ -580,8 +618,17 @@ function likelyAsian(t_name,t_tots,indian,chinese,filipino,japanese,korean,vietn
     var total = int(indian) + int(chinese) + int(filipino) + int(japanese) + int(korean) + int(vietnamese) + int(others);
     var countypercent = total/t_tots * 100;
     var person = countypercent/5.3;
+    textSize(90);
+    fill('#ffff00');
+    text(Math.round(person) + "X", width/2+80, height - 50);
     textSize(20);
-    text("You're " + Math.round(person) + "X more likely to see an Asian here than anywhere in America", width/2-90, height/2 - 60, 200, 200);
+    fill(255,0,0);
+    text("more likely to find an Asian here than anywhere in America", width/2 + 200, height - 120, 200, 80);
+    textSize(30);
+    text("But you're", width/2 - 5, height - 120, 40, 80);
+    fill('#ffff00');
+    textSize(15);
+    text("Asian/Population", 650, height - 215);
     return Math.round(person);
 }
 
@@ -590,13 +637,14 @@ function pieChart(diameter, angles) {
     for (var i = 0; i < data.length; i++) {
         var gray = map(i, 0, data.length, 0, 255);
         fill(gray);
-        arc(width/2, height/2, diameter, diameter, lastAngle, lastAngle+radians(angles[i]));
+        arc(width/2 + 180, height/2 - 60, diameter, diameter, lastAngle, lastAngle+radians(angles[i]));
         lastAngle += radians(angles[i]);
         fill(36,36,38);
-        ellipse(width/2, height/2, diameter-100, diameter-100);
+        ellipse(width/2 + 180, height/2 - 60, diameter-100, diameter-100);
         fill(255,0,0);
         noFill()
     }
+
 
 }
 
@@ -604,18 +652,18 @@ function displayData(){
     background(36,36,38);
     fill(255,0,0);
 
-    console.log(router);
+    //console.log(router);
     //console.log(angler(t_indian[val],t_chinese[val],t_filipino[val],t_japanese[val],t_korean[val],t_vietnamese[val],t_others[val]));
-    text(t_name[val], 20, 30);
+    //text(t_name[val], 20, 30);
     data = angler(t_indian[val],t_chinese[val],t_filipino[val],t_japanese[val],t_korean[val],t_vietnamese[val],t_others[val]);
 
-    pieChart(350, data);
+
+    pieChart(250, data);
     likelyAsian(t_name[val],t_tots[val],t_indian[val],t_chinese[val],t_filipino[val],t_japanese[val],t_korean[val],t_vietnamese[val],t_others[val]);
     people_loader_1(t_percent[val]);
 
-    //people_loader_2(0.82213);
-    //people_loader_3(0.323022);
-    //image(seal[val], width/200+105, height/2-90, seal[val].width/10, seal[val].width/10);
+    // people_loader_2(0.82213);
+    // people_loader_3(0.323022);
 
     // var rem = rema(prob);
     // var dec = deca(prob);

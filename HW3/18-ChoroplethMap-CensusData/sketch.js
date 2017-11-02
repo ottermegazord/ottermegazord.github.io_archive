@@ -154,7 +154,7 @@ function createGraph(name){
   textAlign(LEFT);
   textSize(16);
 
-  text("Occupation distribution for " + state.name, margin,margin-20);  
+  text("Occupation distribution for " + state.name, margin,marn-20);
 
   textSize(8);
 

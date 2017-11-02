@@ -1,0 +1,202 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="libraries/leaflet/leaflet.css" />
+  <script src="libraries/leaflet/leaflet.js"></script>
+  <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+  <script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
+  <script language="javascript" type="text/javascript" src="combined.js"></script>
+  <script language="javascript" type="text/javascript" src="map.js"></script>
+  <!--<script language="javascript" type="text/javascript" src="drive.js"></script>-->
+  <style> html, body {
+    height: 2000px;
+    width:600px;
+    margin:30px;
+    background-color: #242426
+  }
+  /*styling for the div which will contain the map*/
+
+  #main_header {
+    position:relative;
+    font-family: "Century Gothic";
+    font-size: 300%;
+    width: 600px;
+    height: 30px;
+    top: 0;
+    left: 0%;
+    color: #dd3324
+  }
+
+  #header_1 {
+    position:relative;
+    font-family: "Century Gothic";
+    font-size: 200%;
+    top: 1%;
+    left: 0%;
+    text-align: left;
+    color: #dd3324
+  }
+
+  #para_1 {
+    font-family: "Century Gothic";
+    font-size: 80%;
+    top: 200px;
+    left: 5%;
+    text-align: left;
+    width:  900px;
+    color: #ffffff;
+  }
+  #map_legend {
+    position:absolute;
+    width: 0px;
+    height: 180px;
+    top:  630px;
+    left: 780px;
+    background-color: #DDDDDD;
+    z-index: 1000;
+
+    /* This centers our sketch horizontally. */
+    justify-content: center;
+
+    /* This centers our sketch vertically. */
+    align-items: center;
+  }
+  #mapid {
+    position:relative;
+    width: 900px;
+    height: 490px;
+    top: 30px;
+    left: 0%;
+    background-color: #DDDDDD;
+  }
+
+
+  #header_2 {
+       position:relative;
+       font-family: "Century Gothic";
+       font-size: 200%;
+       top: 2%;
+       left: 0%;
+       text-align: left;
+       color: #dd3324
+     }
+  #para_2 {
+    position:relative;
+    font-family: "Century Gothic";
+    font-size: 80%;
+    top: 2%;
+    left: 0%;
+    text-align: left;
+    width:  900px;
+    color: #ffffff;
+  }
+  #chart {
+    position:relative;
+    top: 2%;
+    left: 50px;
+    text-align: left;
+    width:  700px;
+    color: #ffffff;
+  }
+
+  #para_3 {
+    position:relative;
+    font-family: "Century Gothic";
+    font-size: 80%;
+    top: -1%;
+    left: 110%;
+    text-align: left;
+    width:  200px;
+    color: #ffffff;
+    z-index: 10000;
+  }
+  #driver {
+       position:absolute;
+       width: 0px;
+       height: 180px;
+       top:  1310px;
+       left: 330px;
+       background-color: #DDDDDD;
+     }
+
+  #bar_chart {
+    position:absolute;
+    width: 0px;
+    height: 180px;
+    top:  1410px;
+    left: 40px;
+    background-color: #DDDDDD;
+  }
+  #header_3 {
+       position:relative;
+       font-family: "Century Gothic";
+       font-size: 200%;
+       top: 0%;
+       left: 0%;
+       text-align: left;
+       color: #dd3324;
+       width: 900px;
+       z-index: 1000;
+     }
+
+  #header_4 {
+    position:absolute;
+    font-family: "Century Gothic";
+    font-size: 100%;
+    top: 1362px;
+    left: 60px;
+    width: 300px;
+    text-align: left;
+    color: #ffffff
+  }
+
+  </style>
+</head>
+<!--<body bgcolor="#242426">-->
+<div id='main_header'>
+  <p>Asians in America</p>
+</div>
+<div id="header_1">
+  <p>Population Distribution</p></div>
+<div id="para_1">
+  <p>THE U.S. ASIAN POPULATION is a diverse one. A record 20 million Asian Americans trace their roots to more
+    than 20 countries in East and Southeast Asia and the Indian subcontinent, each with unique histories, cultures,
+    languages and other characteristics. The 19 largest origin groups together account for 94% of the total Asian
+    population in the U.S. Use the map below to explore where they live.</p>
+</div>
+<div id="mapid"></div>
+<div id="map_legend"></div>
+<div id="header_2">
+  <p>Ethnic Demographic in Counties</p></div>
+<div id="para_2">
+  <p>No single country-of-origin group dominates the U.S. Asian population, but the
+    largest groups are of Chinese, Indian and Filipino origin. As of 2015,
+    24% of Asian Americans (4.9 million) were of Chinese origin, the largest
+    single origin group. The next two largest origin groups are Indian-origin Asians,
+    who accounted for 20% of the national Asian population (4.0 million), and Filipinos
+    (19%, or 3.9 million). Those with roots in Vietnam, Korea and Japan easily clear the
+    1 million mark as well. The remaining 10 groups in this analysis account
+    for just 12% of all U.S. Asians.</p>
+</div>
+<div id="chart"></div>
+<div id="header_3">
+  <p>Shift to the Suburbs: Driving through Asian America</p></div>
+<div id="para_3">
+  <p>In the past Asians, like other immigrants, tended to cluster in “gateway cities” and often in the
+    densest urban neighborhoods, like New York’s Chinatown. Now the center of gravity has shifted
+    to the suburbs.<br><br>
+
+    The graphic on the left shows population circles of 10 of these "gateway cities", as compared to 10 others chosen at random. <br><br>
+
+    Between 2000 and 2012, the Asian population in suburban areas of the nation’s
+    52 biggest metro areas grew 66.2% while those in the core cities expanded by 34.9%.
+    In 2000 three large cities ranked among the 20 most heavily Asian cities with populations over 50,000:
+    Honolulu, San Francisco and San Jose. In 2012, only the Hawaiian capital made the grade
+    (Hawaii is the only state with an Asian majority).</p>
+</div>
+<div id="driver"></div>
+<div id="bar_chart"></div>
+<div id="header_4">
+  <p>Top 10 counties with the highest population of Asians</p></div>
+</body>
+</html>

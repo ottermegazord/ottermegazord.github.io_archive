@@ -1,4 +1,5 @@
 
+
 // an array for the magnitude
 // an array for lat & long
 var latitudes, longitudes;
@@ -72,9 +73,9 @@ function setup() {
 
     base = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
         maxZoom: 18,
-        // attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-        // '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-        // 'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
         id: 'mapbox.streets'
     });
 
@@ -104,7 +105,7 @@ function setup() {
     var canvas = createCanvas(800, 600);
     var sheet = createCanvas(200, 180);
     // canvas.parent("container");
-    //displayData();
+    displayData();
 
     // slider = createSlider(0, t_pop.length-1, 0);
     // slider.position(width/2 + 30, 1165);
@@ -368,5 +369,6 @@ function loadData() {
     //console.log(minLon, maxLon);
 }
 
+var myp5 = new p5(s, 'mapid');
 //
 

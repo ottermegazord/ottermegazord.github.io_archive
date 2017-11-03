@@ -9,7 +9,7 @@
   <script language="javascript" type="text/javascript" src="map.js"></script>
   <!--<script language="javascript" type="text/javascript" src="drive.js"></script>-->
   <style> html, body {
-    height: 2000px;
+    height: 1600px;
     width:600px;
     margin:30px;
     background-color: #242426
@@ -149,7 +149,30 @@
     text-align: left;
     color: #ffffff
   }
-
+  #driver_legend {
+    position:absolute;
+    font-family: "Century Gothic";
+    font-size: 100%;
+    /*width: 0px;*/
+    /*height: 180px;*/
+    /*top:  630px;*/
+    /*left: 780px;*/
+    top: 1620px;
+    left: 720px;
+    width: 0px;
+    height: 180px;
+    color: #ffffff
+  }
+  #para_4 {
+    position:absolute;
+    font-family: "Century Gothic";
+    font-size: 80%;
+    top: 1830px;
+    left: 60px;
+    text-align: left;
+    width:  1000px;
+    color: #ffffff;
+  }
   </style>
 </head>
 <!--<body bgcolor="#242426">-->
@@ -175,8 +198,7 @@
     single origin group. The next two largest origin groups are Indian-origin Asians,
     who accounted for 20% of the national Asian population (4.0 million), and Filipinos
     (19%, or 3.9 million). Those with roots in Vietnam, Korea and Japan easily clear the
-    1 million mark as well. The remaining 10 groups in this analysis account
-    for just 12% of all U.S. Asians.</p>
+    1 million mark as well.</p>
 </div>
 <div id="chart"></div>
 <div id="header_3">
@@ -186,17 +208,14 @@
     densest urban neighborhoods, like New York’s Chinatown. Now the center of gravity has shifted
     to the suburbs.<br><br>
 
-    The graphic on the left shows population circles of 10 of these "gateway cities", as compared to 10 others chosen at random. <br><br>
-
-    Between 2000 and 2012, the Asian population in suburban areas of the nation’s
-    52 biggest metro areas grew 66.2% while those in the core cities expanded by 34.9%.
-    In 2000 three large cities ranked among the 20 most heavily Asian cities with populations over 50,000:
-    Honolulu, San Francisco and San Jose. In 2012, only the Hawaiian capital made the grade
-    (Hawaii is the only state with an Asian majority).</p>
+    The graphic on the left shows population circles of 10 of these "gateway cities" along
+    Djikstra's shortest path, compared to 10 others chosen at random. <br><br>
 </div>
 <div id="driver"></div>
 <div id="bar_chart"></div>
 <div id="header_4">
   <p>Top 10 counties with the highest population of Asians</p></div>
 </body>
-</html>
+<div id="driver_legend"></div>
+<div id="para_4"><p>Text sourced from: http://www.pewresearch.org/fact-tank/2017/09/08
+key-facts-about-asian-americans/</p></html>

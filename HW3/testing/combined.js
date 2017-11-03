@@ -1,3 +1,36 @@
+var average_low, average_high;
+
+var d = function(p){
+    var colors = [150, 50, 0];
+    var caption = ["Total AA Population", "AA Population in 10 Random Cities", "AA Population in Gateway Cities"];
+    p.setup = function(){
+        p.createCanvas(200, 180);
+
+    };
+
+    p.draw = function(){
+        p.background(255);
+        p.textSize(13);
+        p.textAlign(p.CENTER);
+        p.text("Key", 100, 20);
+        p.textSize(10);
+        p.textAlign(p.LEFT);
+        for (var i = 0; i<3; i++){
+            p.fill(colors[i]);
+            p.rect(10, 20 + i*30, 20, 20);
+        }
+        for (var j = 0; j<3; j++){
+            p.fill(50);
+            p.text(caption[j], 38, 35 + j*30);
+        }
+
+        p.text('Gateway: ' + average_high + " Asians", 10, 120);
+        p.text('Random: ' + average_low + " Asians", 10, 140);
+        p.text('Total in America: 19437463 Asians', 10, 160);
+    }
+};
+
+var myp5 = new p5(d, 'driver_legend');
 
 var b = function( p ) {
 
@@ -9,7 +42,6 @@ var b = function( p ) {
     p.setup = function() {
         var data = t_top.getColumn("asian_pop");
         var name = t_top.getColumn("name");
-        console.log(data);
         var width = 200, // canvas width and height
             height = 450,
             margin = 20,
@@ -31,7 +63,7 @@ var b = function( p ) {
             p.fill('steelblue');
             p.noStroke();
             p.translate(0, i* (barWidth + barMargin)); // jump to the top right corner of the bar
-            p.rectMode(RIGHT);
+            p.rectMode(p.RIGHT);
             p.rect(0, 0, data[i]/2400, barWidth); // draw rect
 
             p.fill('#FFF');
@@ -241,8 +273,10 @@ var s = function (p) {
         p.displayData();
 
         p.imageMode(p.CENTER);
-        p.image(seal[val], width / 4 + 50, 175, seal[val].width / 10, seal[val].width / 10);
+        // p.image(seal[val], width / 4 + 50, 175, seal[val].width / 10, seal[val].width / 10);
+        p.image(seal[val], width / 4 + 50, 175, 150, 150);
         p.imageMode(p.CORNER);
+        console.log(seal[val].height/10)
 
     };
 
@@ -346,7 +380,7 @@ var t = function (p) {
     var h1, h2, h3, h4, h5;
 
     var population;
-    var average_low, average_high;
+    // var average_low, average_high;
 
 // table as the data set
     var table;
@@ -403,11 +437,11 @@ var t = function (p) {
         dropdown.option('Route 3');
         dropdown.option('Route 4');
         dropdown.option('Route 5');
-        dropdown.option('Route 6');
-        dropdown.option('Route 7');
-        dropdown.option('Route 8');
-        dropdown.option('Route 9');
-        dropdown.option('Route 10');
+        // dropdown.option('Route 6');
+        // dropdown.option('Route 7');
+        // dropdown.option('Route 8');
+        // dropdown.option('Route 9');
+        // dropdown.option('Route 10');
 
         dropup = p.createSelect(); // or create dropdown?
         dropup.option('Route 1');
@@ -415,11 +449,11 @@ var t = function (p) {
         dropup.option('Route 3');
         dropup.option('Route 4');
         dropup.option('Route 5');
-        dropup.option('Route 6');
-        dropup.option('Route 7');
-        dropup.option('Route 8');
-        dropup.option('Route 9');
-        dropup.option('Route 10');
+        // dropup.option('Route 6');
+        // dropup.option('Route 7');
+        // dropup.option('Route 8');
+        // dropup.option('Route 9');
+        // dropup.option('Route 10');
 
         //dropdown.select('value3');
         dropdown.changed(p.mySelectEvent);
@@ -475,17 +509,20 @@ var t = function (p) {
         p.rect(30, 70, 330, 450);
         p.fill(255);
         p.textSize(20);
-        p.text("Driving to the Gateway Cities", 50, 3 / 4 * r1.height - 20, 350, 450);
-        p.fill(36, 36, 38);
+        p.text("Driving to the Gateway Cities", 70, 3 / 4 * r1.height - 20, 350, 450);
+        p.textSize(12);
+        p.text("Gateway Cities Route", 60, 125, 350, 450);
+        p.text("Random Cities Route", 220, 125, 350, 450);
+        p.fill(50);
         p.rect(50, 140, 135, 100);
         p.rect(205, 140, 135, 100);
         var high = p.map(average_high, 0, 19437463, 0, 220);
         var low = p.map(average_low, 0, 19437463, 0, 220);
         p.ellipse(200, 390, 220, 220);
-        p.fill(100);
+        p.fill(150);
         p.stroke(100);
         p.ellipse(200, 390, high, high);
-        p.fill(55);
+        p.fill(0);
         p.stroke(55);
         p.ellipse(200, 390, low, low);
         //p.line(200,380, 200, low);

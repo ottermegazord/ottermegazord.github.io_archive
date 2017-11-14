@@ -6,7 +6,7 @@ import sys
 import csv
 import requests
 
-f = open('catalog.csv', 'a')
+f = open('metal_catalog.csv', 'a')
 
 client_credentials_manager = SpotifyClientCredentials(client_id='ae249f7b8b754187a4d8d31d9ee5d6d3', client_secret = 'bfcc0820211b4f7587a885da3798cdb0')
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
@@ -15,7 +15,7 @@ sp.trace = False
 if len(sys.argv) > 1:
     name = ' '.join(sys.argv[1:])
 else:
-    name = 'Meshuggah'
+    name = 'Marilyn Manson'
 
 results = sp.search(q='artist:' + name, type='artist')
 items = results['artists']['items']

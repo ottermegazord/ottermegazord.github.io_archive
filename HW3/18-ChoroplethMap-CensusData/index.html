@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Choropleth Tutorial - Leaflet</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="libraries/leaflet/leaflet.css"/>
+      <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+<script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script> 
+    <script src="libraries/leaflet/leaflet.js"></script>
+<script type="text/javascript" src="us-states.js"></script>
+<style>
+	html, body {
+		height: 100%;
+		width: 50%;
+		margin: 0;
+	}
+	/*styling for the div which will contain the map*/
+	#map { 
+		width: 900px;
+		height: 30px;
+		top: 20%;
+		left:50%;
+	}
+	/*styling for the div which will contain the p5 canvas */
+	#container{
+		width:50px;
+		height:50px;
+		left:30%;
+		top:500px;
+		background-color: #DDDDDD;
+		position:fixed;
+	}
+	#texter{
+		width:900px;
+		height:400px;
+		left:30%;
+		top:500px;
+		background-color: #dd3324;
+		position:fixed;
+	}
+</style>
+</head>
+<body bgcolor="#E6E6FA">
+<!-- container for map -->
+<div id='map'></div>
+<!-- container for p5 canvas -->
+<p>Testing testing</p>
+<div id='container'></div>
+<script type="text/javascript" src="sketch.js"></script>
+<div style="position: relative">
+	<p style="position: fixed; bottom: 20; width:20%; text-align: center"> TEXT YOU WANT
+	</p>
+</div>
+
+
+</body>
+</html>

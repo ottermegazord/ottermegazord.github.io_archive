@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing</title>
+    <link rel="stylesheet" href="libraries/leaflet/leaflet.css" />
+    <script src="libraries/leaflet/leaflet.js"></script>
+    <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+    <script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
+    <script language="javascript" type="text/javascript" src="combined.js"></script>
+</head>
+<style>
+    html, body {
+        height: 2000px;
+        width:600px;
+        margin:30px;
+        background-color: #242426
+    }
+    #chart {
+        position:relative;
+        top: 2%;
+        left: 0;
+        text-align: left;
+        width:  700px;
+        color: #ffffff;
+    }
+    #map_legend {
+        position:absolute;
+        width: 0px;
+        height: 180px;
+        top:  630px;
+        left: 780px;
+        background-color: #DDDDDD;
+        z-index: 1000;
+
+        /* This centers our sketch horizontally. */
+        justify-content: center;
+
+        /* This centers our sketch vertically. */
+        align-items: center;
+    }
+    #drive {
+        position:fixed;
+        top: 20%;
+        left: 0;
+        text-align: left;
+        width:  700px;
+        color: #ffffff;
+    }
+</style>
+<body>
+    <div id="chart"></div>
+    <div id="map_legend"></div><br>
+    <div id="drive"></div>
+</body>
+</html>

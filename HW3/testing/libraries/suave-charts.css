@@ -1,0 +1,158 @@
+/* ==================
+Axes
+===================== */
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+.tick line { opacity: 0.15; }
+.tick text { font-size: 0.8rem; }
+
+
+/* ==================
+Dots
+===================== */
+.dot { fill: #00aadd; stroke-width: 2px; stroke: #fff; transition: fill 0.5s ease-in-out; }
+.dot:hover { fill: #000; stroke: #000; }
+
+.dotGroup.line-0 .dot { fill: #3498db; }
+.dotGroup.line-1 .dot { fill: #2ecc71; }
+.dotGroup.line-2 .dot { fill: #e67e22; }
+.dotGroup.line-3 .dot { fill: #8e44ad; }
+.dotGroup.line-4 .dot { fill: #2c3e50; }
+.dotGroup.line-5 .dot { fill: #f1c40f; }
+.dotGroup.line-6 .dot { fill: #e67e22; }
+.dotGroup.line-7 .dot { fill: #e74c3c; }
+
+.drag-handle { stroke: #000; fill: #fff; cursor: ns-resize; }
+.drag-handle:hover { stroke: #00aadd; transition: stroke 0.25 ease-in-out; }
+
+/* ==================
+Line Charts
+===================== */
+.line { fill: none; stroke-width: 3px; stroke: #00aadd; }
+.area { stroke: none; fill: #00aadd; opacity: 0.2; }
+
+.lineGroup.line-0 .line { stroke: #3498db; }
+.lineGroup.line-1 .line { stroke: #2ecc71; }
+.lineGroup.line-2 .line { stroke: #e67e22; }
+.lineGroup.line-3 .line { stroke: #8e44ad; }
+.lineGroup.line-4 .line { stroke: #2c3e50; }
+.lineGroup.line-5 .line { stroke: #f1c40f; }
+.lineGroup.line-6 .line { stroke: #e67e22; }
+.lineGroup.line-7 .line { stroke: #e74c3c; }
+
+.lineGroup.line-0 .area { fill: #3498db; }
+.lineGroup.line-1 .area { fill: #2ecc71; }
+.lineGroup.line-2 .area { fill: #e67e22; }
+.lineGroup.line-3 .area { fill: #8e44ad; }
+.lineGroup.line-4 .area { fill: #2c3e50; }
+.lineGroup.line-5 .area { fill: #f1c40f; }
+.lineGroup.line-6 .area { fill: #e67e22; }
+.lineGroup.line-7 .area { fill: #e74c3c; }
+
+/* ==================
+Bar Charts
+===================== */
+.bar { fill: #3498db; transition: fill 0.25s; }
+.bar:hover { fill: #000 !important;  }
+.bar text { fill: #333; font-weight: bold; }
+
+.barGroup .bar-0.bar { fill: #3498db; }
+.barGroup .bar-1.bar { fill: #2ecc71; }
+.barGroup .bar-2.bar { fill: #e67e22; }
+.barGroup .bar-3.bar { fill: #8e44ad; }
+.barGroup .bar-4.bar { fill: #2c3e50; }
+.barGroup .bar-5.bar { fill: #f1c40f; }
+.barGroup .bar-6.bar { fill: #e67e22; }
+.barGroup .bar-7.bar { fill: #e74c3c; }
+
+.total text { fill: #333;   }
+.total .sum { fill: #2ecc71; }
+.total .background { fill: #555; fill-opacity: 0.5; }
+
+/* ==================
+Legends
+===================== */
+.legend span { display: block; float: left;  background: #fff; line-height: 1rem; margin-right: 1rem; }
+.legend span:before { display: block; float: left; margin-right: 0.5rem; height: 1rem; width: 1rem; content: "";  border-radius: 100%; }
+.legend .series-0:before { background: #3498db; }
+.legend .series-1:before { background: #2ecc71; }
+.legend .series-2:before { background: #e67e22; }
+.legend .series-3:before { background: #8e44ad; }
+.legend .series-4:before { background: #2c3e50; }
+.legend .series-5:before { background: #f1c40f; }
+.legend .series-6:before { background: #e67e22; }
+.legend .series-7:before { background: #e74c3c; }
+
+/* ==================
+Tooltips
+===================== */
+.suave-tooltip {
+  position: fixed;
+  height: 30px;
+  line-height: 30px;
+  padding: 0px 12px 0;
+
+  z-index: 999;
+  font-family: "Helvetica Nueue", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 4px;
+  opacity: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.suave-tooltip.show {
+  transition: opacity 0.25s;
+  opacity: 1;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.suave-tooltip.show:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  pointer-events: none;
+  content: "\25BC";
+  margin: -2px 0 0 0;
+  top: 100%;
+  left: 0;
+  text-align: center;
+}
+
+/* ==================
+Donut Charts
+===================== */
+
+.arc text {
+  text-anchor: middle;
+  fill: #fff;
+}
+
+.arc path {
+  stroke: #fff;
+  stroke-width: 1px;
+}
+
+/* Default colors */
+.arc.arc-0 { fill: #3498db; }
+.arc.arc-1 { fill: #2ecc71; }
+.arc.arc-2 { fill: #e67e22; }
+.arc.arc-3 { fill: #8e44ad; }
+.arc.arc-4 { fill: #2c3e50; }
+.arc.arc-5 { fill: #f1c40f; }
+.arc.arc-6 { fill: #e67e22; }
+.arc.arc-7 { fill: #e74c3c; }

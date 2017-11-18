@@ -1,7 +1,7 @@
 var average_low, average_high;
 
 var d = function(p){
-    var colors = [150, 50, 0];
+    var colors = [150, 50, 200];
     var caption = ["Total AA Population", "AA Population in 10 Random Cities", "AA Population in Gateway Cities"];
     p.setup = function(){
         p.createCanvas(200, 180);

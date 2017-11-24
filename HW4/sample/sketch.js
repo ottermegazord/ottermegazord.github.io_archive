@@ -153,7 +153,7 @@ function Box(x, y, width, height, r, g, b, counter) {
     this.display = function() {
         noStroke();
         fill(this.col);
-        rect(this.x, this.y, this.width, this.height);
+        rect(this.x, this.y, this.width, this.height/2);
         fill(0);
 
     };

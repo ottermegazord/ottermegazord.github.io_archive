@@ -10,8 +10,75 @@
     <script src="libraries/color-thief.js" type="text/javascript"></script>
     <script src="sketch.js" type="text/javascript"></script>
     <link rel="stylesheet" href="styles/colorify.css">
-    <style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
+    <!--<style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>-->
+    <style> html, body {
+      height: 1600px;
+      width:1000px;
+      margin:30px;
+      background-color: #FFFFFF
+    }
+    #rnb{
+      position:absolute;
+      font-family: "Century Gothic";
+      font-size: 100%;
+      /*width: 0px;*/
+      /*height: 180px;*/
+      /*top:  630px;*/
+      /*left: 780px;*/
+      top: 0px;
+      left: 0px;
+      width: 0px;
+      height: 180px;
+      color: #ffffff
+    }
+    #metal{
+      position:absolute;
+      font-family: "Century Gothic";
+      font-size: 100%;
+      top: 450px;
+      left: 0px;
+      width: 0px;
+      height: 180px;
+      color: #ffffff
+    }
+    #indie{
+      position:absolute;
+      font-family: "Century Gothic";
+      font-size: 100%;
+      top: 900px;
+      left: 0px;
+      width: 0px;
+      height: 10px;
+      color: #ffffff
+    }
+    #country{
+      position:absolute;
+      font-family: "Century Gothic";
+      font-size: 100%;
+      top: 1350px;
+      left: 0px;
+      width: 0px;
+      height: 10px;
+      color: #ffffff
+    }
+
+    #pop{
+      position:absolute;
+      font-family: "Century Gothic";
+      font-size: 100%;
+      top: 1800px;
+      left: 0px;
+      width: 0px;
+      height: 10px;
+      color: #ffffff
+    }
+    </style>
   </head>
+  <div id="rnb"></div>
+  <div id ="metal"></div>
+  <div id ="indie"></div>
+  <div id ="country"></div>
+  <div id ="pop"></div>
   <body>
   <script src="libraries/colorify.min.js"></script>
   </body>

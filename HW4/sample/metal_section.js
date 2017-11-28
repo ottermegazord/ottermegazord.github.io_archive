@@ -103,7 +103,7 @@ metal_section = function(p) {
         //reset the active bubble number
         activeBoxNumber = "None";
 
-        p.image(img, 0, 200, img.width, img.height);
+        p.image(img, 200, 200, img.width, img.height);
 
         p.image(img2, 0, 1140, img2.width/2, img2.height/2);
         p.image(img3, 320, 1140, img3.width/2, img3.height/2);
@@ -119,7 +119,7 @@ metal_section = function(p) {
         img2 = p.loadImage(table2.get(p.int(counterer),5));
         img3 = p.loadImage(table3.get(p.int(counterer),5));
         img4 = p.loadImage(table4.get(p.int(counterer),5));
-        img5 = p.loadImage(table5.get(counterer,5));
+        img5 = p.loadImage(table5.get(p.int(counterer),5));
         //
         // opp2 = p.loadImage(table2.get(1293-counterer,5));
         // opp3 = p.loadImage(table3.get(1293-counterer,5));
@@ -255,20 +255,20 @@ metal_section = function(p) {
         }
 
         p.fill(DV[0], DV[1], DV[2]);
-        p.rect(740, 200, 100, 128);
-        p.rect(840, 220, normalized[0]/long_normal*200, 80);
+        p.rect(840, 200, 100, 128);
+        p.rect(940, 220, normalized[0]/long_normal*200, 80);
         p.fill(V[0], V[1], V[2]);
-        p.rect(740, 328, 100, 128);
-        p.rect(840, 348, normalized[1]/long_normal*200, 80);
+        p.rect(840, 328, 100, 128);
+        p.rect(940, 348, normalized[1]/long_normal*200, 80);
         p.fill(M[0], M[1], M[2]);
-        p.rect(740, 456, 100, 128);
-        p.rect(840, 476, normalized[2]/long_normal*200, 80);
+        p.rect(840, 456, 100, 128);
+        p.rect(940, 476, normalized[2]/long_normal*200, 80);
         p.fill(LV[0], LV[1], LV[3]);
-        p.rect(740, 584, 100, 128);
-        p.rect(840, 604, normalized[3]/long_normal*200, 80);
+        p.rect(840, 584, 100, 128);
+        p.rect(940, 604, normalized[3]/long_normal*200, 80);
         p.fill(DM[0], DM[1], DM[2]);
-        p.rect(740, 712, 100, 128);
-        p.rect(840, 732, normalized[4]/long_normal*200, 80);
+        p.rect(840, 712, 100, 128);
+        p.rect(940, 732, normalized[4]/long_normal*200, 80);
 
         p.fill(0);
         p.textFont(myFont);
@@ -276,9 +276,9 @@ metal_section = function(p) {
         var descriptor = "This album is predominantly " + n_match[1].toLowerCase() + '.';
         var explanor = "Based on this color, we think you'll love these albums";
         var title = "You chose " + this.album + " by " + this.artist + ".";
-        p.text(title, 0, 940);
-        p.text(descriptor, 0, 990);
-        p.text(explanor, 0, 1040);
+        p.text(title, 40, 940);
+        p.text(descriptor, 40, 990);
+        p.text(explanor, 40, 1040);
     }
 
 

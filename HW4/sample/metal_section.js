@@ -5,7 +5,10 @@ metal_section = function(p) {
     var activeBoxNumber = "None";
     var table1, table2, table3, table4,table5;
     var img;
-    var img2, img3, img4, img5;
+    var img2;
+    var img3;
+    var img4;
+    var img5;
     var opp2, opp3, opp4, opp5;
     var counterer = 1;
     var DV = [];
@@ -48,7 +51,7 @@ metal_section = function(p) {
             var g = p.int(table1.get(i,1));
             var b = p.int(table1.get(i,2));
             // create a box with number "i", at a random x and y location
-            boxes[i] = new p.Box(0.8*i, 0, 15, 100, r, g, b, i);
+            boxes[i] = new p.Box(1.05*i, 0, 15, 100, r, g, b, i);
         }
         //console.log(counterer);
 

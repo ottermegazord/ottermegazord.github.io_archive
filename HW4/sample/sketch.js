@@ -84,7 +84,7 @@ rnb = function(p) {
     };
 
     p.draw = function(){
-        p.background(255);
+        //p.background(255);
 
         //reset the active bubble number
         activeBoxNumber = "None";
@@ -260,7 +260,7 @@ indie = function(p) {
     };
 
     p.draw = function(){
-        p.background(255);
+        //p.background(255);
         //reset the active bubble number
         activeBoxNumber = "None";
         p.cpalette(img_address);
@@ -430,7 +430,7 @@ metal = function(p) {
     };
 
     p.draw = function(){
-        p.background(255);
+        //p.background(255);
         //reset the active bubble number
         activeBoxNumber = "None";
         p.cpalette(img_address);
@@ -599,7 +599,7 @@ pop = function(p) {
     };
 
     p.draw = function(){
-        p.background(255);
+        //p.background(255);
         //reset the active bubble number
         activeBoxNumber = "None";
         p.cpalette(img_address);
@@ -768,7 +768,7 @@ country = function(p) {
     };
 
     p.draw = function(){
-        p.background(255);
+        //p.background(255);
         //reset the active bubble number
         activeBoxNumber = "None";
         p.cpalette(img_address);

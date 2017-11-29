@@ -13,9 +13,11 @@ rnb = function(p) {
     var DM = [];
     var LV = [];
     var img_address;
+    var myFont;
 
     p.preload = function(){
         table1 = p.loadTable("rnb_sorted.csv", "csv", "header");
+        myFont = p.loadFont("HussarBdExt.otf")
         // table2 = loadTable("pop_sorted.csv", "csv", "header")
         // table3 = loadTable("rnb_sorted.csv", "csv", "header")
     };
@@ -83,6 +85,7 @@ rnb = function(p) {
 
     p.draw = function(){
         p.background(255);
+
         //reset the active bubble number
         activeBoxNumber = "None";
         p.cpalette(img_address);

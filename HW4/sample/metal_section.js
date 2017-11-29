@@ -27,7 +27,6 @@ metal_section = function(p) {
         table5 = p.loadTable("country_sorted.csv", "csv", "header");
         myFont = p.loadFont("HussarBdExt.otf")
 
-
     };
 
     p.setup = function () {
@@ -99,32 +98,14 @@ metal_section = function(p) {
 
     p.draw = function(){
         p.background(255);
-
         //reset the active bubble number
         activeBoxNumber = "None";
 
-        p.image(img, 200, 200, img.width, img.height);
-
-        p.image(img2, 0, 1140, img2.width/2, img2.height/2);
-        p.image(img3, 320, 1140, img3.width/2, img3.height/2);
-        p.image(img4, 640, 1140, img4.width/2, img4.height/2);
-        p.image(img5, 960, 1140, img5.width/2, img5.height/2);
-        // //
-        // p.image(opp2, 0, 1090, opp2.width/2, opp2.height/2);
-        // p.image(opp3, 320, 1090, opp3.width/2, opp3.height/2);
-        // p.image(opp4, 640, 1090, opp4.width/2, opp4.height/2);
-        // p.image(opp5, 960, 1090, opp5.width/2, opp5.height/2);
-
-        img = p.loadImage(table1.get(p.int(counterer),5));
-        img2 = p.loadImage(table2.get(p.int(counterer),5));
-        img3 = p.loadImage(table3.get(p.int(counterer),5));
-        img4 = p.loadImage(table4.get(p.int(counterer),5));
-        img5 = p.loadImage(table5.get(p.int(counterer),5));
-        //
-        // opp2 = p.loadImage(table2.get(1293-counterer,5));
-        // opp3 = p.loadImage(table3.get(1293-counterer,5));
-        // opp4 = p.loadImage(table4.get(1293-counterer,5));
-        // opp5 = p.loadImage(table5.get(1293-counterer,5));
+        p.image(img, 120, 200, img.width * 1.12, img.height*1.12);
+        // p.image(img2, 40, 1140, 320, 320);
+        // p.image(img3, 360, 1140, img3.width/2, img3.height/2);
+        // p.image(img4, 700, 1140, img4.width/2, img4.height/2);
+        // p.image(img5, 1000, 1140, img5.width/2, img5.height/2);
 
         p.cpalette(img_address, table1.get(p.int(counterer),3),  table1.get(p.int(counterer),4));
 
@@ -140,10 +121,47 @@ metal_section = function(p) {
                 img_address = table1.get(counterer, 5);
             }
         }
-        // Display active bubble number
-        p.fill(255);
-        //console.log(counterer);
+        img = p.loadImage(table1.get(p.int(counterer),5));
+        img2 = p.loadImage(table2.get(p.int(counterer),5));
+        img3 = p.loadImage(table3.get(p.int(counterer),5));
+        img4 = p.loadImage(table4.get(p.int(counterer),5));
+        img5 = p.loadImage(table5.get(p.int(counterer),5));
+
+
+
+        var r_height = p.map(table1.get(p.int(counterer),0),0,255, 1180, 900);
+        var g_height = p.map(table1.get(p.int(counterer),1),0,255, 1180, 900);
+        var b_height = p.map(table1.get(p.int(counterer),2),0,255, 1180, 900);
+        var avg_r = [table1.get(p.int(counterer),0),table1.get(p.int(counterer),1),table1.get(p.int(counterer),2)];
+
+
+        p.fill(avg_r[0], avg_r[1], avg_r[2]);
+        p.rect(120, 980, 300, 200);
+        p.strokeWeight(10);
+        p.stroke(0);
+        p.line(120, 1220, 420, 1220);
+        p.strokeWeight(0);
+        p.text('average color', 120, 1280);
+
+
+        p.fill(255,0,0);
+        p.triangle(300 + 240, 1180, 520+ 240, 1180, 410+ 240, r_height);
+        p.fill(0,255,0);
+        p.triangle(520+ 240, 1180, 740+ 240, 1180, 630+ 240, g_height);
+        p.fill(0,0,255);
+        p.triangle(740+ 240, 1180, 960+ 240, 1180, 850+ 240, b_height);
         p.fill(0);
+
+        p.stroke(0);
+        p.strokeWeight(10);
+        p.line(860, 880, 1200, 880);
+        p.triangle(1200, 870, 1200, 890, 1220, 880);
+        p.stroke(0);
+        p.strokeWeight(0);
+        p.text('# of pixels', 940, 920);
+
+
+        // Display active bubble number
         // console.log(counterer);
         // p.text(table1.get(counterer,5), 200, 400);
         //console.log(img_address);
@@ -255,32 +273,37 @@ metal_section = function(p) {
         }
 
         p.fill(DV[0], DV[1], DV[2]);
-        p.rect(840, 200, 100, 128);
-        p.rect(940, 220, normalized[0]/long_normal*200, 80);
+        p.rect(860, 200, 100, 128);
+        p.rect(960, 220, normalized[0]/long_normal*200, 80);
         p.fill(V[0], V[1], V[2]);
-        p.rect(840, 328, 100, 128);
-        p.rect(940, 348, normalized[1]/long_normal*200, 80);
+        p.rect(860, 328, 100, 128);
+        p.rect(960, 348, normalized[1]/long_normal*200, 80);
         p.fill(M[0], M[1], M[2]);
-        p.rect(840, 456, 100, 128);
-        p.rect(940, 476, normalized[2]/long_normal*200, 80);
+        p.rect(860, 456, 100, 128);
+        p.rect(960, 476, normalized[2]/long_normal*200, 80);
         p.fill(LV[0], LV[1], LV[3]);
-        p.rect(840, 584, 100, 128);
-        p.rect(940, 604, normalized[3]/long_normal*200, 80);
+        p.rect(860, 584, 100, 128);
+        p.rect(960, 604, normalized[3]/long_normal*200, 80);
         p.fill(DM[0], DM[1], DM[2]);
-        p.rect(840, 712, 100, 128);
-        p.rect(940, 732, normalized[4]/long_normal*200, 80);
+        p.rect(860, 712, 100, 128);
+        p.rect(960, 732, normalized[4]/long_normal*200, 80);
+        p.fill(255);
 
         p.fill(0);
         p.textFont(myFont);
         p.textSize(30);
         var descriptor = "This album is predominantly " + n_match[1].toLowerCase() + '.';
         var explanor = "Based on this color, we think you'll love these albums";
-        var title = "You chose " + this.album + " by " + this.artist + ".";
-        p.text(title, 40, 940);
-        p.text(descriptor, 40, 990);
-        p.text(explanor, 40, 1040);
-    }
+        var title = this.album.replace(/^\s+/g, '');
+        var artist =  this.artist.replace(/^\s+/g, '');
+        //p.text(title, 120, 980);
+        //p.text(artist, 120, 1020);
 
+        //p.text(descriptor, 40, 990);
+        //p.text(explanor, 40, 1040);
+
+
+    }
 
 
 

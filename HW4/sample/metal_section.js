@@ -112,7 +112,7 @@ metal_section = function(p) {
         p.image(img, 120, 200, img.width * 1.12, img.height*1.12);
         p.image(img2, 40, 1570, 320, 320);
         p.image(img3, 360, 1570, img3.width/2, img3.height/2);
-        p.image(img4, 700, 1570, img4.width/2, img4.height/2);
+        p.image(img4, 680, 1570, img4.width/2, img4.height/2);
         p.image(img5, 1000, 1570, img5.width/2, img5.height/2);
 
         p.cpalette(img_address, table1.get(p.int(counterer),3),  table1.get(p.int(counterer),4));
@@ -471,7 +471,7 @@ indie_section = function(p) {
         p.image(img, 120, 200, img.width * 1.12, img.height*1.12);
         p.image(img2, 40, 1570, 320, 320);
         p.image(img3, 360, 1570, img3.width/2, img3.height/2);
-        p.image(img4, 700, 1570, img4.width/2, img4.height/2);
+        p.image(img4, 680, 1570, img4.width/2, img4.height/2);
         p.image(img5, 1000, 1570, img5.width/2, img5.height/2);
 
         p.cpalette(img_address, table1.get(p.int(counterer),3),  table1.get(p.int(counterer),4));
@@ -818,7 +818,7 @@ var myp5 = new p5(indie_header, 'indie_header');
 // //         p.image(img, 120, 200, img.width * 1.12, img.height*1.12);
 // //         p.image(img2, 40, 1570, 320, 320);
 // //         p.image(img3, 360, 1570, img3.width/2, img3.height/2);
-// //         p.image(img4, 700, 1570, img4.width/2, img4.height/2);
+// //         p.image(img4, 680, 1570, img4.width/2, img4.height/2);
 // //         p.image(img5, 1000, 1570, img5.width/2, img5.height/2);
 // //
 // //         p.cpalette(img_address, table1.get(p.int(counterer),3),  table1.get(p.int(counterer),4));
@@ -1177,7 +1177,7 @@ country_section = function(p) {
         p.image(img, 120, 200, img.width * 1.12, img.height*1.12);
         p.image(img2, 40, 1570, 320, 320);
         p.image(img3, 360, 1570, img3.width/2, img3.height/2);
-        p.image(img4, 700, 1570, img4.width/2, img4.height/2);
+        p.image(img4, 680, 1570, img4.width/2, img4.height/2);
         p.image(img5, 1000, 1570, img5.width/2, img5.height/2);
 
         p.cpalette(img_address, table1.get(p.int(counterer),3),  table1.get(p.int(counterer),4));
@@ -1564,7 +1564,7 @@ pop_section = function(p) {
         p.image(img, 120, 200, img.width * 1.12, img.height*1.12);
         p.image(img2, 40, 1570, 320, 320);
         p.image(img3, 360, 1570, img3.width/2, img3.height/2);
-        p.image(img4, 700, 1570, img4.width/2, img4.height/2);
+        p.image(img4, 680, 1570, img4.width/2, img4.height/2);
         p.image(img5, 1000, 1570, img5.width/2, img5.height/2);
 
         p.cpalette(img_address, table1.get(p.int(counterer),3),  table1.get(p.int(counterer),4));

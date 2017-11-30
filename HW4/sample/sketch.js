@@ -9,7 +9,7 @@ main_header = function(p) {
     };
 
     p.setup = function () {
-        p.createCanvas(canvaswidth, 230);
+        p.createCanvas(canvaswidth, 270);
 
     };
 

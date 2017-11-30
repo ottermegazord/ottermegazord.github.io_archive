@@ -1,3 +1,31 @@
+main_header = function(p) {
+
+    var canvaswidth = 1366;
+
+    var myFont;
+
+    p.preload= function(){
+        myFont = p.loadFont("HussarBdExt.otf")
+    };
+
+    p.setup = function () {
+        p.createCanvas(canvaswidth, 230);
+
+    };
+
+
+    p.draw = function(){
+        p.background(255);
+        p.textFont(myFont);
+        p.textSize(80);
+        p.text("Colors of Music", 40, 200);
+
+    };
+
+};
+
+var myp5 = new p5(main_header, 'main_header');
+
 
 rnb = function(p) {
 
@@ -24,7 +52,6 @@ rnb = function(p) {
 
     p.setup = function () {
         p.createCanvas(canvaswidth, 300);
-        p.background(255);
 
         // create all the different instances of the boxes
         for (var i=0; i<=1293; i++) {
@@ -32,7 +59,7 @@ rnb = function(p) {
             var g = p.int(table1.get(i,1));
             var b = p.int(table1.get(i,2));
             // create a box with number "i", at a random x and y location
-            boxes[i] = new p.Box(0.9*i + 192, 0, 15, 160, r, g, b, i);
+            boxes[i] = new p.Box(1.1*i + 192, 0, 15, 160, r, g, b, i);
         }
         img = p.loadImage(table1.get(counterer,5));
         //console.log(window.address);
@@ -199,7 +226,7 @@ indie = function(p) {
     };
 
     p.setup = function () {
-        p.createCanvas(canvaswidth, 300);
+        p.createCanvas(canvaswidth, 160);
         p.background(255);
 
         // create all the different instances of the boxes
@@ -208,7 +235,7 @@ indie = function(p) {
             var g = p.int(table1.get(i,1));
             var b = p.int(table1.get(i,2));
             // create a box with number "i", at a random x and y location
-            boxes[i] = new p.Box(0.9*i + 192, 0, 15, 160, r, g, b, i);
+            boxes[i] = new p.Box(1.1*i + 192, 0, 15, 160, r, g, b, i);
         }
         img = p.loadImage(table1.get(counterer,5));
         //console.log(window.address);
@@ -369,7 +396,7 @@ metal = function(p) {
     };
 
     p.setup = function () {
-        p.createCanvas(canvaswidth, 300);
+        p.createCanvas(canvaswidth, 160);
         p.background(255);
 
         // create all the different instances of the boxes
@@ -378,7 +405,7 @@ metal = function(p) {
             var g = p.int(table1.get(i,1));
             var b = p.int(table1.get(i,2));
             // create a box with number "i", at a random x and y location
-            boxes[i] = new p.Box(0.9*i + 192, 0, 15, 160, r, g, b, i);
+            boxes[i] = new p.Box(1.1*i + 192, 0, 15, 160, r, g, b, i);
         }
         img = p.loadImage(table1.get(counterer,5));
         //console.log(window.address);
@@ -538,7 +565,7 @@ pop = function(p) {
     };
 
     p.setup = function () {
-        p.createCanvas(canvaswidth, 300);
+        p.createCanvas(canvaswidth, 160);
         p.background(255);
 
         // create all the different instances of the boxes
@@ -547,7 +574,7 @@ pop = function(p) {
             var g = p.int(table1.get(i,1));
             var b = p.int(table1.get(i,2));
             // create a box with number "i", at a random x and y location
-            boxes[i] = new p.Box(0.9*i + 192, 0, 15, 160, r, g, b, i);
+            boxes[i] = new p.Box(1.1*i + 192, 0, 15, 160, r, g, b, i);
         }
         img = p.loadImage(table1.get(counterer,5));
         //console.log(window.address);
@@ -716,7 +743,7 @@ country = function(p) {
             var g = p.int(table1.get(i,1));
             var b = p.int(table1.get(i,2));
             // create a box with number "i", at a random x and y location
-            boxes[i] = new p.Box(0.9*i + 192, 0, 15, 160, r, g, b, i);
+            boxes[i] = new p.Box(1.1*i + 192, 0, 15, 160, r, g, b, i);
         }
         img = p.loadImage(table1.get(counterer,5));
         //console.log(window.address);

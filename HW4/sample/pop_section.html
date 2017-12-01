@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/hussar-bold" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee|PT+Sans" rel="stylesheet">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/asimov" type="text/css"/
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/source-sans-pro" type="text/css"/>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/hussar-bold" type="text/css"/>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/arco-perpetuo" type="text/css"/>
+    <title>POP</title>
+    <script src="libraries/p5.js" type="text/javascript"></script>
+    <script src="libraries/Vibrant.js" type="text/javascript"></script>
+    <script src="libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="libraries/p5.sound.js" type="text/javascript"></script>
+    <script src="libraries/color-thief.js" type="text/javascript"></script>
+    <script src="libraries/ntc.js" type="text/javascript"></script>
+    <!--<script src="sketch.js" type="text/javascript"></script>-->
+    <!--<script src="metal_section.js" type="text/javascript"></script>-->
+    <script src="pop_section.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="styles/colorify.css">
+    <!--<style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>-->
+    <style> html, body {
+
+        height: 20000px;
+        width:1383px;
+        margin: 8px;
+        background-color: #e6e6e6
+    }
+
+    .navbar {
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index:99999;
+    }
+
+    .navbar a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 40px;
+        font-family: 'HussarBold';
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    #pop_header{
+        position:absolute;
+        top:0px;
+        left: 0px;
+        width: 100%;
+        height: 10%;
+        color: #000000;
+        margin-left:auto;
+        margin-right: auto;
+        padding: 14px 16px;
+    }
+    #pop_section{
+        position:absolute;
+        top: 200px;
+        left: 0px;
+        width: 100%;
+        height: 10%;
+        color: #ffffff;
+        padding: 14px 16px;
+        margin-left:auto;
+        margin-right: auto;
+    }
+
+    </style>
+</head>
+</div>
+<div id ='pop_header'></div>
+<div id ="pop_section"></div>
+
+<body>
+<div class="navbar">
+    <a href="#main_header">home</a>
+    <a href="#rnb_header">rnb</a>
+    <a href="#indie_header">indie</a>
+    <a href="#metal_header">metal</a>
+    <a href="#country_header">country</a>
+    <a href="#pop_header">pop</a>
+    <a href="#rock_header">rock</a>
+    <!--<a href="#eighties_header">80s</a>-->
+</div>
+<script src="libraries/colorify.min.js"></script>
+</body>
+</html>

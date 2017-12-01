@@ -1,4 +1,4 @@
-rnb_section = function(p) {
+pop_section = function(p) {
 
     var canvaswidth = 1440;
     var boxes = [];
@@ -20,13 +20,13 @@ rnb_section = function(p) {
     var myFont;
 
     p.preload = function(){
-        table5 = p.loadTable("metal_sorted.csv", "csv", "header");
-        table6 = p.loadTable("pop_sorted.csv", "csv", "header");
-        table7 = p.loadTable("indie_sorted.csv", "csv", "header");
-        table1 = p.loadTable("rnb_sorted.csv", "csv", "header");
-        table2 = p.loadTable("country_sorted.csv", "csv", "header");
-        table3 = p.loadTable("eighties_sorted.csv", "csv", "header");
-        table4 = p.loadTable("rock_sorted.csv", "csv", "header");
+        table7 = p.loadTable("metal_sorted.csv", "csv", "header");
+        table1 = p.loadTable("pop_sorted.csv", "csv", "header");
+        table2 = p.loadTable("indie_sorted.csv", "csv", "header");
+        table3 = p.loadTable("rnb_sorted.csv", "csv", "header");
+        table4 = p.loadTable("country_sorted.csv", "csv", "header");
+        table5 = p.loadTable("eighties_sorted.csv", "csv", "header");
+        table6 = p.loadTable("rock_sorted.csv", "csv", "header");
         myFont = p.loadFont("HussarBdExt.otf")
 
     };
@@ -268,7 +268,7 @@ rnb_section = function(p) {
         p.fill(0);
         p.textFont(myFont);
         p.textSize(30);
-        var descriptor = "predominantly" + n_match[1].toLowerCase() + '.';
+        var descriptor = "this album is predominantly " + n_match[1].toLowerCase() + '.';
         var explanor = "based on this color, we think you'll love these albums";
         var title = this.album.replace(/^\s+/g, '');
         var artist =  this.artist.replace(/^\s+/g, '');
@@ -299,9 +299,9 @@ rnb_section = function(p) {
 
 };
 
-var myp5 = new p5(rnb_section, 'rnb_section');
+var myp5 = new p5(pop_section, 'pop_section');
 
-rnb_header = function(p) {
+pop_header = function(p) {
 
     var canvaswidth = 1440;
 
@@ -321,10 +321,10 @@ rnb_header = function(p) {
         p.background(255);
         p.textFont(myFont);
         p.textSize(80);
-        p.text("rnb", 30, 170);
+        p.text("pop", 30, 170);
 
     };
 
 };
 
-var myp5 = new p5(rnb_header, 'rnb_header');
+var myp5 = new p5(pop_header, 'pop_header');

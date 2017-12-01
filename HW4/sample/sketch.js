@@ -116,7 +116,7 @@ rnb = function(p) {
 
         //reset the active bubble number
         activeBoxNumber = "None";
-        p.cpalette(img_address);
+        // p.cpalette(img_address);
         p.image(img, 32, 0, img.width/4, img.height/4);
         //image(test_image, width/2, height/2, img.width/4, img.height/4);
         // go through all boxes
@@ -291,7 +291,7 @@ indie = function(p) {
         //p.background(255);
         //reset the active bubble number
         activeBoxNumber = "None";
-        p.cpalette(img_address);
+        // p.cpalette(img_address);
         p.image(img, 32, 0, img.width/4, img.height/4);
         //image(test_image, width/2, height/2, img.width/4, img.height/4);
         // go through all boxes
@@ -461,7 +461,7 @@ metal = function(p) {
         //p.background(255);
         //reset the active bubble number
         activeBoxNumber = "None";
-        p.cpalette(img_address);
+        // p.cpalette(img_address);
         p.image(img, 32, 0, img.width/4, img.height/4);
         //image(test_image, width/2, height/2, img.width/4, img.height/4);
         // go through all boxes
@@ -630,7 +630,7 @@ pop = function(p) {
         //p.background(255);
         //reset the active bubble number
         activeBoxNumber = "None";
-        p.cpalette(img_address);
+        // p.cpalette(img_address);
         p.image(img, 32, 0, img.width/4, img.height/4);
         //image(test_image, width/2, height/2, img.width/4, img.height/4);
         // go through all boxes
@@ -799,7 +799,7 @@ country = function(p) {
         //p.background(255);
         //reset the active bubble number
         activeBoxNumber = "None";
-        p.cpalette(img_address);
+        // p.cpalette(img_address);
         p.image(img, 32, 0, img.width/4, img.height/4);
         //image(test_image, width/2, height/2, img.width/4, img.height/4);
         // go through all boxes
@@ -969,7 +969,7 @@ eighties = function(p) {
         //p.background(255);
         //reset the active bubble number
         activeBoxNumber = "None";
-        p.cpalette(img_address);
+        // p.cpalette(img_address);
         p.image(img, 32, 0, img.width/4, img.height/4);
         //image(test_image, width/2, height/2, img.width/4, img.height/4);
         // go through all boxes
@@ -1138,7 +1138,7 @@ rock = function(p) {
         //p.background(255);
         //reset the active bubble number
         activeBoxNumber = "None";
-        p.cpalette(img_address);
+        // p.cpalette(img_address);
         p.image(img, 32, 0, img.width/4, img.height/4);
         //image(test_image, width/2, height/2, img.width/4, img.height/4);
         // go through all boxes

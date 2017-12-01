@@ -1223,7 +1223,7 @@ var myp5 = new p5(rock, 'rock');
 
 white_canvas = function(p){
 
-    var canvaswidth = 1366;
+    var canvaswidth = 1383;
 
     p.setup = function() {
         p.createCanvas(canvaswidth, 1240);

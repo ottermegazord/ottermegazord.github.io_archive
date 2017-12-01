@@ -1789,6 +1789,8 @@ rock_section = function(p) {
 
 };
 
+var myp5 = new p5(rock_section, 'rock_header');
+
 // var myp5 = new p5(rock_section, 'rock_section');
 //
 // eighties_header = function(p) {

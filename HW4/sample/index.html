@@ -25,7 +25,7 @@
 
       height: 12500px;
       width:1366px;
-      margin:30px;
+      margin: 8px;
       background-color: #000000
     }
 
@@ -67,13 +67,26 @@
     #para_1 {
       position:absolute;
       word-wrap: break-word;
-      width: 1200px;
-      font-family: 'SourceSansProRegular';
-      font-size: 250%;
-      top: 290px;
+      width: 1230px;
+      font-family: 'HussarBold';
+      font-size: 200%;
+      top: 320px;
+      left: 60px;
       color: #ffffff;
       text-align: left;
       padding: auto;
+    }
+
+    #white_canvas{
+      position:absolute;
+      top: 550px;
+      left: 0px;
+      width: 100%;
+      height: 10%;
+      color: #000000;
+      margin-left:auto;
+      margin-right: auto;
+      padding: 14px 16px;
     }
 
     #rnb{
@@ -138,10 +151,32 @@
       margin-right: auto;
       padding: 14px 16px;
     }
+    #eighties{
+      position:absolute;
+      top: 1400px;
+      left: 0px;
+      width: 100%;
+      height: 10%;
+      color: #000000;
+      margin-left:auto;
+      margin-right: auto;
+      padding: 14px 16px;
+    }
+    #rock{
+      position:absolute;
+      top: 1560px;
+      left: 0px;
+      width: 100%;
+      height: 10%;
+      color: #000000;
+      margin-left:auto;
+      margin-right: auto;
+      padding: 14px 16px;
+    }
 
     #rnb_header{
       position:absolute;
-      top:1400px;
+      top:1900px;
       left: 0px;
       width: 100%;
       height: 10%;
@@ -152,7 +187,7 @@
     }
     #rnb_section{
       position:absolute;
-      top: 1600px;
+      top: 2100px;
       left: 0px;
       width: 100%;
       height: 10%;
@@ -164,7 +199,7 @@
 
     #indie_header{
       position:absolute;
-      top:3500px;
+      top:4200px;
       left: 0px;
       width: 100%;
       height: 10%;
@@ -177,7 +212,7 @@
 
     #indie_section{
       position:absolute;
-      top: 3700px;
+      top: 4400px;
       left: 0px;
       width: 100%;
       height: 10%;
@@ -189,7 +224,7 @@
 
     #metal_header{
       position:absolute;
-      top: 5700px;
+      top: 6500px;
       left: 0px;
       width: 100%;
       height: 10%;
@@ -202,7 +237,7 @@
 
     #metal_section{
       position:absolute;
-      top: 5900px;
+      top: 6700px;
       left: 0px;
       width: 100%;
       height: 10%;
@@ -214,7 +249,7 @@
 
     #country_header{
       position:absolute;
-      top: 7800px;
+      top: 8800px;
       left: 0px;
       width: 100%;
       height: 10%;
@@ -227,7 +262,7 @@
 
     #country_section{
       position:absolute;
-      top: 8000px;
+      top: 9000px;
       left: 0px;
       width: 100%;
       height: 10%;
@@ -273,17 +308,20 @@
     </p>
   </div>
   <div id='main_header'></div>
+  <div id='white_canvas'></div>
   <div id="rnb"></div>
   <div id ="metal"></div>
   <div id ="indie"></div>
   <div id ="country"></div>
   <div id ="pop"></div>
+  <div id ="eighties"></div>
+  <div id ="rock"></div>
+  <div id ='rnb_header'></div>
+  <div id ="rnb_section"></div>
   <div id ='metal_header'></div>
   <div id ='metal_section'></div>
   <div id ='indie_header'></div>
   <div id ="indie_section"></div>
-  <div id ='rnb_header'></div>
-  <div id ="rnb_section"></div>
   <div id ='country_header'></div>
   <div id ="country_section"></div>
   <div id ='pop_header'></div>
@@ -296,8 +334,8 @@
     <a href="#rnb_header">rnb</a>
     <a href="#indie_header">indie</a>
     <a href="#metal_header">metal</a>
-    <a href="#pop_header">pop</a>
     <a href="#country_header">country</a>
+    <a href="#pop_header">pop</a>
   </div>
   <script src="libraries/colorify.min.js"></script>
   </body>

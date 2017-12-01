@@ -343,10 +343,6 @@ rnb_header = function(p) {
 
     p.draw = function(){
         p.background(255);
-        // p.strokeWeight(10);
-        // p.stroke(0);
-        // p.line(0, 50, 1366, 50);
-        // p.strokeWeight(0);
         p.textFont(myFont);
         p.textSize(80);
         p.text("rnb", 30, 170);

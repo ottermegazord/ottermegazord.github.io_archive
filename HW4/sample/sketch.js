@@ -18,7 +18,8 @@ main_header = function(p) {
         p.background(255);
         p.textFont(myFont);
         p.textSize(80);
-        p.text("Colors of Music", 40, 230);
+        p.textAlign(p.CENTER);
+        p.text("colors of music", p.width/2, p.height/2 + 70);
 
     };
 

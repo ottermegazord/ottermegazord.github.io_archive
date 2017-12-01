@@ -317,7 +317,7 @@ metal_section = function(p) {
         var explanor = "based on this color, we think you'll love these albums";
         var title = this.album.replace(/^\s+/g, '');
         var artist =  this.artist.replace(/^\s+/g, '');
-        p.text("color analysis of " + artist + "'s " + title.substr(0, 30), 120, 1030);
+        p.text(artist + "'s " + title.substr(0, 30), 120, 1030);
 
         p.text(descriptor, 120, 1080);
         p.text(explanor, 120, 1520);
@@ -671,7 +671,7 @@ indie_section = function(p) {
         var explanor = "based on this color, we think you'll love these albums";
         var title = this.album.replace(/^\s+/g, '');
         var artist =  this.artist.replace(/^\s+/g, '');
-        p.text("color analysis of " + artist + "'s " + title.substr(0, 30), 120, 1030);
+        p.text(artist + "'s " + title.substr(0, 30), 120, 1030);
 
         p.text(descriptor, 120, 1080);
         p.text(explanor, 120, 1520);
@@ -1031,7 +1031,7 @@ country_section = function(p) {
         var explanor = "based on this color, we think you'll love these albums";
         var title = this.album.replace(/^\s+/g, '');
         var artist =  this.artist.replace(/^\s+/g, '');
-        p.text("color analysis of " + artist + "'s " + title.substr(0, 30), 120, 1030);
+        p.text(artist + "'s " + title.substr(0, 30), 120, 1030);
 
         p.text(descriptor, 120, 1080);
         p.text(explanor, 120, 1520);
@@ -1420,7 +1420,7 @@ pop_section = function(p) {
         var explanor = "based on this color, we think you'll love these albums";
         var title = this.album.replace(/^\s+/g, '');
         var artist =  this.artist.replace(/^\s+/g, '');
-        p.text("color analysis of " + artist + "'s " + title.substr(0, 30), 120, 1030);
+        p.text(artist + "'s " + title.substr(0, 30), 120, 1030);
 
         p.text(descriptor, 120, 1080);
         p.text(explanor, 120, 1520);
@@ -1779,7 +1779,7 @@ rock_section = function(p) {
         var explanor = "based on this color, we think you'll love these albums";
         var title = this.album.replace(/^\s+/g, '');
         var artist =  this.artist.replace(/^\s+/g, '');
-        p.text("color analysis of " + artist + "'s " + title.substr(0, 30), 120, 1030);
+        p.text(artist + "'s " + title.substr(0, 30), 120, 1030);
 
         p.text(descriptor, 120, 1080);
         p.text(explanor, 120, 1520);

@@ -1,6 +1,6 @@
 main_header = function(p) {
 
-    var canvaswidth = 1366;
+    var canvaswidth = 1800;
 
     var myFont;
 
@@ -30,7 +30,7 @@ var myp5 = new p5(main_header, 'main_header');
 
 rnb = function(p) {
 
-    var canvaswidth = 1366;
+    var canvaswidth = 1755;
     var boxes = [];
     var activeBoxNumber = "None";
     var table1;
@@ -52,7 +52,7 @@ rnb = function(p) {
     };
 
     p.setup = function () {
-        p.createCanvas(canvaswidth, 300);
+        p.createCanvas(canvaswidth, 160);
 
         // create all the different instances of the boxes
         for (var i=0; i<=1293; i++) {
@@ -60,7 +60,7 @@ rnb = function(p) {
             var g = p.int(table1.get(i,1));
             var b = p.int(table1.get(i,2));
             // create a box with number "i", at a random x and y location
-            boxes[i] = new p.Box(0.91*i + 192, 0, 0.5, 160, r, g, b, i);
+            boxes[i] = new p.Box(1.2*i + 200, 0, 2, 163, r, g, b, i);
             // boxes[i] = new p.Box(0.91*i + 192, 0, 5, 160, r, g, b, i);
         }
         img = p.loadImage(table1.get(counterer,5));
@@ -77,7 +77,7 @@ rnb = function(p) {
         this.g = g;
         this.b = b;
         this.col = p.color(r, g, b);
-        this.colorRollOver = p.color(200, 0, 0);
+        this.colorRollOver = p.color(255, 0, 0);
         this.colorRollOff = p.color(this.r, this.g, this.b);
         this.width = width;
         this.height = height;
@@ -90,6 +90,10 @@ rnb = function(p) {
                 && p.mouseY > this.y && p.mouseY < this.y + this.height) {
                 // if yes, make this box active and change the color to red
                 this.col = this.colorRollOver;
+                p.noFill();
+                p.strokeWeight(20);
+                p.stroke(0,255,0);
+                p.rect(this.x, this.y, 50, 160);
                 this.active = true;
                 counterer = counter;
                 img_address = table1.get(counterer, 5);
@@ -99,11 +103,16 @@ rnb = function(p) {
             } else {
                 this.col = this.colorRollOff;
                 this.active = false;
+                p.fill(255,0,0);
+                p.rect(400, 1000, 800, 2000);
             }
         };
 
         // display the box with the updated values
         this.display = function () {
+            p.strokeWeight(50);
+            p.noFill();
+            // p.rect(this.x+100, this.y+100, this.width+100, this.height+100);
             p.noStroke();
             p.fill(this.col);
             p.rect(this.x, this.y, this.width, this.height);
@@ -113,12 +122,12 @@ rnb = function(p) {
     };
 
     p.draw = function(){
-        //p.background(255);
+        p.background(255);
 
         //reset the active bubble number
         activeBoxNumber = "None";
         // p.cpalette(img_address);
-        p.image(img, 32, 0, img.width/4, img.height/4);
+        p.image(img, 40, 0, img.width/4, img.height/4);
         //image(test_image, width/2, height/2, img.width/4, img.height/4);
         // go through all boxes
         for (var i = 0; i < boxes.length; i++) {
@@ -137,6 +146,14 @@ rnb = function(p) {
         // console.log(counterer);
         // p.text(table1.get(counterer,5), 200, 400);
         //console.log(img_address);
+        p.textFont(myFont);
+        p.textSize(30);
+        p.textAlign(p.CENTER);
+        p.fill(0);
+        p.translate(30, 80);
+        p.rotate(p.PI*(3/2));
+        p.text("rnb", 0, 0)
+
 
     };
 
@@ -205,10 +222,9 @@ rnb = function(p) {
 
 var myp5 = new p5(rnb, 'rnb');
 
-
 indie = function(p) {
 
-    var canvaswidth = 1366;
+    var canvaswidth = 1755;
     var boxes = [];
     var activeBoxNumber = "None";
     var table1;
@@ -220,16 +236,17 @@ indie = function(p) {
     var DM = [];
     var LV = [];
     var img_address;
+    var myFont;
 
     p.preload = function(){
         table1 = p.loadTable("indie_sorted.csv", "csv", "header");
+        myFont = p.loadFont("HussarBdExt.otf")
         // table2 = loadTable("pop_sorted.csv", "csv", "header")
         // table3 = loadTable("rnb_sorted.csv", "csv", "header")
     };
 
     p.setup = function () {
         p.createCanvas(canvaswidth, 160);
-        p.background(255);
 
         // create all the different instances of the boxes
         for (var i=0; i<=1293; i++) {
@@ -237,7 +254,8 @@ indie = function(p) {
             var g = p.int(table1.get(i,1));
             var b = p.int(table1.get(i,2));
             // create a box with number "i", at a random x and y location
-            boxes[i] = new p.Box(0.91*i + 192, 0, 0.5, 160, r, g, b, i);
+            boxes[i] = new p.Box(1.2*i + 200, 0, 2, 163, r, g, b, i);
+            // boxes[i] = new p.Box(0.91*i + 192, 0, 5, 160, r, g, b, i);
         }
         img = p.loadImage(table1.get(counterer,5));
         //console.log(window.address);
@@ -253,7 +271,7 @@ indie = function(p) {
         this.g = g;
         this.b = b;
         this.col = p.color(r, g, b);
-        this.colorRollOver = p.color(200, 0, 0);
+        this.colorRollOver = p.color(255, 0, 0);
         this.colorRollOff = p.color(this.r, this.g, this.b);
         this.width = width;
         this.height = height;
@@ -266,6 +284,10 @@ indie = function(p) {
                 && p.mouseY > this.y && p.mouseY < this.y + this.height) {
                 // if yes, make this box active and change the color to red
                 this.col = this.colorRollOver;
+                p.noFill();
+                p.strokeWeight(20);
+                p.stroke(0,255,0);
+                p.rect(this.x, this.y, 50, 160);
                 this.active = true;
                 counterer = counter;
                 img_address = table1.get(counterer, 5);
@@ -275,11 +297,16 @@ indie = function(p) {
             } else {
                 this.col = this.colorRollOff;
                 this.active = false;
+                p.fill(255,0,0);
+                p.rect(400, 1000, 800, 2000);
             }
         };
 
         // display the box with the updated values
         this.display = function () {
+            p.strokeWeight(50);
+            p.noFill();
+            // p.rect(this.x+100, this.y+100, this.width+100, this.height+100);
             p.noStroke();
             p.fill(this.col);
             p.rect(this.x, this.y, this.width, this.height);
@@ -289,11 +316,12 @@ indie = function(p) {
     };
 
     p.draw = function(){
-        //p.background(255);
+        p.background(255);
+
         //reset the active bubble number
         activeBoxNumber = "None";
         // p.cpalette(img_address);
-        p.image(img, 32, 0, img.width/4, img.height/4);
+        p.image(img, 40, 0, img.width/4, img.height/4);
         //image(test_image, width/2, height/2, img.width/4, img.height/4);
         // go through all boxes
         for (var i = 0; i < boxes.length; i++) {
@@ -307,20 +335,27 @@ indie = function(p) {
         }
         // Display active bubble number
         p.fill(255);
-        //.log(counterer);
+        //console.log(counterer);
         p.fill(0);
         // console.log(counterer);
         // p.text(table1.get(counterer,5), 200, 400);
         //console.log(img_address);
+        p.textFont(myFont);
+        p.textSize(30);
+        p.textAlign(p.CENTER);
+        p.fill(0);
+        p.translate(30, 80);
+        p.rotate(p.PI*(3/2));
+        p.text("indie", 0, 0)
+
 
     };
 
     p.cpalette = function(img_address){
         var image_palette = new Image();
+        var htmlcolor;
         image_palette.setAttribute('crossOrigin', '');
         image_palette.src = img_address;
-        var htmlcolor;
-
         image_palette.addEventListener('load', function() {
             var vibrant = new Vibrant(image_palette);
             var swatches = vibrant.swatches();
@@ -333,22 +368,27 @@ indie = function(p) {
             DV[0] = htmlcolor[0];
             DV[1] = htmlcolor[1];
             DV[2] = htmlcolor[2];
+            //DV[3] = palette['DarkVibrant'].getPopulation();
             htmlcolor = palette['Vibrant'].getRgb();
             V[0] = htmlcolor[0];
             V[1] = htmlcolor[1];
             V[2] = htmlcolor[2];
+            //V[3] = palette['Vibrant'].getPopulation();
             htmlcolor = palette['Muted'].getRgb();
             M[0] = htmlcolor[0];
             M[1] = htmlcolor[1];
             M[2] = htmlcolor[2];
+            //M[3] = palette['Muted'].getPopulation();
             htmlcolor = palette['LightVibrant'].getRgb();
             LV[0] = htmlcolor[0];
             LV[1] = htmlcolor[1];
             LV[2] = htmlcolor[2];
+            //LV[3] = palette['LightVibrant'].getPopulation();
             htmlcolor = palette['DarkMuted'].getRgb();
             DM[0] = htmlcolor[0];
             DM[1] = htmlcolor[1];
             DM[2] = htmlcolor[2];
+            //DM[3] = palette['DarkMuted'].getPopulation();
 
 
         });
@@ -364,6 +404,7 @@ indie = function(p) {
         p.rect(0, 3*32, 32, 32);
         p.fill(DM[0], DM[1], DM[2]);
         p.rect(0, 4*32, 32, 32);
+        //console.log(DV[3], V[3], M[3], LV[3], DM[3]);
 
 
     }
@@ -375,10 +416,9 @@ indie = function(p) {
 
 var myp5 = new p5(indie, 'indie');
 
-
 metal = function(p) {
 
-    var canvaswidth = 1366;
+    var canvaswidth = 1755;
     var boxes = [];
     var activeBoxNumber = "None";
     var table1;
@@ -390,16 +430,17 @@ metal = function(p) {
     var DM = [];
     var LV = [];
     var img_address;
+    var myFont;
 
     p.preload = function(){
         table1 = p.loadTable("metal_sorted.csv", "csv", "header");
+        myFont = p.loadFont("HussarBdExt.otf")
         // table2 = loadTable("pop_sorted.csv", "csv", "header")
         // table3 = loadTable("rnb_sorted.csv", "csv", "header")
     };
 
     p.setup = function () {
         p.createCanvas(canvaswidth, 160);
-        p.background(255);
 
         // create all the different instances of the boxes
         for (var i=0; i<=1293; i++) {
@@ -407,7 +448,8 @@ metal = function(p) {
             var g = p.int(table1.get(i,1));
             var b = p.int(table1.get(i,2));
             // create a box with number "i", at a random x and y location
-            boxes[i] = new p.Box(0.91*i + 192, 0, 0.5, 160, r, g, b, i);
+            boxes[i] = new p.Box(1.2*i + 200, 0, 2, 163, r, g, b, i);
+            // boxes[i] = new p.Box(0.91*i + 192, 0, 5, 160, r, g, b, i);
         }
         img = p.loadImage(table1.get(counterer,5));
         //console.log(window.address);
@@ -423,7 +465,7 @@ metal = function(p) {
         this.g = g;
         this.b = b;
         this.col = p.color(r, g, b);
-        this.colorRollOver = p.color(200, 0, 0);
+        this.colorRollOver = p.color(255, 0, 0);
         this.colorRollOff = p.color(this.r, this.g, this.b);
         this.width = width;
         this.height = height;
@@ -436,6 +478,10 @@ metal = function(p) {
                 && p.mouseY > this.y && p.mouseY < this.y + this.height) {
                 // if yes, make this box active and change the color to red
                 this.col = this.colorRollOver;
+                p.noFill();
+                p.strokeWeight(20);
+                p.stroke(0,255,0);
+                p.rect(this.x, this.y, 50, 160);
                 this.active = true;
                 counterer = counter;
                 img_address = table1.get(counterer, 5);
@@ -445,11 +491,16 @@ metal = function(p) {
             } else {
                 this.col = this.colorRollOff;
                 this.active = false;
+                p.fill(255,0,0);
+                p.rect(400, 1000, 800, 2000);
             }
         };
 
         // display the box with the updated values
         this.display = function () {
+            p.strokeWeight(50);
+            p.noFill();
+            // p.rect(this.x+100, this.y+100, this.width+100, this.height+100);
             p.noStroke();
             p.fill(this.col);
             p.rect(this.x, this.y, this.width, this.height);
@@ -459,11 +510,12 @@ metal = function(p) {
     };
 
     p.draw = function(){
-        //p.background(255);
+        p.background(255);
+
         //reset the active bubble number
         activeBoxNumber = "None";
         // p.cpalette(img_address);
-        p.image(img, 32, 0, img.width/4, img.height/4);
+        p.image(img, 40, 0, img.width/4, img.height/4);
         //image(test_image, width/2, height/2, img.width/4, img.height/4);
         // go through all boxes
         for (var i = 0; i < boxes.length; i++) {
@@ -482,14 +534,22 @@ metal = function(p) {
         // console.log(counterer);
         // p.text(table1.get(counterer,5), 200, 400);
         //console.log(img_address);
+        p.textFont(myFont);
+        p.textSize(30);
+        p.textAlign(p.CENTER);
+        p.fill(0);
+        p.translate(30, 80);
+        p.rotate(p.PI*(3/2));
+        p.text("metal", 0, 0)
+
 
     };
 
     p.cpalette = function(img_address){
         var image_palette = new Image();
+        var htmlcolor;
         image_palette.setAttribute('crossOrigin', '');
         image_palette.src = img_address;
-
         image_palette.addEventListener('load', function() {
             var vibrant = new Vibrant(image_palette);
             var swatches = vibrant.swatches();
@@ -502,22 +562,27 @@ metal = function(p) {
             DV[0] = htmlcolor[0];
             DV[1] = htmlcolor[1];
             DV[2] = htmlcolor[2];
+            //DV[3] = palette['DarkVibrant'].getPopulation();
             htmlcolor = palette['Vibrant'].getRgb();
             V[0] = htmlcolor[0];
             V[1] = htmlcolor[1];
             V[2] = htmlcolor[2];
+            //V[3] = palette['Vibrant'].getPopulation();
             htmlcolor = palette['Muted'].getRgb();
             M[0] = htmlcolor[0];
             M[1] = htmlcolor[1];
             M[2] = htmlcolor[2];
+            //M[3] = palette['Muted'].getPopulation();
             htmlcolor = palette['LightVibrant'].getRgb();
             LV[0] = htmlcolor[0];
             LV[1] = htmlcolor[1];
             LV[2] = htmlcolor[2];
+            //LV[3] = palette['LightVibrant'].getPopulation();
             htmlcolor = palette['DarkMuted'].getRgb();
             DM[0] = htmlcolor[0];
             DM[1] = htmlcolor[1];
             DM[2] = htmlcolor[2];
+            //DM[3] = palette['DarkMuted'].getPopulation();
 
 
         });
@@ -533,6 +598,7 @@ metal = function(p) {
         p.rect(0, 3*32, 32, 32);
         p.fill(DM[0], DM[1], DM[2]);
         p.rect(0, 4*32, 32, 32);
+        //console.log(DV[3], V[3], M[3], LV[3], DM[3]);
 
 
     }
@@ -544,179 +610,9 @@ metal = function(p) {
 
 var myp5 = new p5(metal, 'metal');
 
-
-pop = function(p) {
-
-    var canvaswidth = 1366;
-    var boxes = [];
-    var activeBoxNumber = "None";
-    var table1;
-    var img;
-    var counterer = 0;
-    var DV = [];
-    var V = [];
-    var M = [];
-    var DM = [];
-    var LV = [];
-    var img_address;
-
-    p.preload = function(){
-        table1 = p.loadTable("pop_sorted.csv", "csv", "header");
-        // table2 = loadTable("pop_sorted.csv", "csv", "header")
-        // table3 = loadTable("rnb_sorted.csv", "csv", "header")
-    };
-
-    p.setup = function () {
-        p.createCanvas(canvaswidth, 160);
-        p.background(255);
-
-        // create all the different instances of the boxes
-        for (var i=0; i<=1293; i++) {
-            var r = p.int(table1.get(i,0));
-            var g = p.int(table1.get(i,1));
-            var b = p.int(table1.get(i,2));
-            // create a box with number "i", at a random x and y location
-            boxes[i] = new p.Box(0.91*i + 192, 0, 0.5, 160, r, g, b, i);
-        }
-        img = p.loadImage(table1.get(counterer,5));
-        //console.log(window.address);
-
-    };
-
-    p.Box = function(x, y, width, height, r, g, b, counter) {
-        // These variables are unique to each box
-        this.counter = counter;
-        this.x = x;
-        this.y = y;
-        this.r = r;
-        this.g = g;
-        this.b = b;
-        this.col = p.color(r, g, b);
-        this.colorRollOver = p.color(200, 0, 0);
-        this.colorRollOff = p.color(this.r, this.g, this.b);
-        this.width = width;
-        this.height = height;
-        this.active = false;
-
-        // update function
-        this.update = function () {
-            // check if mouse is over the box
-            if (p.mouseX > this.x && p.mouseX < this.x + this.width
-                && p.mouseY > this.y && p.mouseY < this.y + this.height) {
-                // if yes, make this box active and change the color to red
-                this.col = this.colorRollOver;
-                this.active = true;
-                counterer = counter;
-                img_address = table1.get(counterer, 5);
-                img = p.loadImage(img_address);
-                //console.log(img_address);
-                // if no make it inactive and change the color
-            } else {
-                this.col = this.colorRollOff;
-                this.active = false;
-            }
-        };
-
-        // display the box with the updated values
-        this.display = function () {
-            p.noStroke();
-            p.fill(this.col);
-            p.rect(this.x, this.y, this.width, this.height);
-            // p.rect(this.x, this.y, this.width, this.height / 2);
-            p.fill(0);
-        }
-    };
-
-    p.draw = function(){
-        //p.background(255);
-        //reset the active bubble number
-        activeBoxNumber = "None";
-        // p.cpalette(img_address);
-        p.image(img, 32, 0, img.width/4, img.height/4);
-        //image(test_image, width/2, height/2, img.width/4, img.height/4);
-        // go through all boxes
-        for (var i = 0; i < boxes.length; i++) {
-            // run each bubble's update and display functions
-            boxes[i].update();
-            boxes[i].display();
-            // check if the current bubble is "active" and save that number
-            if(boxes[i].active==true){
-                activeBoxNumber = i;
-            }
-        }
-        // Display active bubble number
-        p.fill(255);
-        //console.log(counterer);
-        p.fill(0);
-        // console.log(counterer);
-        // p.text(table1.get(counterer,5), 200, 400);
-        //console.log(img_address);
-
-    };
-
-    p.cpalette = function(img_address){
-        var image_palette = new Image();
-        image_palette.setAttribute('crossOrigin', '');
-        image_palette.src = img_address;
-
-        image_palette.addEventListener('load', function() {
-            var vibrant = new Vibrant(image_palette);
-            var swatches = vibrant.swatches();
-            palette = swatches;
-            //console.log(swatches);
-            for (swatch in swatches)
-                if (swatches.hasOwnProperty(swatch) && swatches[swatch])
-                    if (swatches.hasOwnProperty(swatch) && swatches[swatch])
-                        htmlcolor = palette['DarkVibrant'].getRgb();
-            DV[0] = htmlcolor[0];
-            DV[1] = htmlcolor[1];
-            DV[2] = htmlcolor[2];
-            htmlcolor = palette['Vibrant'].getRgb();
-            V[0] = htmlcolor[0];
-            V[1] = htmlcolor[1];
-            V[2] = htmlcolor[2];
-            htmlcolor = palette['Muted'].getRgb();
-            M[0] = htmlcolor[0];
-            M[1] = htmlcolor[1];
-            M[2] = htmlcolor[2];
-            htmlcolor = palette['LightVibrant'].getRgb();
-            LV[0] = htmlcolor[0];
-            LV[1] = htmlcolor[1];
-            LV[2] = htmlcolor[2];
-            htmlcolor = palette['DarkMuted'].getRgb();
-            DM[0] = htmlcolor[0];
-            DM[1] = htmlcolor[1];
-            DM[2] = htmlcolor[2];
-
-
-        });
-
-
-        p.fill(DV[0], DV[1], DV[2]);
-        p.rect(0, 0, 32, 32);
-        p.fill(V[0], V[1], V[2]);
-        p.rect(0, 32, 32, 32);
-        p.fill(M[0], M[1], M[2]);
-        p.rect(0, 2*32, 32, 32);
-        p.fill(LV[0], LV[1], LV[2]);
-        p.rect(0, 3*32, 32, 32);
-        p.fill(DM[0], DM[1], DM[2]);
-        p.rect(0, 4*32, 32, 32);
-
-
-    }
-
-
-
-
-};
-
-var myp5 = new p5(pop, 'pop');
-
-
 country = function(p) {
 
-    var canvaswidth = 1366;
+    var canvaswidth = 1755;
     var boxes = [];
     var activeBoxNumber = "None";
     var table1;
@@ -728,16 +624,17 @@ country = function(p) {
     var DM = [];
     var LV = [];
     var img_address;
+    var myFont;
 
     p.preload = function(){
         table1 = p.loadTable("country_sorted.csv", "csv", "header");
+        myFont = p.loadFont("HussarBdExt.otf")
         // table2 = loadTable("pop_sorted.csv", "csv", "header")
         // table3 = loadTable("rnb_sorted.csv", "csv", "header")
     };
 
     p.setup = function () {
         p.createCanvas(canvaswidth, 160);
-        p.background(255);
 
         // create all the different instances of the boxes
         for (var i=0; i<=1293; i++) {
@@ -745,7 +642,8 @@ country = function(p) {
             var g = p.int(table1.get(i,1));
             var b = p.int(table1.get(i,2));
             // create a box with number "i", at a random x and y location
-            boxes[i] = new p.Box(0.91*i + 192, 0, 0.5, 160, r, g, b, i);
+            boxes[i] = new p.Box(1.2*i + 200, 0, 2, 163, r, g, b, i);
+            // boxes[i] = new p.Box(0.91*i + 192, 0, 5, 160, r, g, b, i);
         }
         img = p.loadImage(table1.get(counterer,5));
         //console.log(window.address);
@@ -761,7 +659,7 @@ country = function(p) {
         this.g = g;
         this.b = b;
         this.col = p.color(r, g, b);
-        this.colorRollOver = p.color(200, 0, 0);
+        this.colorRollOver = p.color(255, 0, 0);
         this.colorRollOff = p.color(this.r, this.g, this.b);
         this.width = width;
         this.height = height;
@@ -774,6 +672,10 @@ country = function(p) {
                 && p.mouseY > this.y && p.mouseY < this.y + this.height) {
                 // if yes, make this box active and change the color to red
                 this.col = this.colorRollOver;
+                p.noFill();
+                p.strokeWeight(20);
+                p.stroke(0,255,0);
+                p.rect(this.x, this.y, 50, 160);
                 this.active = true;
                 counterer = counter;
                 img_address = table1.get(counterer, 5);
@@ -783,11 +685,16 @@ country = function(p) {
             } else {
                 this.col = this.colorRollOff;
                 this.active = false;
+                p.fill(255,0,0);
+                p.rect(400, 1000, 800, 2000);
             }
         };
 
         // display the box with the updated values
         this.display = function () {
+            p.strokeWeight(50);
+            p.noFill();
+            // p.rect(this.x+100, this.y+100, this.width+100, this.height+100);
             p.noStroke();
             p.fill(this.col);
             p.rect(this.x, this.y, this.width, this.height);
@@ -797,11 +704,12 @@ country = function(p) {
     };
 
     p.draw = function(){
-        //p.background(255);
+        p.background(255);
+
         //reset the active bubble number
         activeBoxNumber = "None";
         // p.cpalette(img_address);
-        p.image(img, 32, 0, img.width/4, img.height/4);
+        p.image(img, 40, 0, img.width/4, img.height/4);
         //image(test_image, width/2, height/2, img.width/4, img.height/4);
         // go through all boxes
         for (var i = 0; i < boxes.length; i++) {
@@ -820,15 +728,22 @@ country = function(p) {
         // console.log(counterer);
         // p.text(table1.get(counterer,5), 200, 400);
         //console.log(img_address);
+        p.textFont(myFont);
+        p.textSize(30);
+        p.textAlign(p.CENTER);
+        p.fill(0);
+        p.translate(30, 80);
+        p.rotate(p.PI*(3/2));
+        p.text("country", 0, 0)
+
 
     };
 
     p.cpalette = function(img_address){
         var image_palette = new Image();
+        var htmlcolor;
         image_palette.setAttribute('crossOrigin', '');
         image_palette.src = img_address;
-        var htmlcolor;
-
         image_palette.addEventListener('load', function() {
             var vibrant = new Vibrant(image_palette);
             var swatches = vibrant.swatches();
@@ -841,22 +756,27 @@ country = function(p) {
             DV[0] = htmlcolor[0];
             DV[1] = htmlcolor[1];
             DV[2] = htmlcolor[2];
+            //DV[3] = palette['DarkVibrant'].getPopulation();
             htmlcolor = palette['Vibrant'].getRgb();
             V[0] = htmlcolor[0];
             V[1] = htmlcolor[1];
             V[2] = htmlcolor[2];
+            //V[3] = palette['Vibrant'].getPopulation();
             htmlcolor = palette['Muted'].getRgb();
             M[0] = htmlcolor[0];
             M[1] = htmlcolor[1];
             M[2] = htmlcolor[2];
+            //M[3] = palette['Muted'].getPopulation();
             htmlcolor = palette['LightVibrant'].getRgb();
             LV[0] = htmlcolor[0];
             LV[1] = htmlcolor[1];
             LV[2] = htmlcolor[2];
+            //LV[3] = palette['LightVibrant'].getPopulation();
             htmlcolor = palette['DarkMuted'].getRgb();
             DM[0] = htmlcolor[0];
             DM[1] = htmlcolor[1];
             DM[2] = htmlcolor[2];
+            //DM[3] = palette['DarkMuted'].getPopulation();
 
 
         });
@@ -872,6 +792,7 @@ country = function(p) {
         p.rect(0, 3*32, 32, 32);
         p.fill(DM[0], DM[1], DM[2]);
         p.rect(0, 4*32, 32, 32);
+        //console.log(DV[3], V[3], M[3], LV[3], DM[3]);
 
 
     }
@@ -883,10 +804,9 @@ country = function(p) {
 
 var myp5 = new p5(country, 'country');
 
+pop = function(p) {
 
-eighties = function(p) {
-
-    var canvaswidth = 1366;
+    var canvaswidth = 1755;
     var boxes = [];
     var activeBoxNumber = "None";
     var table1;
@@ -898,16 +818,17 @@ eighties = function(p) {
     var DM = [];
     var LV = [];
     var img_address;
+    var myFont;
 
     p.preload = function(){
-        table1 = p.loadTable("eighties_sorted.csv", "csv", "header");
+        table1 = p.loadTable("pop_sorted.csv", "csv", "header");
+        myFont = p.loadFont("HussarBdExt.otf")
         // table2 = loadTable("pop_sorted.csv", "csv", "header")
         // table3 = loadTable("rnb_sorted.csv", "csv", "header")
     };
 
     p.setup = function () {
         p.createCanvas(canvaswidth, 160);
-        p.background(255);
 
         // create all the different instances of the boxes
         for (var i=0; i<=1293; i++) {
@@ -915,7 +836,8 @@ eighties = function(p) {
             var g = p.int(table1.get(i,1));
             var b = p.int(table1.get(i,2));
             // create a box with number "i", at a random x and y location
-            boxes[i] = new p.Box(0.91*i + 192, 0, 0.5, 160, r, g, b, i);
+            boxes[i] = new p.Box(1.2*i + 200, 0, 2, 163, r, g, b, i);
+            // boxes[i] = new p.Box(0.91*i + 192, 0, 5, 160, r, g, b, i);
         }
         img = p.loadImage(table1.get(counterer,5));
         //console.log(window.address);
@@ -931,7 +853,7 @@ eighties = function(p) {
         this.g = g;
         this.b = b;
         this.col = p.color(r, g, b);
-        this.colorRollOver = p.color(200, 0, 0);
+        this.colorRollOver = p.color(255, 0, 0);
         this.colorRollOff = p.color(this.r, this.g, this.b);
         this.width = width;
         this.height = height;
@@ -944,6 +866,10 @@ eighties = function(p) {
                 && p.mouseY > this.y && p.mouseY < this.y + this.height) {
                 // if yes, make this box active and change the color to red
                 this.col = this.colorRollOver;
+                p.noFill();
+                p.strokeWeight(20);
+                p.stroke(0,255,0);
+                p.rect(this.x, this.y, 50, 160);
                 this.active = true;
                 counterer = counter;
                 img_address = table1.get(counterer, 5);
@@ -953,11 +879,16 @@ eighties = function(p) {
             } else {
                 this.col = this.colorRollOff;
                 this.active = false;
+                p.fill(255,0,0);
+                p.rect(400, 1000, 800, 2000);
             }
         };
 
         // display the box with the updated values
         this.display = function () {
+            p.strokeWeight(50);
+            p.noFill();
+            // p.rect(this.x+100, this.y+100, this.width+100, this.height+100);
             p.noStroke();
             p.fill(this.col);
             p.rect(this.x, this.y, this.width, this.height);
@@ -967,11 +898,12 @@ eighties = function(p) {
     };
 
     p.draw = function(){
-        //p.background(255);
+        p.background(255);
+
         //reset the active bubble number
         activeBoxNumber = "None";
         // p.cpalette(img_address);
-        p.image(img, 32, 0, img.width/4, img.height/4);
+        p.image(img, 40, 0, img.width/4, img.height/4);
         //image(test_image, width/2, height/2, img.width/4, img.height/4);
         // go through all boxes
         for (var i = 0; i < boxes.length; i++) {
@@ -990,15 +922,22 @@ eighties = function(p) {
         // console.log(counterer);
         // p.text(table1.get(counterer,5), 200, 400);
         //console.log(img_address);
+        p.textFont(myFont);
+        p.textSize(30);
+        p.textAlign(p.CENTER);
+        p.fill(0);
+        p.translate(30, 80);
+        p.rotate(p.PI*(3/2));
+        p.text("pop", 0, 0)
+
 
     };
 
     p.cpalette = function(img_address){
         var image_palette = new Image();
+        var htmlcolor;
         image_palette.setAttribute('crossOrigin', '');
         image_palette.src = img_address;
-        var htmlcolor;
-
         image_palette.addEventListener('load', function() {
             var vibrant = new Vibrant(image_palette);
             var swatches = vibrant.swatches();
@@ -1011,22 +950,27 @@ eighties = function(p) {
             DV[0] = htmlcolor[0];
             DV[1] = htmlcolor[1];
             DV[2] = htmlcolor[2];
+            //DV[3] = palette['DarkVibrant'].getPopulation();
             htmlcolor = palette['Vibrant'].getRgb();
             V[0] = htmlcolor[0];
             V[1] = htmlcolor[1];
             V[2] = htmlcolor[2];
+            //V[3] = palette['Vibrant'].getPopulation();
             htmlcolor = palette['Muted'].getRgb();
             M[0] = htmlcolor[0];
             M[1] = htmlcolor[1];
             M[2] = htmlcolor[2];
+            //M[3] = palette['Muted'].getPopulation();
             htmlcolor = palette['LightVibrant'].getRgb();
             LV[0] = htmlcolor[0];
             LV[1] = htmlcolor[1];
             LV[2] = htmlcolor[2];
+            //LV[3] = palette['LightVibrant'].getPopulation();
             htmlcolor = palette['DarkMuted'].getRgb();
             DM[0] = htmlcolor[0];
             DM[1] = htmlcolor[1];
             DM[2] = htmlcolor[2];
+            //DM[3] = palette['DarkMuted'].getPopulation();
 
 
         });
@@ -1042,6 +986,201 @@ eighties = function(p) {
         p.rect(0, 3*32, 32, 32);
         p.fill(DM[0], DM[1], DM[2]);
         p.rect(0, 4*32, 32, 32);
+        //console.log(DV[3], V[3], M[3], LV[3], DM[3]);
+
+
+    }
+
+
+
+
+};
+
+var myp5 = new p5(pop, 'pop');
+
+eighties = function(p) {
+
+    var canvaswidth = 1755;
+    var boxes = [];
+    var activeBoxNumber = "None";
+    var table1;
+    var img;
+    var counterer = 0;
+    var DV = [];
+    var V = [];
+    var M = [];
+    var DM = [];
+    var LV = [];
+    var img_address;
+    var myFont;
+
+    p.preload = function(){
+        table1 = p.loadTable("eighties_sorted.csv", "csv", "header");
+        myFont = p.loadFont("HussarBdExt.otf")
+        // table2 = loadTable("pop_sorted.csv", "csv", "header")
+        // table3 = loadTable("rnb_sorted.csv", "csv", "header")
+    };
+
+    p.setup = function () {
+        p.createCanvas(canvaswidth, 160);
+
+        // create all the different instances of the boxes
+        for (var i=0; i<=1293; i++) {
+            var r = p.int(table1.get(i,0));
+            var g = p.int(table1.get(i,1));
+            var b = p.int(table1.get(i,2));
+            // create a box with number "i", at a random x and y location
+            boxes[i] = new p.Box(1.2*i + 200, 0, 2, 163, r, g, b, i);
+            // boxes[i] = new p.Box(0.91*i + 192, 0, 5, 160, r, g, b, i);
+        }
+        img = p.loadImage(table1.get(counterer,5));
+        //console.log(window.address);
+
+    };
+
+    p.Box = function(x, y, width, height, r, g, b, counter) {
+        // These variables are unique to each box
+        this.counter = counter;
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.col = p.color(r, g, b);
+        this.colorRollOver = p.color(255, 0, 0);
+        this.colorRollOff = p.color(this.r, this.g, this.b);
+        this.width = width;
+        this.height = height;
+        this.active = false;
+
+        // update function
+        this.update = function () {
+            // check if mouse is over the box
+            if (p.mouseX > this.x && p.mouseX < this.x + this.width
+                && p.mouseY > this.y && p.mouseY < this.y + this.height) {
+                // if yes, make this box active and change the color to red
+                this.col = this.colorRollOver;
+                p.noFill();
+                p.strokeWeight(20);
+                p.stroke(0,255,0);
+                p.rect(this.x, this.y, 50, 160);
+                this.active = true;
+                counterer = counter;
+                img_address = table1.get(counterer, 5);
+                img = p.loadImage(img_address);
+                //console.log(img_address);
+                // if no make it inactive and change the color
+            } else {
+                this.col = this.colorRollOff;
+                this.active = false;
+                p.fill(255,0,0);
+                p.rect(400, 1000, 800, 2000);
+            }
+        };
+
+        // display the box with the updated values
+        this.display = function () {
+            p.strokeWeight(50);
+            p.noFill();
+            // p.rect(this.x+100, this.y+100, this.width+100, this.height+100);
+            p.noStroke();
+            p.fill(this.col);
+            p.rect(this.x, this.y, this.width, this.height);
+            // p.rect(this.x, this.y, this.width, this.height / 2);
+            p.fill(0);
+        }
+    };
+
+    p.draw = function(){
+        p.background(255);
+
+        //reset the active bubble number
+        activeBoxNumber = "None";
+        // p.cpalette(img_address);
+        p.image(img, 40, 0, img.width/4, img.height/4);
+        //image(test_image, width/2, height/2, img.width/4, img.height/4);
+        // go through all boxes
+        for (var i = 0; i < boxes.length; i++) {
+            // run each bubble's update and display functions
+            boxes[i].update();
+            boxes[i].display();
+            // check if the current bubble is "active" and save that number
+            if(boxes[i].active==true){
+                activeBoxNumber = i;
+            }
+        }
+        // Display active bubble number
+        p.fill(255);
+        //console.log(counterer);
+        p.fill(0);
+        // console.log(counterer);
+        // p.text(table1.get(counterer,5), 200, 400);
+        //console.log(img_address);
+        p.textFont(myFont);
+        p.textSize(30);
+        p.textAlign(p.CENTER);
+        p.fill(0);
+        p.translate(30, 80);
+        p.rotate(p.PI*(3/2));
+        p.text("80s", 0, 0)
+
+
+    };
+
+    p.cpalette = function(img_address){
+        var image_palette = new Image();
+        var htmlcolor;
+        image_palette.setAttribute('crossOrigin', '');
+        image_palette.src = img_address;
+        image_palette.addEventListener('load', function() {
+            var vibrant = new Vibrant(image_palette);
+            var swatches = vibrant.swatches();
+            palette = swatches;
+            //console.log(swatches);
+            for (swatch in swatches)
+                if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+                    if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+                        htmlcolor = palette['DarkVibrant'].getRgb();
+            DV[0] = htmlcolor[0];
+            DV[1] = htmlcolor[1];
+            DV[2] = htmlcolor[2];
+            //DV[3] = palette['DarkVibrant'].getPopulation();
+            htmlcolor = palette['Vibrant'].getRgb();
+            V[0] = htmlcolor[0];
+            V[1] = htmlcolor[1];
+            V[2] = htmlcolor[2];
+            //V[3] = palette['Vibrant'].getPopulation();
+            htmlcolor = palette['Muted'].getRgb();
+            M[0] = htmlcolor[0];
+            M[1] = htmlcolor[1];
+            M[2] = htmlcolor[2];
+            //M[3] = palette['Muted'].getPopulation();
+            htmlcolor = palette['LightVibrant'].getRgb();
+            LV[0] = htmlcolor[0];
+            LV[1] = htmlcolor[1];
+            LV[2] = htmlcolor[2];
+            //LV[3] = palette['LightVibrant'].getPopulation();
+            htmlcolor = palette['DarkMuted'].getRgb();
+            DM[0] = htmlcolor[0];
+            DM[1] = htmlcolor[1];
+            DM[2] = htmlcolor[2];
+            //DM[3] = palette['DarkMuted'].getPopulation();
+
+
+        });
+
+
+        p.fill(DV[0], DV[1], DV[2]);
+        p.rect(0, 0, 32, 32);
+        p.fill(V[0], V[1], V[2]);
+        p.rect(0, 32, 32, 32);
+        p.fill(M[0], M[1], M[2]);
+        p.rect(0, 2*32, 32, 32);
+        p.fill(LV[0], LV[1], LV[2]);
+        p.rect(0, 3*32, 32, 32);
+        p.fill(DM[0], DM[1], DM[2]);
+        p.rect(0, 4*32, 32, 32);
+        //console.log(DV[3], V[3], M[3], LV[3], DM[3]);
 
 
     }
@@ -1055,7 +1194,7 @@ var myp5 = new p5(eighties, 'eighties');
 
 rock = function(p) {
 
-    var canvaswidth = 1366;
+    var canvaswidth = 1755;
     var boxes = [];
     var activeBoxNumber = "None";
     var table1;
@@ -1067,16 +1206,17 @@ rock = function(p) {
     var DM = [];
     var LV = [];
     var img_address;
+    var myFont;
 
     p.preload = function(){
         table1 = p.loadTable("rock_sorted.csv", "csv", "header");
+        myFont = p.loadFont("HussarBdExt.otf")
         // table2 = loadTable("pop_sorted.csv", "csv", "header")
         // table3 = loadTable("rnb_sorted.csv", "csv", "header")
     };
 
     p.setup = function () {
         p.createCanvas(canvaswidth, 160);
-        p.background(255);
 
         // create all the different instances of the boxes
         for (var i=0; i<=1293; i++) {
@@ -1084,7 +1224,8 @@ rock = function(p) {
             var g = p.int(table1.get(i,1));
             var b = p.int(table1.get(i,2));
             // create a box with number "i", at a random x and y location
-            boxes[i] = new p.Box(0.91*i + 192, 0, 0.5, 160, r, g, b, i);
+            boxes[i] = new p.Box(1.2*i + 200, 0, 2, 163, r, g, b, i);
+            // boxes[i] = new p.Box(0.91*i + 192, 0, 5, 160, r, g, b, i);
         }
         img = p.loadImage(table1.get(counterer,5));
         //console.log(window.address);
@@ -1100,7 +1241,7 @@ rock = function(p) {
         this.g = g;
         this.b = b;
         this.col = p.color(r, g, b);
-        this.colorRollOver = p.color(200, 0, 0);
+        this.colorRollOver = p.color(255, 0, 0);
         this.colorRollOff = p.color(this.r, this.g, this.b);
         this.width = width;
         this.height = height;
@@ -1113,6 +1254,10 @@ rock = function(p) {
                 && p.mouseY > this.y && p.mouseY < this.y + this.height) {
                 // if yes, make this box active and change the color to red
                 this.col = this.colorRollOver;
+                p.noFill();
+                p.strokeWeight(20);
+                p.stroke(0,255,0);
+                p.rect(this.x, this.y, 50, 160);
                 this.active = true;
                 counterer = counter;
                 img_address = table1.get(counterer, 5);
@@ -1122,11 +1267,16 @@ rock = function(p) {
             } else {
                 this.col = this.colorRollOff;
                 this.active = false;
+                p.fill(255,0,0);
+                p.rect(400, 1000, 800, 2000);
             }
         };
 
         // display the box with the updated values
         this.display = function () {
+            p.strokeWeight(50);
+            p.noFill();
+            // p.rect(this.x+100, this.y+100, this.width+100, this.height+100);
             p.noStroke();
             p.fill(this.col);
             p.rect(this.x, this.y, this.width, this.height);
@@ -1136,11 +1286,12 @@ rock = function(p) {
     };
 
     p.draw = function(){
-        //p.background(255);
+        p.background(255);
+
         //reset the active bubble number
         activeBoxNumber = "None";
         // p.cpalette(img_address);
-        p.image(img, 32, 0, img.width/4, img.height/4);
+        p.image(img, 40, 0, img.width/4, img.height/4);
         //image(test_image, width/2, height/2, img.width/4, img.height/4);
         // go through all boxes
         for (var i = 0; i < boxes.length; i++) {
@@ -1159,15 +1310,22 @@ rock = function(p) {
         // console.log(counterer);
         // p.text(table1.get(counterer,5), 200, 400);
         //console.log(img_address);
+        p.textFont(myFont);
+        p.textSize(30);
+        p.textAlign(p.CENTER);
+        p.fill(0);
+        p.translate(30, 80);
+        p.rotate(p.PI*(3/2));
+        p.text("rock", 0, 0)
+
 
     };
 
     p.cpalette = function(img_address){
         var image_palette = new Image();
+        var htmlcolor;
         image_palette.setAttribute('crossOrigin', '');
         image_palette.src = img_address;
-        var htmlcolor;
-
         image_palette.addEventListener('load', function() {
             var vibrant = new Vibrant(image_palette);
             var swatches = vibrant.swatches();
@@ -1180,22 +1338,27 @@ rock = function(p) {
             DV[0] = htmlcolor[0];
             DV[1] = htmlcolor[1];
             DV[2] = htmlcolor[2];
+            //DV[3] = palette['DarkVibrant'].getPopulation();
             htmlcolor = palette['Vibrant'].getRgb();
             V[0] = htmlcolor[0];
             V[1] = htmlcolor[1];
             V[2] = htmlcolor[2];
+            //V[3] = palette['Vibrant'].getPopulation();
             htmlcolor = palette['Muted'].getRgb();
             M[0] = htmlcolor[0];
             M[1] = htmlcolor[1];
             M[2] = htmlcolor[2];
+            //M[3] = palette['Muted'].getPopulation();
             htmlcolor = palette['LightVibrant'].getRgb();
             LV[0] = htmlcolor[0];
             LV[1] = htmlcolor[1];
             LV[2] = htmlcolor[2];
+            //LV[3] = palette['LightVibrant'].getPopulation();
             htmlcolor = palette['DarkMuted'].getRgb();
             DM[0] = htmlcolor[0];
             DM[1] = htmlcolor[1];
             DM[2] = htmlcolor[2];
+            //DM[3] = palette['DarkMuted'].getPopulation();
 
 
         });
@@ -1211,6 +1374,7 @@ rock = function(p) {
         p.rect(0, 3*32, 32, 32);
         p.fill(DM[0], DM[1], DM[2]);
         p.rect(0, 4*32, 32, 32);
+        //console.log(DV[3], V[3], M[3], LV[3], DM[3]);
 
 
     }
@@ -1222,9 +1386,859 @@ rock = function(p) {
 
 var myp5 = new p5(rock, 'rock');
 
+
+
+
+
+// metal = function(p) {
+//
+//     var canvaswidth = 1366;
+//     var boxes = [];
+//     var activeBoxNumber = "None";
+//     var table1;
+//     var img;
+//     var counterer = 0;
+//     var DV = [];
+//     var V = [];
+//     var M = [];
+//     var DM = [];
+//     var LV = [];
+//     var img_address;
+//
+//     p.preload = function(){
+//         table1 = p.loadTable("metal_sorted.csv", "csv", "header");
+//         // table2 = loadTable("pop_sorted.csv", "csv", "header")
+//         // table3 = loadTable("rnb_sorted.csv", "csv", "header")
+//     };
+//
+//     p.setup = function () {
+//         p.createCanvas(canvaswidth, 160);
+//         p.background(255);
+//
+//         // create all the different instances of the boxes
+//         for (var i=0; i<=1293; i++) {
+//             var r = p.int(table1.get(i,0));
+//             var g = p.int(table1.get(i,1));
+//             var b = p.int(table1.get(i,2));
+//             // create a box with number "i", at a random x and y location
+//             boxes[i] = new p.Box(0.91*i + 192, 0, 0.5, 160, r, g, b, i);
+//         }
+//         img = p.loadImage(table1.get(counterer,5));
+//         //console.log(window.address);
+//
+//     };
+//
+//     p.Box = function(x, y, width, height, r, g, b, counter) {
+//         // These variables are unique to each box
+//         this.counter = counter;
+//         this.x = x;
+//         this.y = y;
+//         this.r = r;
+//         this.g = g;
+//         this.b = b;
+//         this.col = p.color(r, g, b);
+//         this.colorRollOver = p.color(200, 0, 0);
+//         this.colorRollOff = p.color(this.r, this.g, this.b);
+//         this.width = width;
+//         this.height = height;
+//         this.active = false;
+//
+//         // update function
+//         this.update = function () {
+//             // check if mouse is over the box
+//             if (p.mouseX > this.x && p.mouseX < this.x + this.width
+//                 && p.mouseY > this.y && p.mouseY < this.y + this.height) {
+//                 // if yes, make this box active and change the color to red
+//                 this.col = this.colorRollOver;
+//                 this.active = true;
+//                 counterer = counter;
+//                 img_address = table1.get(counterer, 5);
+//                 img = p.loadImage(img_address);
+//                 //console.log(img_address);
+//                 // if no make it inactive and change the color
+//             } else {
+//                 this.col = this.colorRollOff;
+//                 this.active = false;
+//             }
+//         };
+//
+//         // display the box with the updated values
+//         this.display = function () {
+//             p.noStroke();
+//             p.fill(this.col);
+//             p.rect(this.x, this.y, this.width, this.height);
+//             // p.rect(this.x, this.y, this.width, this.height / 2);
+//             p.fill(0);
+//         }
+//     };
+//
+//     p.draw = function(){
+//         //p.background(255);
+//         //reset the active bubble number
+//         activeBoxNumber = "None";
+//         // p.cpalette(img_address);
+//         p.image(img, 32, 0, img.width/4, img.height/4);
+//         //image(test_image, width/2, height/2, img.width/4, img.height/4);
+//         // go through all boxes
+//         for (var i = 0; i < boxes.length; i++) {
+//             // run each bubble's update and display functions
+//             boxes[i].update();
+//             boxes[i].display();
+//             // check if the current bubble is "active" and save that number
+//             if(boxes[i].active==true){
+//                 activeBoxNumber = i;
+//             }
+//         }
+//         // Display active bubble number
+//         p.fill(255);
+//         //console.log(counterer);
+//         p.fill(0);
+//         // console.log(counterer);
+//         // p.text(table1.get(counterer,5), 200, 400);
+//         //console.log(img_address);
+//
+//     };
+//
+//     p.cpalette = function(img_address){
+//         var image_palette = new Image();
+//         image_palette.setAttribute('crossOrigin', '');
+//         image_palette.src = img_address;
+//
+//         image_palette.addEventListener('load', function() {
+//             var vibrant = new Vibrant(image_palette);
+//             var swatches = vibrant.swatches();
+//             palette = swatches;
+//             //console.log(swatches);
+//             for (swatch in swatches)
+//                 if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+//                     if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+//                         htmlcolor = palette['DarkVibrant'].getRgb();
+//             DV[0] = htmlcolor[0];
+//             DV[1] = htmlcolor[1];
+//             DV[2] = htmlcolor[2];
+//             htmlcolor = palette['Vibrant'].getRgb();
+//             V[0] = htmlcolor[0];
+//             V[1] = htmlcolor[1];
+//             V[2] = htmlcolor[2];
+//             htmlcolor = palette['Muted'].getRgb();
+//             M[0] = htmlcolor[0];
+//             M[1] = htmlcolor[1];
+//             M[2] = htmlcolor[2];
+//             htmlcolor = palette['LightVibrant'].getRgb();
+//             LV[0] = htmlcolor[0];
+//             LV[1] = htmlcolor[1];
+//             LV[2] = htmlcolor[2];
+//             htmlcolor = palette['DarkMuted'].getRgb();
+//             DM[0] = htmlcolor[0];
+//             DM[1] = htmlcolor[1];
+//             DM[2] = htmlcolor[2];
+//
+//
+//         });
+//
+//
+//         p.fill(DV[0], DV[1], DV[2]);
+//         p.rect(0, 0, 32, 32);
+//         p.fill(V[0], V[1], V[2]);
+//         p.rect(0, 32, 32, 32);
+//         p.fill(M[0], M[1], M[2]);
+//         p.rect(0, 2*32, 32, 32);
+//         p.fill(LV[0], LV[1], LV[2]);
+//         p.rect(0, 3*32, 32, 32);
+//         p.fill(DM[0], DM[1], DM[2]);
+//         p.rect(0, 4*32, 32, 32);
+//
+//
+//     }
+//
+//
+//
+//
+// };
+//
+// var myp5 = new p5(metal, 'metal');
+//
+//
+// pop = function(p) {
+//
+//     var canvaswidth = 1366;
+//     var boxes = [];
+//     var activeBoxNumber = "None";
+//     var table1;
+//     var img;
+//     var counterer = 0;
+//     var DV = [];
+//     var V = [];
+//     var M = [];
+//     var DM = [];
+//     var LV = [];
+//     var img_address;
+//
+//     p.preload = function(){
+//         table1 = p.loadTable("pop_sorted.csv", "csv", "header");
+//         // table2 = loadTable("pop_sorted.csv", "csv", "header")
+//         // table3 = loadTable("rnb_sorted.csv", "csv", "header")
+//     };
+//
+//     p.setup = function () {
+//         p.createCanvas(canvaswidth, 160);
+//         p.background(255);
+//
+//         // create all the different instances of the boxes
+//         for (var i=0; i<=1293; i++) {
+//             var r = p.int(table1.get(i,0));
+//             var g = p.int(table1.get(i,1));
+//             var b = p.int(table1.get(i,2));
+//             // create a box with number "i", at a random x and y location
+//             boxes[i] = new p.Box(0.91*i + 192, 0, 0.5, 160, r, g, b, i);
+//         }
+//         img = p.loadImage(table1.get(counterer,5));
+//         //console.log(window.address);
+//
+//     };
+//
+//     p.Box = function(x, y, width, height, r, g, b, counter) {
+//         // These variables are unique to each box
+//         this.counter = counter;
+//         this.x = x;
+//         this.y = y;
+//         this.r = r;
+//         this.g = g;
+//         this.b = b;
+//         this.col = p.color(r, g, b);
+//         this.colorRollOver = p.color(200, 0, 0);
+//         this.colorRollOff = p.color(this.r, this.g, this.b);
+//         this.width = width;
+//         this.height = height;
+//         this.active = false;
+//
+//         // update function
+//         this.update = function () {
+//             // check if mouse is over the box
+//             if (p.mouseX > this.x && p.mouseX < this.x + this.width
+//                 && p.mouseY > this.y && p.mouseY < this.y + this.height) {
+//                 // if yes, make this box active and change the color to red
+//                 this.col = this.colorRollOver;
+//                 this.active = true;
+//                 counterer = counter;
+//                 img_address = table1.get(counterer, 5);
+//                 img = p.loadImage(img_address);
+//                 //console.log(img_address);
+//                 // if no make it inactive and change the color
+//             } else {
+//                 this.col = this.colorRollOff;
+//                 this.active = false;
+//             }
+//         };
+//
+//         // display the box with the updated values
+//         this.display = function () {
+//             p.noStroke();
+//             p.fill(this.col);
+//             p.rect(this.x, this.y, this.width, this.height);
+//             // p.rect(this.x, this.y, this.width, this.height / 2);
+//             p.fill(0);
+//         }
+//     };
+//
+//     p.draw = function(){
+//         //p.background(255);
+//         //reset the active bubble number
+//         activeBoxNumber = "None";
+//         // p.cpalette(img_address);
+//         p.image(img, 32, 0, img.width/4, img.height/4);
+//         //image(test_image, width/2, height/2, img.width/4, img.height/4);
+//         // go through all boxes
+//         for (var i = 0; i < boxes.length; i++) {
+//             // run each bubble's update and display functions
+//             boxes[i].update();
+//             boxes[i].display();
+//             // check if the current bubble is "active" and save that number
+//             if(boxes[i].active==true){
+//                 activeBoxNumber = i;
+//             }
+//         }
+//         // Display active bubble number
+//         p.fill(255);
+//         //console.log(counterer);
+//         p.fill(0);
+//         // console.log(counterer);
+//         // p.text(table1.get(counterer,5), 200, 400);
+//         //console.log(img_address);
+//
+//     };
+//
+//     p.cpalette = function(img_address){
+//         var image_palette = new Image();
+//         image_palette.setAttribute('crossOrigin', '');
+//         image_palette.src = img_address;
+//
+//         image_palette.addEventListener('load', function() {
+//             var vibrant = new Vibrant(image_palette);
+//             var swatches = vibrant.swatches();
+//             palette = swatches;
+//             //console.log(swatches);
+//             for (swatch in swatches)
+//                 if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+//                     if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+//                         htmlcolor = palette['DarkVibrant'].getRgb();
+//             DV[0] = htmlcolor[0];
+//             DV[1] = htmlcolor[1];
+//             DV[2] = htmlcolor[2];
+//             htmlcolor = palette['Vibrant'].getRgb();
+//             V[0] = htmlcolor[0];
+//             V[1] = htmlcolor[1];
+//             V[2] = htmlcolor[2];
+//             htmlcolor = palette['Muted'].getRgb();
+//             M[0] = htmlcolor[0];
+//             M[1] = htmlcolor[1];
+//             M[2] = htmlcolor[2];
+//             htmlcolor = palette['LightVibrant'].getRgb();
+//             LV[0] = htmlcolor[0];
+//             LV[1] = htmlcolor[1];
+//             LV[2] = htmlcolor[2];
+//             htmlcolor = palette['DarkMuted'].getRgb();
+//             DM[0] = htmlcolor[0];
+//             DM[1] = htmlcolor[1];
+//             DM[2] = htmlcolor[2];
+//
+//
+//         });
+//
+//
+//         p.fill(DV[0], DV[1], DV[2]);
+//         p.rect(0, 0, 32, 32);
+//         p.fill(V[0], V[1], V[2]);
+//         p.rect(0, 32, 32, 32);
+//         p.fill(M[0], M[1], M[2]);
+//         p.rect(0, 2*32, 32, 32);
+//         p.fill(LV[0], LV[1], LV[2]);
+//         p.rect(0, 3*32, 32, 32);
+//         p.fill(DM[0], DM[1], DM[2]);
+//         p.rect(0, 4*32, 32, 32);
+//
+//
+//     }
+//
+//
+//
+//
+// };
+//
+// var myp5 = new p5(pop, 'pop');
+//
+//
+// country = function(p) {
+//
+//     var canvaswidth = 1366;
+//     var boxes = [];
+//     var activeBoxNumber = "None";
+//     var table1;
+//     var img;
+//     var counterer = 0;
+//     var DV = [];
+//     var V = [];
+//     var M = [];
+//     var DM = [];
+//     var LV = [];
+//     var img_address;
+//
+//     p.preload = function(){
+//         table1 = p.loadTable("country_sorted.csv", "csv", "header");
+//         // table2 = loadTable("pop_sorted.csv", "csv", "header")
+//         // table3 = loadTable("rnb_sorted.csv", "csv", "header")
+//     };
+//
+//     p.setup = function () {
+//         p.createCanvas(canvaswidth, 160);
+//         p.background(255);
+//
+//         // create all the different instances of the boxes
+//         for (var i=0; i<=1293; i++) {
+//             var r = p.int(table1.get(i,0));
+//             var g = p.int(table1.get(i,1));
+//             var b = p.int(table1.get(i,2));
+//             // create a box with number "i", at a random x and y location
+//             boxes[i] = new p.Box(0.91*i + 192, 0, 0.5, 160, r, g, b, i);
+//         }
+//         img = p.loadImage(table1.get(counterer,5));
+//         //console.log(window.address);
+//
+//     };
+//
+//     p.Box = function(x, y, width, height, r, g, b, counter) {
+//         // These variables are unique to each box
+//         this.counter = counter;
+//         this.x = x;
+//         this.y = y;
+//         this.r = r;
+//         this.g = g;
+//         this.b = b;
+//         this.col = p.color(r, g, b);
+//         this.colorRollOver = p.color(200, 0, 0);
+//         this.colorRollOff = p.color(this.r, this.g, this.b);
+//         this.width = width;
+//         this.height = height;
+//         this.active = false;
+//
+//         // update function
+//         this.update = function () {
+//             // check if mouse is over the box
+//             if (p.mouseX > this.x && p.mouseX < this.x + this.width
+//                 && p.mouseY > this.y && p.mouseY < this.y + this.height) {
+//                 // if yes, make this box active and change the color to red
+//                 this.col = this.colorRollOver;
+//                 this.active = true;
+//                 counterer = counter;
+//                 img_address = table1.get(counterer, 5);
+//                 img = p.loadImage(img_address);
+//                 //console.log(img_address);
+//                 // if no make it inactive and change the color
+//             } else {
+//                 this.col = this.colorRollOff;
+//                 this.active = false;
+//             }
+//         };
+//
+//         // display the box with the updated values
+//         this.display = function () {
+//             p.noStroke();
+//             p.fill(this.col);
+//             p.rect(this.x, this.y, this.width, this.height);
+//             // p.rect(this.x, this.y, this.width, this.height / 2);
+//             p.fill(0);
+//         }
+//     };
+//
+//     p.draw = function(){
+//         //p.background(255);
+//         //reset the active bubble number
+//         activeBoxNumber = "None";
+//         // p.cpalette(img_address);
+//         p.image(img, 32, 0, img.width/4, img.height/4);
+//         //image(test_image, width/2, height/2, img.width/4, img.height/4);
+//         // go through all boxes
+//         for (var i = 0; i < boxes.length; i++) {
+//             // run each bubble's update and display functions
+//             boxes[i].update();
+//             boxes[i].display();
+//             // check if the current bubble is "active" and save that number
+//             if(boxes[i].active==true){
+//                 activeBoxNumber = i;
+//             }
+//         }
+//         // Display active bubble number
+//         p.fill(255);
+//         //console.log(counterer);
+//         p.fill(0);
+//         // console.log(counterer);
+//         // p.text(table1.get(counterer,5), 200, 400);
+//         //console.log(img_address);
+//
+//     };
+//
+//     p.cpalette = function(img_address){
+//         var image_palette = new Image();
+//         image_palette.setAttribute('crossOrigin', '');
+//         image_palette.src = img_address;
+//         var htmlcolor;
+//
+//         image_palette.addEventListener('load', function() {
+//             var vibrant = new Vibrant(image_palette);
+//             var swatches = vibrant.swatches();
+//             palette = swatches;
+//             //console.log(swatches);
+//             for (swatch in swatches)
+//                 if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+//                     if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+//                         htmlcolor = palette['DarkVibrant'].getRgb();
+//             DV[0] = htmlcolor[0];
+//             DV[1] = htmlcolor[1];
+//             DV[2] = htmlcolor[2];
+//             htmlcolor = palette['Vibrant'].getRgb();
+//             V[0] = htmlcolor[0];
+//             V[1] = htmlcolor[1];
+//             V[2] = htmlcolor[2];
+//             htmlcolor = palette['Muted'].getRgb();
+//             M[0] = htmlcolor[0];
+//             M[1] = htmlcolor[1];
+//             M[2] = htmlcolor[2];
+//             htmlcolor = palette['LightVibrant'].getRgb();
+//             LV[0] = htmlcolor[0];
+//             LV[1] = htmlcolor[1];
+//             LV[2] = htmlcolor[2];
+//             htmlcolor = palette['DarkMuted'].getRgb();
+//             DM[0] = htmlcolor[0];
+//             DM[1] = htmlcolor[1];
+//             DM[2] = htmlcolor[2];
+//
+//
+//         });
+//
+//
+//         p.fill(DV[0], DV[1], DV[2]);
+//         p.rect(0, 0, 32, 32);
+//         p.fill(V[0], V[1], V[2]);
+//         p.rect(0, 32, 32, 32);
+//         p.fill(M[0], M[1], M[2]);
+//         p.rect(0, 2*32, 32, 32);
+//         p.fill(LV[0], LV[1], LV[2]);
+//         p.rect(0, 3*32, 32, 32);
+//         p.fill(DM[0], DM[1], DM[2]);
+//         p.rect(0, 4*32, 32, 32);
+//
+//
+//     }
+//
+//
+//
+//
+// };
+//
+// var myp5 = new p5(country, 'country');
+//
+//
+// eighties = function(p) {
+//
+//     var canvaswidth = 1366;
+//     var boxes = [];
+//     var activeBoxNumber = "None";
+//     var table1;
+//     var img;
+//     var counterer = 0;
+//     var DV = [];
+//     var V = [];
+//     var M = [];
+//     var DM = [];
+//     var LV = [];
+//     var img_address;
+//
+//     p.preload = function(){
+//         table1 = p.loadTable("eighties_sorted.csv", "csv", "header");
+//         // table2 = loadTable("pop_sorted.csv", "csv", "header")
+//         // table3 = loadTable("rnb_sorted.csv", "csv", "header")
+//     };
+//
+//     p.setup = function () {
+//         p.createCanvas(canvaswidth, 160);
+//         p.background(255);
+//
+//         // create all the different instances of the boxes
+//         for (var i=0; i<=1293; i++) {
+//             var r = p.int(table1.get(i,0));
+//             var g = p.int(table1.get(i,1));
+//             var b = p.int(table1.get(i,2));
+//             // create a box with number "i", at a random x and y location
+//             boxes[i] = new p.Box(0.91*i + 192, 0, 0.5, 160, r, g, b, i);
+//         }
+//         img = p.loadImage(table1.get(counterer,5));
+//         //console.log(window.address);
+//
+//     };
+//
+//     p.Box = function(x, y, width, height, r, g, b, counter) {
+//         // These variables are unique to each box
+//         this.counter = counter;
+//         this.x = x;
+//         this.y = y;
+//         this.r = r;
+//         this.g = g;
+//         this.b = b;
+//         this.col = p.color(r, g, b);
+//         this.colorRollOver = p.color(200, 0, 0);
+//         this.colorRollOff = p.color(this.r, this.g, this.b);
+//         this.width = width;
+//         this.height = height;
+//         this.active = false;
+//
+//         // update function
+//         this.update = function () {
+//             // check if mouse is over the box
+//             if (p.mouseX > this.x && p.mouseX < this.x + this.width
+//                 && p.mouseY > this.y && p.mouseY < this.y + this.height) {
+//                 // if yes, make this box active and change the color to red
+//                 this.col = this.colorRollOver;
+//                 this.active = true;
+//                 counterer = counter;
+//                 img_address = table1.get(counterer, 5);
+//                 img = p.loadImage(img_address);
+//                 //console.log(img_address);
+//                 // if no make it inactive and change the color
+//             } else {
+//                 this.col = this.colorRollOff;
+//                 this.active = false;
+//             }
+//         };
+//
+//         // display the box with the updated values
+//         this.display = function () {
+//             p.noStroke();
+//             p.fill(this.col);
+//             p.rect(this.x, this.y, this.width, this.height);
+//             // p.rect(this.x, this.y, this.width, this.height / 2);
+//             p.fill(0);
+//         }
+//     };
+//
+//     p.draw = function(){
+//         //p.background(255);
+//         //reset the active bubble number
+//         activeBoxNumber = "None";
+//         // p.cpalette(img_address);
+//         p.image(img, 32, 0, img.width/4, img.height/4);
+//         //image(test_image, width/2, height/2, img.width/4, img.height/4);
+//         // go through all boxes
+//         for (var i = 0; i < boxes.length; i++) {
+//             // run each bubble's update and display functions
+//             boxes[i].update();
+//             boxes[i].display();
+//             // check if the current bubble is "active" and save that number
+//             if(boxes[i].active==true){
+//                 activeBoxNumber = i;
+//             }
+//         }
+//         // Display active bubble number
+//         p.fill(255);
+//         //console.log(counterer);
+//         p.fill(0);
+//         // console.log(counterer);
+//         // p.text(table1.get(counterer,5), 200, 400);
+//         //console.log(img_address);
+//
+//     };
+//
+//     p.cpalette = function(img_address){
+//         var image_palette = new Image();
+//         image_palette.setAttribute('crossOrigin', '');
+//         image_palette.src = img_address;
+//         var htmlcolor;
+//
+//         image_palette.addEventListener('load', function() {
+//             var vibrant = new Vibrant(image_palette);
+//             var swatches = vibrant.swatches();
+//             palette = swatches;
+//             //console.log(swatches);
+//             for (swatch in swatches)
+//                 if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+//                     if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+//                         htmlcolor = palette['DarkVibrant'].getRgb();
+//             DV[0] = htmlcolor[0];
+//             DV[1] = htmlcolor[1];
+//             DV[2] = htmlcolor[2];
+//             htmlcolor = palette['Vibrant'].getRgb();
+//             V[0] = htmlcolor[0];
+//             V[1] = htmlcolor[1];
+//             V[2] = htmlcolor[2];
+//             htmlcolor = palette['Muted'].getRgb();
+//             M[0] = htmlcolor[0];
+//             M[1] = htmlcolor[1];
+//             M[2] = htmlcolor[2];
+//             htmlcolor = palette['LightVibrant'].getRgb();
+//             LV[0] = htmlcolor[0];
+//             LV[1] = htmlcolor[1];
+//             LV[2] = htmlcolor[2];
+//             htmlcolor = palette['DarkMuted'].getRgb();
+//             DM[0] = htmlcolor[0];
+//             DM[1] = htmlcolor[1];
+//             DM[2] = htmlcolor[2];
+//
+//
+//         });
+//
+//
+//         p.fill(DV[0], DV[1], DV[2]);
+//         p.rect(0, 0, 32, 32);
+//         p.fill(V[0], V[1], V[2]);
+//         p.rect(0, 32, 32, 32);
+//         p.fill(M[0], M[1], M[2]);
+//         p.rect(0, 2*32, 32, 32);
+//         p.fill(LV[0], LV[1], LV[2]);
+//         p.rect(0, 3*32, 32, 32);
+//         p.fill(DM[0], DM[1], DM[2]);
+//         p.rect(0, 4*32, 32, 32);
+//
+//
+//     }
+//
+//
+//
+//
+// };
+//
+// var myp5 = new p5(eighties, 'eighties');
+//
+// rock = function(p) {
+//
+//     var canvaswidth = 1366;
+//     var boxes = [];
+//     var activeBoxNumber = "None";
+//     var table1;
+//     var img;
+//     var counterer = 0;
+//     var DV = [];
+//     var V = [];
+//     var M = [];
+//     var DM = [];
+//     var LV = [];
+//     var img_address;
+//
+//     p.preload = function(){
+//         table1 = p.loadTable("rock_sorted.csv", "csv", "header");
+//         // table2 = loadTable("pop_sorted.csv", "csv", "header")
+//         // table3 = loadTable("rnb_sorted.csv", "csv", "header")
+//     };
+//
+//     p.setup = function () {
+//         p.createCanvas(canvaswidth, 160);
+//         p.background(255);
+//
+//         // create all the different instances of the boxes
+//         for (var i=0; i<=1293; i++) {
+//             var r = p.int(table1.get(i,0));
+//             var g = p.int(table1.get(i,1));
+//             var b = p.int(table1.get(i,2));
+//             // create a box with number "i", at a random x and y location
+//             boxes[i] = new p.Box(0.91*i + 192, 0, 0.5, 160, r, g, b, i);
+//         }
+//         img = p.loadImage(table1.get(counterer,5));
+//         //console.log(window.address);
+//
+//     };
+//
+//     p.Box = function(x, y, width, height, r, g, b, counter) {
+//         // These variables are unique to each box
+//         this.counter = counter;
+//         this.x = x;
+//         this.y = y;
+//         this.r = r;
+//         this.g = g;
+//         this.b = b;
+//         this.col = p.color(r, g, b);
+//         this.colorRollOver = p.color(200, 0, 0);
+//         this.colorRollOff = p.color(this.r, this.g, this.b);
+//         this.width = width;
+//         this.height = height;
+//         this.active = false;
+//
+//         // update function
+//         this.update = function () {
+//             // check if mouse is over the box
+//             if (p.mouseX > this.x && p.mouseX < this.x + this.width
+//                 && p.mouseY > this.y && p.mouseY < this.y + this.height) {
+//                 // if yes, make this box active and change the color to red
+//                 this.col = this.colorRollOver;
+//                 this.active = true;
+//                 counterer = counter;
+//                 img_address = table1.get(counterer, 5);
+//                 img = p.loadImage(img_address);
+//                 //console.log(img_address);
+//                 // if no make it inactive and change the color
+//             } else {
+//                 this.col = this.colorRollOff;
+//                 this.active = false;
+//             }
+//         };
+//
+//         // display the box with the updated values
+//         this.display = function () {
+//             p.noStroke();
+//             p.fill(this.col);
+//             p.rect(this.x, this.y, this.width, this.height);
+//             // p.rect(this.x, this.y, this.width, this.height / 2);
+//             p.fill(0);
+//         }
+//     };
+//
+//     p.draw = function(){
+//         //p.background(255);
+//         //reset the active bubble number
+//         activeBoxNumber = "None";
+//         // p.cpalette(img_address);
+//         p.image(img, 32, 0, img.width/4, img.height/4);
+//         //image(test_image, width/2, height/2, img.width/4, img.height/4);
+//         // go through all boxes
+//         for (var i = 0; i < boxes.length; i++) {
+//             // run each bubble's update and display functions
+//             boxes[i].update();
+//             boxes[i].display();
+//             // check if the current bubble is "active" and save that number
+//             if(boxes[i].active==true){
+//                 activeBoxNumber = i;
+//             }
+//         }
+//         // Display active bubble number
+//         p.fill(255);
+//         //console.log(counterer);
+//         p.fill(0);
+//         // console.log(counterer);
+//         // p.text(table1.get(counterer,5), 200, 400);
+//         //console.log(img_address);
+//
+//     };
+//
+//     p.cpalette = function(img_address){
+//         var image_palette = new Image();
+//         image_palette.setAttribute('crossOrigin', '');
+//         image_palette.src = img_address;
+//         var htmlcolor;
+//
+//         image_palette.addEventListener('load', function() {
+//             var vibrant = new Vibrant(image_palette);
+//             var swatches = vibrant.swatches();
+//             palette = swatches;
+//             //console.log(swatches);
+//             for (swatch in swatches)
+//                 if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+//                     if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+//                         htmlcolor = palette['DarkVibrant'].getRgb();
+//             DV[0] = htmlcolor[0];
+//             DV[1] = htmlcolor[1];
+//             DV[2] = htmlcolor[2];
+//             htmlcolor = palette['Vibrant'].getRgb();
+//             V[0] = htmlcolor[0];
+//             V[1] = htmlcolor[1];
+//             V[2] = htmlcolor[2];
+//             htmlcolor = palette['Muted'].getRgb();
+//             M[0] = htmlcolor[0];
+//             M[1] = htmlcolor[1];
+//             M[2] = htmlcolor[2];
+//             htmlcolor = palette['LightVibrant'].getRgb();
+//             LV[0] = htmlcolor[0];
+//             LV[1] = htmlcolor[1];
+//             LV[2] = htmlcolor[2];
+//             htmlcolor = palette['DarkMuted'].getRgb();
+//             DM[0] = htmlcolor[0];
+//             DM[1] = htmlcolor[1];
+//             DM[2] = htmlcolor[2];
+//
+//
+//         });
+//
+//
+//         p.fill(DV[0], DV[1], DV[2]);
+//         p.rect(0, 0, 32, 32);
+//         p.fill(V[0], V[1], V[2]);
+//         p.rect(0, 32, 32, 32);
+//         p.fill(M[0], M[1], M[2]);
+//         p.rect(0, 2*32, 32, 32);
+//         p.fill(LV[0], LV[1], LV[2]);
+//         p.rect(0, 3*32, 32, 32);
+//         p.fill(DM[0], DM[1], DM[2]);
+//         p.rect(0, 4*32, 32, 32);
+//
+//
+//     }
+//
+//
+//
+//
+// };
+//
+// var myp5 = new p5(rock, 'rock');
+//
 white_canvas = function(p){
 
-    var canvaswidth = 1383;
+    var canvaswidth = 1800;
 
     p.setup = function() {
         p.createCanvas(canvaswidth, 1240);

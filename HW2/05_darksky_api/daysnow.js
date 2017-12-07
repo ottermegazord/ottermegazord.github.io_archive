@@ -426,7 +426,7 @@ function draw() {
             boat2Pos = width;
         }
 
-        snow()
+        snow();
 
         console.log(minutely_icon);
 

@@ -1,5 +1,3 @@
-// attempt to reverse engineer bees and bombs in p5
-// http://beesandbombs.tumblr.com/post/121790476454/fundots-bees-bombs-also-on-twitter-insta
 
 var numRows;
 var numCirclesPerRow;

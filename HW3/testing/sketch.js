@@ -6,13 +6,11 @@ var latitudes, longitudes;
 var t_pop, t_lon, t_lat, t_tots, t_name, t_percent;
 var people;
 var seal;
-var america_asian = 19437463;
 
 var maxPop, minPop, maxLon, minLon;
 var margin = 100;
 var population;
 var average_low, average_high;
-var distance_low, distance_high;
 
 // table as the data set
 var table;
@@ -42,8 +40,6 @@ function preload() {
     //and has a header specifying the columns labels
     table = loadTable("assets/location_2.csv", "csv", "header");
     t_top = loadTable("assets/top.csv", "csv", "header");
-    asians = loadTable("assets/allasians_parse.csv", "csv", "header");
-    //console.log(top);
 }
 
 var legend = L.control({position: 'bottomright'});

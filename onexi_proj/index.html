@@ -10,11 +10,11 @@
 <link rel="stylesheet" href="libraries/leaflet/leaflet.css"/>
 
 <script src="libraries/leaflet/leaflet.js"></script>
-<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
 <script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
 <script language="javascript" type="text/javascript" src="equation.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="jquery.csv.min.js"></script>
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript"> // load the visualisation API
@@ -24,10 +24,21 @@ google.load('visualization', '1', { packages: ['corechart', 'controls'] });
 
 <!--<script type="text/javascript" src="map.js"></script>-->
 <style>
-    body, h1, h2, h3, h4, h5, h6 {
+
+    body{
         font-family: 'Roboto', sans-serif;
         width: 1024px;
-        height: 100%
+        height: 100%;
+        background: white
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Roboto', sans-serif;
+        width: 1024px;
+        height: 100%;
+        text-decoration: underline overline;
+        text-decoration-color: red;
+        padding-bottom: 30px;
+
     }
 
     .w3-row-padding img {
@@ -38,6 +49,7 @@ google.load('visualization', '1', { packages: ['corechart', 'controls'] });
     .w3-sidebar {
         width: 120px;
         background: #222;
+        color: #787777;
     }
 
     /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
@@ -58,38 +70,52 @@ google.load('visualization', '1', { packages: ['corechart', 'controls'] });
         font-family: "Roboto";
         margin-left: 5%;
         padding-top: 30px;
-        font-size: 70%;
+        font-size: 80%;
         text-align: left;
         width:  100%;
-        color: #ffffff;
+        color: black;
+        text-decoration: underline overline;
+        text-decoration-color: red;
+        padding-bottom: 30px;
 
     }
 
     #intro_image img {
+
         margin-left: 0px;
         width: 100%;
         height: auto;
+        padding-top: 40px;
+        padding-top: 100px;
+
+        /*border:20px solid #021a40;*/
+        /*background-color:#ff0;*/
+    }
+    .introimg{
+
     }
 
     #intro_text {
         font-family: "Roboto";
-        font-size: 100%;
+        font-size: 80%;
         top: 200px;
         text-align: left;
         width: 90%;
         color: #787777;
         padding-top: 10px;
         margin-left: 5%;
+        line-height: 2;
 
     }
     #section1 {
         font-family: "Roboto";
         margin-left: 5%;
         padding-top: 10px;
-        font-size: 100%;
+        font-size: 80%;
         text-align: left;
         width:  100%;
-        color: #ffffff;
+        color: black;
+
 
     }
 
@@ -102,6 +128,7 @@ google.load('visualization', '1', { packages: ['corechart', 'controls'] });
         width: 100%;
         color: #787777;
         padding-top: 10px;
+        line-height: 2;
         /*margin-left: 5%;*/
 
     }
@@ -112,6 +139,7 @@ google.load('visualization', '1', { packages: ['corechart', 'controls'] });
         margin-right: 12%;
         width: 400px;
         height: 200px;
+
 
     }
 
@@ -126,19 +154,20 @@ google.load('visualization', '1', { packages: ['corechart', 'controls'] });
         font-size: 100%;
         text-align: left;
         width:  100%;
-        color: #ffffff;
+        color: black;
 
     }
 
 
     #section2_text {
         font-family: "Roboto";
-        font-size: 100%;
+        font-size: 80%;
         top: 200px;
         text-align: left;
         width: 85%;
         color: #787777;
         padding-top: 10px;
+        line-height: 2;
         /*margin-left: 5%;*/
 
     }
@@ -164,20 +193,21 @@ google.load('visualization', '1', { packages: ['corechart', 'controls'] });
         font-size: 100%;
         text-align: left;
         width:  100%;
-        color: #ffffff;
+        color: black;
 
     }
 
 
     #section3_text {
         font-family: "Roboto";
-        font-size: 100%;
+        font-size: 80%;
         top: 200px;
         text-align: left;
         width: 85%;
         color: #787777;
         padding-top: 30px;
         padding-bottom: 50px;
+        line-height: 2;
         /*margin-left: 5%;*/
 
     }
@@ -206,11 +236,19 @@ google.load('visualization', '1', { packages: ['corechart', 'controls'] });
         /*padding-botton: 30px;*/
     }
 
+    #carto{
+        margin-left: 50px;
+        margin-right: auto;
+        /*padding-top: 30px;*/
+        /*padding-botton: 30px;*/
+    }
+
+
 
 </style>
 
-
-<body class="w3-black">
+<body>
+<!--<body class="w3-black">-->
 <script src='https://d3js.org/d3.v3.js'></script>
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
@@ -249,11 +287,11 @@ google.load('visualization', '1', { packages: ['corechart', 'controls'] });
 <!--Start Divs-->
 <div id="main">
     <div id="title">
-        <h1>Real estate prices in Greater Boston</h1>
+        <h1>REAL ESTATE PRICES IN GREATER BOSTON</h1>
     </div>
 
     <div class="intro_image">
-        <img src="images/intro_image.png" />
+        <img class= "introimg" src="images/intro_image.png" />
     </div>
 
     <div id="intro_text">
@@ -272,7 +310,7 @@ google.load('visualization', '1', { packages: ['corechart', 'controls'] });
     </div>
 
     <div id="section1">
-        <h3>Introduction</h3>
+        <h3>INTRODUCTION</h3>
 
         <div id="section1_text" class = "clearfix">
             <img class="img1" src="images/section1_chart.png">
@@ -286,7 +324,7 @@ google.load('visualization', '1', { packages: ['corechart', 'controls'] });
     </div>
 
     <div id="section2">
-        <h3>Section 2</h3>
+        <h3>NEIGHBORHOOD</h3>
 
         <div id="section2_text" class = "clearfix">
             <img class="img2" src="images/section1_chart.png">
@@ -300,7 +338,7 @@ google.load('visualization', '1', { packages: ['corechart', 'controls'] });
     </div>
 
     <div id="section3">
-        <h3>Section 3</h3>
+        <h3>PARCELS</h3>
         <div id="section3_text" class = "clearfix">
         <div id="map"></div><script type="text/javascript" src="map.js"></script>
         Lorem ipsum dolor sit amet, magna vel cursus lacus viverra class fermentum.
@@ -320,7 +358,8 @@ google.load('visualization', '1', { packages: ['corechart', 'controls'] });
             ac fringilla et semper amet,
             ullamcorper lorem dui quam, consequat nec nulla quisque eget commodo.
         </div>
-
+        <div id="carto">
+            <iframe width="50%" height="300" frameborder="0" src="https://mit.carto.com/u/idaly666/builder/9d501537-3b5a-48ec-82b6-d34d97421a1f/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe></div>
     </div>
 
     <!--<div id="section1">-->

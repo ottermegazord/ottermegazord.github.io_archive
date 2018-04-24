@@ -1,6 +1,6 @@
 # from PIL import Image
 #
-# img = Image.open('/Users/idaly666/PycharmProjects/4033mit/HW4/cover_art/rnb/rnb_100.jpeg')
+# img = Image.open('/Users/idaly666/PycharmProjects/4033mit/HW4/cover_art/rock/rock_100.jpeg')
 # rgbimg = img.convert('RGB')
 # for i in range(5):
 #     print rgbimg.getpixel((i, 0))
@@ -37,9 +37,9 @@ class PixelCounter(object):
 
 if __name__ == '__main__':
 
-    f = open('rnb_full.csv', 'r')
-    f_color = open('rnb_color.csv', 'a')
-    first = 'cover_art/rnb/rnb_'
+    f = open('rock_full.csv', 'r')
+    f_color = open('rock_color.csv', 'a')
+    first = 'cover_art/rock/rock_'
     last = '.jpeg'
 
     for i in range(1,1778):

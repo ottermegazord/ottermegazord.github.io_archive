@@ -21,7 +21,7 @@ def step(r, g, b, repetitions=1):
     return (h2, lum, v2)
 
 
-filename = 'metal_color.csv'
+filename = 'rock_color.csv'
 my_data = pd.read_csv(filename, sep=',',header=None)
 #my_data = genfromtxt(filename, delimiter=',', dtype=None)
 # colours_length = 1000
@@ -56,6 +56,6 @@ for i in range(1, len(my_data)):
 colours.sort(key=lambda (r, g, b, artist, album, url):hilbert.Hilbert_to_int([int(r),int(g),int(b)]) )
 print colours
 
-new_file = open('metal_sorted.csv', 'a')
+new_file = open('rock_sorted.csv', 'a')
 for i in range(1, len(colours)):
     new_file.write('%s, %s, %s, %s, %s, %s\n' % (colours[i][0], colours[i][1], colours[i][2], colours[i][3], colours[i][4], colours[i][5]))

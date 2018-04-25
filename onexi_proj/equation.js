@@ -57,19 +57,19 @@ var a = function( p ) {
         // var mapTime = p.map(value,start1,stop1,start2,stop2);
 
         console.log(450, p.height);
-        p.background(0);
+        p.background(255);
         p.fill(mapOutput);
         p.rect(0 + xmargin, 0, 200, 200);
 
         var outputString = "Value of land: $" + output.toFixed(2);
 
 
-        p.fill(255);
+        p.fill(0);
         p.text('Longitude', 300, 210);
         p.text('Latitude', 100+10, 250);
-        p.text('Time', 115, 25);
+        p.text('Time', 115, 220);
 
-        p.fill(255);
+        p.fill(0);
         p.textStyle(p.BOLD);
         p.text('Input', 450 * 1/2 + 60, p.height * 1/8);
         p.textStyle(p.NORMAL);

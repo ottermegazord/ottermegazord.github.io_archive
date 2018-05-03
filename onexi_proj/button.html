@@ -1,0 +1,20 @@
+<h2>Your Powder Forecast</h2>
+<p>Pick a location to see who's getting hit!</p>
+<select id="selectResort">
+    <option>Pick Resort</option>
+    <option value="http://forecast.io/embed/#lat=42.3583&lon=-71.0603&name=Downtown Boston&font=inherit">Boston</option>
+    <option value="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed">Vail</option>
+</select>
+<button onClick="loadPages()">See Forecast</button>
+
+<iframe id="myFrame" type="text/html" frameborder="0" height="245" width="100%" src=""> </iframe>
+
+<script>
+    var urlSelect = document.getElementById('selectResort'),
+        myFrame = document.getElementById('myFrame');
+    function loadPages() {
+        var loc = urlSelect.value;
+        // You can also do -> myFrame.src = loc;
+        myFrame.setAttribute('src', loc);
+    }
+</script>

@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
+
+  <title>Analyzing real estate prices in Boston</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="carousel.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">1.001</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#introduction">Introduction <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#methodology">Methodology</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#neighborhoods">Neighborhoods</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#parcels">Parcels</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#nextSteps">Next Steps</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+      </ul>
+      <!--<form class="form-inline mt-2 mt-md-0">-->
+        <!--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
+        <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+      <!--</form>-->
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <!--<li data-target="#myCarousel" data-slide-to="2"></li>-->
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="first-slide" src="images/intro_image1.jpg" alt="First slide">
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1>Analyzing real estate prices in Boston.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+          </div>
+        </div>
+      </div>
+      <!--<div class="carousel-item">-->
+        <!--<img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">-->
+        <!--<div class="container">-->
+          <!--<div class="carousel-caption">-->
+            <!--<h1>Another example headline.</h1>-->
+            <!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>-->
+            <!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <div class="carousel-item">
+        <img class="second-slide" src="images/intro_image2.jpg" alt="Second slide">
+        <div class="container">
+          <div class="carousel-caption text-right">
+            <h1>One more for good measure.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">This site on Github</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="rounded-circle" src="images/circle1.jpg" alt="Generic placeholder image" width="140" height="140">
+        <h2></br>Introduction</h2>
+        <p></br>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</br></p>
+        <p><a class="btn btn-secondary" href="#introduction" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="rounded-circle" src="images/circle2.jpg" alt="Generic placeholder image" width="140" height="140">
+        <h2></br>Neighborhoods</h2>
+        <p></br>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</br></p>
+        <p><a class="btn btn-secondary" href="#neighborhoods" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="rounded-circle" src="images/circle3.jpg" alt="Generic placeholder image" width="140" height="140">
+        <h2></br>Parcels</h2>
+        <p></br>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</br></p>
+        <p><a class="btn btn-secondary" href="#parcels" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" id="introduction">
+        <h2 class="featurette-heading">Introduction.</h2>
+        <p class="lead"><br />Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
+          commodo cursus magna,
+          asdasd asdas asd asd asd as
+          dasdpasokdpoam aslnmdoiasn asmdna iojsd vel scelerisque nisl claksdkladm kljadlsa ljsadaskn
+          asdojd onsectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      <!--<div class="col-md-5 order-md-2">-->
+        <!--<div id="equation"></div>-->
+        <!--&lt;!&ndash;<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">&ndash;&gt;-->
+      <!--</div>-->
+
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" id="methodology">
+      <div class="col-md-7 order-md-1">
+        <h2 class="featurette-heading">Methodology.</h2>
+
+        <h3></br>Getting our data</h3>
+        <p class="lead"><br />The Department of Innovation and Technology, through <a href="https://data.boston.gov/dataset/property-assessment">Analyze Boston</a>, periodically releases data for property The Department of Innovation and Technology,
+          through Analyze Boston, periodically releases data
+          for fair assessment of Boston’s taxable and non-taxable properties. This dataset (in CSV format) consists of property ownership information,
+          including value and identifiers (ZIP code, GIS ID etc) organized and released in fiscal year increments.</br></p>
+
+        <!-- HTML generated using hilite.me --><div style="background: #000000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #cd0000">&quot;PID&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;CM_ID&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;OWNER&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;ST_NUM&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;ST_NAME&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;ST_SFX&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;UNIT_NUM&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;ZIPCODE&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;LU&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;PTYPE&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;LOTSIZE&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;MAIL_ADDRESS&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;MAIL_CS&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;MAIL_ZIP&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;OWN_OCC&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;GROSS_AREA&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;SFLA&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;FY2006_TOTAL&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;FY2006_LAND&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;FY2006_BLDG&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;GROSS_TAX&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;NUM_FLOORS&quot;</span>
+<span style="color: #cd0000">&quot;0100001000&quot;</span><span style="color: #cccccc">,,</span><span style="color: #cd0000">&quot;PASCUCCI CARLO&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;195&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;LEXINGTON&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;ST&quot;</span><span style="color: #cccccc">,,</span><span style="color: #cd0000">&quot;02128&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;R3&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;105&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">1150</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;195 LEXINGTON ST&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;EAST BOSTON    MA&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;02128&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;Y&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">3353</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">2202</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">337700</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">36400</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">301300</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">3755.22</span><span style="color: #cccccc">,</span>
+<span style="color: #cd0000">&quot;0100002000&quot;</span><span style="color: #cccccc">,,</span><span style="color: #cd0000">&quot;ATANASOV, DANIEL&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;197&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;LEXINGTON&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;ST&quot;</span><span style="color: #cccccc">,,</span><span style="color: #cd0000">&quot;02128&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;R3&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;105&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">1150</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;197 LEXINGTON ST&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;EAST BOSTON    MA&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;02128&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;Y&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">3323</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">2307</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">420300</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">36500</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">383800</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">4673.74</span><span style="color: #cccccc">,</span>
+<span style="color: #cd0000">&quot;0100003000&quot;</span><span style="color: #cccccc">,,</span><span style="color: #cd0000">&quot;Caballero, Wilberto&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;199&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;LEXINGTON&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;ST&quot;</span><span style="color: #cccccc">,,</span><span style="color: #cd0000">&quot;02128&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;R3&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;105&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">1150</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;199 LEXINGTON ST&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;E BOSTON    MA&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;02128&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;N&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">3392</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">2268</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">350800</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">36700</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">314100</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">3900.90</span><span style="color: #cccccc">,</span>
+<span style="color: #cd0000">&quot;0100004000&quot;</span><span style="color: #cccccc">,,</span><span style="color: #cd0000">&quot;MADDALENI JAMES E, TS&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;201&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;LEXINGTON&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;ST&quot;</span><span style="color: #cccccc">,,</span><span style="color: #cd0000">&quot;02128&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;R3&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;105&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">1150</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;PO BOX 557&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;EVERETT    MA&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;02149&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;N&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">3108</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">2028</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">400500</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">36800</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">363700</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">4453.56</span><span style="color: #cccccc">,</span>
+<span style="color: #cd0000">&quot;0100005000&quot;</span><span style="color: #cccccc">,,</span><span style="color: #cd0000">&quot;DIGIROLAMO JOHN F TS&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;203&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;LEXINGTON&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;ST&quot;</span><span style="color: #cccccc">,,</span><span style="color: #cd0000">&quot;02128&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;R2&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;104&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">2010</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;203 LEXINGTON ST&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;E BOSTON    MA&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;02128&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;Y&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">3700</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">2546</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">330400</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">41500</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">288900</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">3674.05</span><span style="color: #cccccc">,</span>
+</pre></td></tr></table></div>
+
+        <h3></br>Data Processing</h3>
+        <p class="lead"></br></br></p>
+
+        <div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span>
+df <span style="color: #666666">=</span> pandas<span style="color: #666666">.</span>DataFrame({
+        <span style="color: #666666">&amp;</span><span style="color: #008800; font-style: italic">#39;A&amp;#39;: [-137, 22, -3, 4, 5],</span>
+        <span style="color: #666666">&amp;</span><span style="color: #008800; font-style: italic">#39;B&amp;#39;: [10, 11, 121, 13, 14],</span>
+        <span style="color: #666666">&amp;</span><span style="color: #008800; font-style: italic">#39;C&amp;#39;: [3, 6, 91, 12, 45],</span>
+    })
+</pre></td></tr></table></div>
+
+        <h3></br>Machine Learning: Ridge Regression</h3>
+        <p class="lead"><br />Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
+          commodo cursus magna,
+          asdasd asdas asd asd asd as
+          dasdpasokdpoam aslnmdoiasn asmdna iojsd vel scelerisque nisl claksdkladm kljadlsa ljsadaskn
+          asdojd onsectetur. Fusce dapibus, tellus ac cursus commodo.</br></p>
+
+        <h3></br>Machine Learning: Neural Networks</h3>
+        <p class="lead"><br />Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
+          commodo cursus magna,
+          asdasd asdas asd asd asd as
+          dasdpasokdpoam aslnmdoiasn asmdna iojsd vel scelerisque nisl claksdkladm kljadlsa ljsadaskn
+          asdojd onsectetur. Fusce dapibus, tellus ac cursus commodo.</br></p>
+        <h3></br>Data Processing</h3>
+
+
+        <!--<pre><code class="language-python">-->
+          <!--import pandas as pd-->
+
+        <!--dc_listings = pd.read_csv('dc_airbnb.csv')-->
+        <!--print(dc_listings.shape)-->
+
+          <!--dc_listings.head()-->
+<!--</code></pre>-->
+
+      </div>
+      <div class="col-md-5 order-md-2">
+        <div id="equation"></div>
+        <!--<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">-->
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" id="neighborhoods">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Neighborhoods.</h2>
+        <!--<iframe width="100%" height="520" frameborder="0" src="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>-->
+        <p class="lead"> <br />Lorem ipsum dolor sit amet, magna vel cursus lacus viverra class fermentum. Tincidunt nec sed
+          arcu dolor porttitor eros, ac phasellus sed condimentum dolor. Libero felis wisi, in duis suspendisse
+          sapien cursus. Vivamus magna non urna, ac fringilla et semper amet,
+          ullamcorper lorem dui quam, consequat nec nulla quisque eget commodo
+        </p>
+        <div id="selector"></div>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <iframe width="90%" height="650" frameborder="0" src="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+        <!--<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">-->
+      </div>
+    </div>
+
+    <hr class="featurette-divider" id="parcels">
+
+    <div class="row featurette">
+      <div>
+        <h2 class="featurette-heading">Parcels.</h2>
+        <p class="lead"></br> Lorem ipsum dolor sit amet, magna vel cursus lacus viverra class fermentum. Tincidunt nec sed
+          arcu dolor porttitor eros, ac phasellus sed condimentum dolor. Libero felis wisi, in duis suspendisse
+          sapien cursus. Vivamus magna non urna, ac fringilla et semper amet,
+          ullamcorper lorem dui quam, consequat nec nulla quisque eget commodo.</br></p>
+      </div>
+      <div id="dropdown">
+        <iframe id="myFrame" type="text/html" frameborder="0" height="520" width="100%" src="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed"> </iframe>
+        <button onClick="loadPages()">See Forecast</button>
+        <select id="selectResort">
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed" selected="selected">2004</option>
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/7ac88432-9682-4370-a9f0-808794f6aab9/embed">2005</option>
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed">2006</option>
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/7ac88432-9682-4370-a9f0-808794f6aab9/embed">2007</option>
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed">2008</option>
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/7ac88432-9682-4370-a9f0-808794f6aab9/embed">2009</option>
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed">2010</option>
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/7ac88432-9682-4370-a9f0-808794f6aab9/embed">2011</option>
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed">2012</option>
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/7ac88432-9682-4370-a9f0-808794f6aab9/embed">2013</option>
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed">2014</option>
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/7ac88432-9682-4370-a9f0-808794f6aab9/embed">2015</option>
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed">2016</option>
+          <option value="https://mit.carto.com/u/rounaq-mit/builder/7ac88432-9682-4370-a9f0-808794f6aab9/embed">2017</option>
+
+        </select>
+
+        <!--<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">-->
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" id="nextSteps">
+      <h2 class="featurette-heading">Next steps.</h2>
+      <p class="lead"><br />Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
+        commodo cursus magna,
+        asdasd asdas asd asd asd as
+        dasdpasokdpoam aslnmdoiasn asmdna iojsd vel scelerisque nisl claksdkladm kljadlsa ljsadaskn
+        asdojd onsectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      <!--<div class="col-md-5 order-md-2">-->
+      <!--<div id="equation"></div>-->
+      <!--&lt;!&ndash;<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">&ndash;&gt;-->
+      <!--</div>-->
+
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" id="about">
+      <h2 class="featurette-heading">About.</br></h2>
+    </div>
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-6">
+          <img class="rounded-circle" src="images/circle1.jpg" alt="Generic placeholder image" width="140" height="140">
+          <h2></br>Idaly Ali</h2>
+          <p>
+            is a graduate student in the Parsons Laboratory at the Department of Civil and Environmental Engineering. His research focuses on designing and deploying environmental sensor systems to quantify carbon fluxes.
+            In his spare time, he enjoys watching otters frolicking in the sun back home in Singapore.</br></p>
+          <p><a class="btn btn-secondary" href="#introduction" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-6">
+          <img class="rounded-circle" src="images/circle2.jpg" alt="Generic placeholder image" width="140" height="140">
+          <h2></br>Rounaq Basu</h2>
+          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</br></p>
+          <p><a class="btn btn-secondary" href="#neighborhoods" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+
+      <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+</main>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="assets/js/vendor/popper.min.js"></script>
+<script src="dist/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="assets/js/vendor/holder.min.js"></script>
+<script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+<script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
+<script language="javascript" type="text/javascript" src="equation.js"></script>
+<script language="javascript" type="text/javascript" src="selector.js"></script>
+<script>
+    var urlSelect = document.getElementById('selectResort'),
+        myFrame = document.getElementById('myFrame');
+    function loadPages() {
+        var loc = urlSelect.value;
+        // You can also do -> myFrame.src = loc;
+        myFrame.setAttribute('src', loc);
+    }
+</script>
+</body>
+</html>

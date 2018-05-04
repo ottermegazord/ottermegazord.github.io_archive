@@ -76,6 +76,13 @@ body {
 
 }
 
+#chartdiv {
+  width		: 100%;
+  height		: 500px;
+  font-size	: 11px;
+  color: black;
+}
+
 #selector{
   position: relative;
   style: floating;

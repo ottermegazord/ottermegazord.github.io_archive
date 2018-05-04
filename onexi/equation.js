@@ -8,7 +8,7 @@ var a = function( p ) {
     var maxLong = -70.92757293553836;
     var minDate = 1072915200;
     var maxDate = 1609372800;
-    var from, to
+    var from, to;
 
 
     p.setup = function(){

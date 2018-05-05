@@ -87,7 +87,7 @@
           <div class="carousel-caption text-right">
             <h1>One more for good measure.</h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="https://github.com/ottermegazord/ottermegazord.github.io/tree/master/onexi" role="button">This site on Github</a></p>
+            <p><a class="btn btn-lg btn-primary" href="https://github.com/ottermegazord/ottermegazord.github.io/tree/master/onexi" role="button">This site on GitHub</a></p>
           </div>
         </div>
       </div>
@@ -138,11 +138,14 @@
 
     <div class="row featurette" id="introduction">
         <h2 class="featurette-heading">Introduction.</h2>
-        <p class="lead"><br />Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
-          commodo cursus magna,
-          asdasd asdas asd asd asd as
-          dasdpasokdpoam aslnmdoiasn asmdna iojsd vel scelerisque nisl claksdkladm kljadlsa ljsadaskn
-          asdojd onsectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <p class="lead"><br />Boston is ranked amongst the 5 most expensive cities in the United States <a href="https://www.bostonmagazine.com/property/2017/10/03/boston-expensive-city-renters/">[1]</a>. Real estate prices have risen by more than 100% in neighborhoods like
+          Dorchester and Roxbury, and an estimate of rent index by Zillow shows that the cost of renting a 1-bedroom apartment in Boston is almost twice the national average <a href="https://www.zillow.com/boston-ma/home-values/">[2]</a>. As rents and prices keep increasing, the question of the hour is:</p>
+       <p class="lead"><strong>
+         "Can we afford to live in Boston anymore?"</strong>
+        </p>
+        <p class="lead">This project aims to understand how real estate valuations have been affected by the recession, and their steep increase in recent years. Using machine learning, we predict prices for the near future, and identify neighborhoods that are going to be affected the most. Our vision is to understand which neighborhoods
+         require affordable housing interventions from the City of Boston.
+       </p>
       <!--<div class="col-md-5 order-md-2">-->
         <!--<div id="equation"></div>-->
         <!--&lt;!&ndash;<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">&ndash;&gt;-->
@@ -175,7 +178,7 @@
 </pre></td></tr></table></div>
 
         <h3></br>Data Processing</h3>
-        <p class="lead"></br>Pandas is a Python library built on top of numpy that allows the creation of 2-dimensional arrays of data in Python. We begin by loading our CSV dataset to create a pandas dataframe</br></p>
+        <p class="lead"></br>Pandas is a Python library built on top of numpy that allows the creation of 2-dimensional arrays of data in Python. We begin by loading our CSV dataset to create a pandas dataframe.</br></p>
         <!-- HTML generated using hilite.me --><div style="background: #000000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
 
 3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #cd00cd">import</span> <span style="color: #cccccc">pandas</span> <span style="color: #cd00cd">as</span> <span style="color: #cccccc">pd</span>
@@ -183,24 +186,68 @@
 <span style="color: #cccccc">df</span><span style="color: #3399cc">.</span><span style="color: #cccccc">describe()</span>
 </pre></td></tr></table></div>
 
-        <p class="lead"><br>This code generates descriptive statistics about the dataset. This includes summaries of dispersion, shape and central tendency of the dataset's distribution.</p>
+        <p class="lead"><br>This code generates descriptive statistics about the dataset. This includes summaries of dispersion, shape and central tendency of the dataset's distribution.
+        We then randomly partition this into two sets: 70% train and 30% test.</p>
+
+        <!-- HTML generated using hilite.me --><div style="background: #000000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080"># Separate into train and test data sets</span>
+<span style="color: #cccccc">df_train</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">df</span><span style="color: #3399cc">.</span><span style="color: #cccccc">sample(frac</span><span style="color: #3399cc">=</span><span style="color: #cd00cd">0.7</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">replace</span><span style="color: #3399cc">=</span><span style="color: #cd00cd">False</span><span style="color: #cccccc">)</span> <span style="color: #000080"># Can use frac=0.7 or n=10000</span>
+<span style="color: #cccccc">df_test</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">df</span><span style="color: #3399cc">.</span><span style="color: #cccccc">loc[</span><span style="color: #3399cc">~</span><span style="color: #cccccc">df</span><span style="color: #3399cc">.</span><span style="color: #cccccc">index</span><span style="color: #3399cc">.</span><span style="color: #cccccc">isin(df_train</span><span style="color: #3399cc">.</span><span style="color: #cccccc">index)]</span>
+
+<span style="color: #000080"># Create X for train and test data sets</span>
+<span style="color: #cccccc">df_X_train</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">df_train[[</span><span style="color: #cd0000">&quot;TIME&quot;</span><span style="color: #cccccc">,</span> <span style="color: #cd0000">&quot;X&quot;</span><span style="color: #cccccc">,</span> <span style="color: #cd0000">&quot;Y&quot;</span><span style="color: #cccccc">]]</span>
+<span style="color: #cccccc">df_X_test</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">df_test[[</span><span style="color: #cd0000">&quot;TIME&quot;</span><span style="color: #cccccc">,</span> <span style="color: #cd0000">&quot;X&quot;</span><span style="color: #cccccc">,</span> <span style="color: #cd0000">&quot;Y&quot;</span><span style="color: #cccccc">]]</span>
+
+<span style="color: #000080"># Create y for test and train datasets</span>
+<span style="color: #cccccc">df_y_train</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">df_train[[</span><span style="color: #cd0000">&quot;AV_PER_SQFT&quot;</span><span style="color: #cccccc">]]</span>
+<span style="color: #cccccc">df_y_test</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">df_test[[</span><span style="color: #cd0000">&quot;AV_PER_SQFT&quot;</span><span style="color: #cccccc">]]</span>
+</pre></td></tr></table></div>
+
 
 
         <h3></br>Machine Learning: Ridge Regression</h3>
-        <p class="lead"><br />Ridge regression is essentially an extension of the linear regression model, where a parsimonious model is created as the number of predictor variables in a dataset exceeds the number of observations. In this model, a squared magnitude of coefficient is added to the L2 norm.</br></p>
+        <p class="lead"><br />Ridge regression is essentially an extension of the linear regression model, where a parsimonious model is created as the number of predictor variables in a dataset exceeds the number of observations.
+          In this model, a squared magnitude of coefficient is added to the L2 norm. We implement ridge regression using Scikit-learn.</br></p>
+        <!-- HTML generated using hilite.me --><div style="background: #000000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #cccccc">clf</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">Ridge(alpha</span><span style="color: #3399cc">=</span><span style="color: #cccccc">lam,</span> <span style="color: #cccccc">fit_intercept</span><span style="color: #3399cc">=</span><span style="color: #cd00cd">True</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">max_iter</span><span style="color: #3399cc">=</span><span style="color: #cd00cd">None</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">tol</span><span style="color: #3399cc">=</span><span style="color: #cd00cd">0.01</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">solver</span><span style="color: #3399cc">=</span><span style="color: #cd0000">&quot;auto&quot;</span><span style="color: #cccccc">)</span>
+<span style="color: #cccccc">clf</span><span style="color: #3399cc">.</span><span style="color: #cccccc">fit(train_X,</span> <span style="color: #cccccc">train_y)</span>
+</pre></td></tr></table></div>
+        <p class="lead"><br />In mathematical notation, we can define the predicted value, &#375, as:</br></p>
 
-        <div id="chartdiv"></div>
-        <p class="lead"><br />Ridge regression is essentially an extension of the linear regression model, where a parsimonious model is created as the number of predictor variables in a dataset exceeds the number of observations. In this model, a squared magnitude of coefficient is added to the L2 norm.</br></p>
 
-        <div id="equation"></div>
+        <div id="equationRR">
+          <img src="images/formula.png">
+        </div>
+        <div>
+        <p class="lead"><br />with the bias and weights of the model illustrated in the chart below.</br></p>
+          <div id="chartdiv"></div>
+
+        <p class="lead"><br />We represent the output of the model (value of land), in the form of the RGB color model as a function of the input parameters (time, longitude and latitude).</br></p>
+          <div id="equation"></div>
+          <!--<div id="equationRR">-->
+          <!--<img src="images/formula.png">-->
+        <!--</div>-->
+        <!--<div>-->
 
         <h3></br>Machine Learning: Neural Networks</h3>
         <p class="lead"><br />Ridge regression is essentially an extension of the linear regression model, where a parsimonious model is created as the number of predictor variables in a dataset exceeds the number of observations. In this model, a squared magnitude of coefficient is added to the L2 norm.</br></p>
+        </div>
 
-        <div id="chartdiv_nn"></div>
+        <div class="archNN">
+          <img src="images/nn.png" class="img">
+        </div>
         <p class="lead"><br />Ridge regression is essentially an extension of the linear regression model, where a parsimonious model is created as the number of predictor variables in a dataset exceeds the number of observations. In this model, a squared magnitude of coefficient is added to the L2 norm.</br></p>
 
-        <div id="equation_nn"></div>
+        <div id="chartdiv_nn"></div>
 
         <!--<pre><code class="language-python">-->
           <!--import pandas as pd-->
@@ -222,74 +269,52 @@
     <div class="row featurette" id="neighborhoods">
       <div class="col-md-6 order-md-1">
         <h2 class="featurette-heading">Neighborhoods.</h2>
-        <p class="lead"></br>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
-          commodo cursus magna,
-          asdasd asdas asd asd asd as
-          dasdpasokdpoam aslnmdoiasn asmdna iojsd vel scelerisque nisl claksdkladm kljadlsa ljsadaskn
-          asdojd onsectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <p class="lead"></br>
+          Boston's diverse neighborhoods serve as a political and cultural organizing mechanism. Although the City of Boston's Office of Neighborhood Services
+          has designated 23 neighborhoods in the city <a href="https://www.boston.gov/departments/neighborhood-services">[3]</a>, we use 26 neighborhoods as defined by the Metropolitan Area Planning Council (MAPC)
+          <a href="https://www.mapc.org/">[4]</a>.
+          It should be noted that as the city of Boston has grown and evolved, its neighborhoods have changed as well. We use the latest version (2018) of neighborhood geographical boundaries from MAPC.
+          </br></br>See the interactive map on the right.
+        </p>
       </div>
       <div class="col-md-6 order-md-2">
-        <iframe width="90%" height="650" frameborder="0" src="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+        <iframe width="100%" height="650" frameborder="0" src="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
       </div>
     </div>
 
     <div class="row featurette">
       <div class="col-md-6 order-md-2">
-        <p class="lead"></br>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
-          commodo cursus magna,
-          asdasd asdas asd asd asd as
-          dasdpasokdpoam aslnmdoiasn asmdna iojsd vel scelerisque nisl claksdkladm kljadlsa ljsadaskn
-          asdojd onsectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <p class="lead"></br></br>We make predictions for each parcel for each future time period (2018, 2019 and 2020) using the two machine learning models described above (ridge regression and neural network).
+          Aggregating these parcel-level values to a neighborhood-level average, we can see how the true value and our predictions change over time for the 26 neighborhoods in Boston.
+          </br></br>Note that there are only predicted values for 2018, 2019 and 2020
+          as true values are not available.</p>
       </div>
       <div class="col-md-6 order-md-1">
         <div id="selector"></div>
       </div>
     </div>
 
-    <!--<div class="row featurette" id="neighborhoods">-->
-      <!--<div class="col-md-6 order-md-1">-->
-        <!--<h2 class="featurette-heading">Neighborhoods.</h2>-->
-        <!--&lt;!&ndash;<iframe width="100%" height="520" frameborder="0" src="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>&ndash;&gt;-->
-        <!--<p class="lead"> <br />1Lorem ipsum dolor sit amet, magna vel cursus lacus viverra class fermentum. Tincidunt nec sed-->
-          <!--arcu dolor porttitor eros, ac phasellus sed condimentum dolor. Libero felis wisi, in duis suspendisse-->
-          <!--sapien cursus. Vivamus magna non urna, ac fringilla et semper amet,-->
-          <!--ullamcorper lorem dui quam, consequat nec nulla quisque eget commodo-->
-        <!--</p>-->
-      <!--</div>-->
-
-      <!--<div class="col-md-6 order-md-2">-->
-        <!--<iframe width="90%" height="650" frameborder="0" src="https://mit.carto.com/u/rounaq-mit/builder/79512b53-1148-4eeb-a186-c6c2a7e1523d/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>-->
-
-        <!--&lt;!&ndash;<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">&ndash;&gt;-->
-      <!--</div>-->
-      <!--<div class="row featurette">-->
-      <!--<div class = "col-md-6 order-md-3">-->
-        <!--<p class="lead"> <br />2Lorem ipsum dolor sit amet, magna vel cursus lacus viverra class fermentum. Tincidunt nec sed-->
-          <!--arcu dolor porttitor eros, ac phasellus sed condimentum dolor. Libero felis wisi, in duis suspendisse-->
-          <!--sapien cursus. Vivamus magna non urna, ac fringilla et semper amet,-->
-          <!--ullamcorper lorem dui quam, consequat nec nulla quisque eget commodo-->
-      <!--</div>-->
-      <!--<div class="col-md-6 order-md-4">-->
-        <!--<div id="selector"></div>-->
-      <!--</div>-->
-    <!--</div>-->
-      <!--</div>-->
-
-    <!--</div>-->
-    <!--</div>-->
 
     <hr class="featurette-divider" id="parcels">
 
     <div class="row featurette">
       <div>
         <h2 class="featurette-heading">Parcels.</h2>
-        <p class="lead"></br> Lorem ipsum dolor sit amet, magna vel cursus lacus viverra class fermentum. Tincidunt nec sed
-          arcu dolor porttitor eros, ac phasellus sed condimentum dolor. Libero felis wisi, in duis suspendisse
-          sapien cursus. Vivamus magna non urna, ac fringilla et semper amet,
-          ullamcorper lorem dui quam, consequat nec nulla quisque eget commodo.</br></p>
+        <p class="lead"> </br>In real estate, a lot or plot is a tract or parcel of land owned or meant to be owned by some owner(s).
+          Possible owner(s) of a lot can be one or more person(s) or another legal entity, such as a company/corporation, organization, government, or trust.
+          Like most other types of real estate, lots owned by private parties are subject to a periodic real estate tax payable by the owners to local governments such as a county or municipality. These real estate taxes are based on the assessed value of the real property;
+          additional taxes usually apply to transfer of ownership and property sales.</p>
+
+        <p class="lead"> </br>A lot has defined boundaries (or borders) which are documented, but the boundaries need not be shown on the land itself. Most lots are small enough to be mapped as if they are flat, in spite of the curvature of the earth.
+          A characteristic of the size of a lot is its area. The area is typically determined as if the land is flat and level although the contour surface area of the land is changeable and may be too complicated for determining a lot's area.</p>
+
+        <p class="lead"> </br>Parcels change shape and size over time. For example, larger parcels may be broken down into multiple smaller parcels during development of that area. A classic case in Boston is that of parcels near the airport and East Boston waterfront. </p>
+
+          <p class="lead"></br>The interactive map below shows the latest version of parcels (2017) obtained from the Department of Innovation and Technology.</br> </br></br></p>
       </div>
-      <div>
-        <iframe width="300%" height="650" frameborder="0" src="https://mit.carto.com/u/rounaq-mit/builder/7ac88432-9682-4370-a9f0-808794f6aab9/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen>
+      <div><br></div>
+      <div id="parcelMain">
+        <iframe width="100%" height="400" frameborder="0" src="https://mit.carto.com/u/rounaq-mit/builder/7ac88432-9682-4370-a9f0-808794f6aab9/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen>
         </iframe>
           <!--<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">-->
       </div>
@@ -299,14 +324,12 @@
 
     <div class="row featurette">
       <div>
-        <p class="lead"></br> </br></br>Lorem ipsum dolor sit amet, magna vel cursus lacus viverra class fermentum. Tincidunt nec sed
-          arcu dolor porttitor eros, ac phasellus sed condimentum dolor. Libero felis wisi, in duis suspendisse
-          sapien cursus. Vivamus magna non urna, ac fringilla et semper amet,
-          ullamcorper lorem dui quam, consequat nec nulla quisque eget commodo.</br></p>
+        <p class="lead"></br> </br>We present chloropleth maps of parcel centroids according to their assessed land value (expressed as dollars per square feet of lot area).
+          A 7-bucket quantile classification is used for the color gradient. In the interactive map below, we represent a visualization of the assessed land value based on true values from 2004 to 2017, and neural network predictions for 2018 to 2020.</p>
       </div>
       <div>
         <div id="dropdown">
-          <iframe id="myFrame" type="text/html" frameborder="0" height="400" width="230%" src="https://mit.carto.com/u/rounaq-mit/builder/5f48ea5c-9f20-4368-9752-6893fb35b6df/embed"> </iframe>
+          <iframe id="myFrame" type="text/html" frameborder="0" height="500" width="200%" src="https://mit.carto.com/u/rounaq-mit/builder/5f48ea5c-9f20-4368-9752-6893fb35b6df/embed"> </iframe>
           <button class="btn btn-primary" onClick="loadPages()">See Forecast</button>
           <select id="selectResort">
             <option value="https://mit.carto.com/u/rounaq-mit/builder/5f48ea5c-9f20-4368-9752-6893fb35b6df/embed" selected="selected">2004</option>
@@ -360,20 +383,21 @@
     <div class="container marketing">
 
       <!-- Three columns of text below the carousel -->
+      <div></br></div>
       <div class="row">
         <div class="col-lg-6">
-          <img class="rounded-circle" src="images/circle1.jpg" alt="Generic placeholder image" width="140" height="140">
+          <img class="rounded-circle" src="images/idaly.jpeg" alt="Generic placeholder image" width="140" height="140">
           <h2></br>Idaly Ali</h2>
           <p>
             is a graduate student in the Parsons Laboratory at the Department of Civil and Environmental Engineering. His research focuses on designing and deploying environmental sensor systems to quantify carbon fluxes.
             In his spare time, he enjoys watching otters frolicking in the sun back home in Singapore.</br></p>
-          <p><a class="btn btn-secondary" href="#introduction" role="button">View details &raquo;</a></p>
+          <!--<p><a class="btn btn-secondary" href="#introduction" role="button">View details &raquo;</a></p>-->
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-6">
-          <img class="rounded-circle" src="images/circle2.jpg" alt="Generic placeholder image" width="140" height="140">
+          <img class="rounded-circle" src="images/rounaq.jpeg" alt="Generic placeholder image" width="140" height="140">
           <h2></br>Rounaq Basu</h2>
           <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</br></p>
-          <p><a class="btn btn-secondary" href="#neighborhoods" role="button">View details &raquo;</a></p>
+          <!--<p><a class="btn btn-secondary" href="#neighborhoods" role="button">View details &raquo;</a></p>-->
         </div><!-- /.col-lg-4 -->
 
       <hr class="featurette-divider">
@@ -381,11 +405,12 @@
     <!-- /END THE FEATURETTES -->
 
   </div><!-- /.container -->
-
+    </div>
 
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-right"><a href="#">Back to top</a></p>
+    <div></br></div>
     <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
   </footer>
 </main>
@@ -402,7 +427,7 @@
 <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
 <script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
 <script language="javascript" type="text/javascript" src="equation.js"></script>
-<script language="javascript" type="text/javascript" src="equation_nn.js"></script>
+<!--<script language="javascript" type="text/javascript" src="equation_nn.js"></script>-->
 <script language="javascript" type="text/javascript" src="selector.js"></script>
 <script>
     var urlSelect = document.getElementById('selectResort'),

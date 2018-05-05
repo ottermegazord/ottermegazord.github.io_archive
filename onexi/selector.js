@@ -97,7 +97,7 @@ var f = function (p) {
 
     p.draw = function(){
         p.background(255);
-        dropdown.position(p.width/2-10, 350);
+        dropdown.position(p.width/2-70, 380);
 
         switch (router){
             default:

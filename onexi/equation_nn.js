@@ -96,4 +96,4 @@ var a = function( p ) {
     };
 };
 
-var myp5 = new p5(a, 'equation');
+var myp5 = new p5(a, 'equation_nn');

@@ -38,8 +38,11 @@
           <a class="nav-link" href="#parcels">Parcels</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#nextSteps">Next Steps</a>
+          <a class="nav-link" href="#nextSteps">Conclusion</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#researchPotential">Research Potential</a>
+          </li>
         <li class="nav-item">
           <a class="nav-link" href="#about">About</a>
         </li>
@@ -85,8 +88,8 @@
         <img class="second-slide" src="images/intro_image2.jpg" alt="Second slide">
         <div class="container">
           <div class="carousel-caption text-right">
-            <h1>One more for good measure.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <h1>1.001 Engineering Computation and Data Science</h1>
+            <p>Spring 2018 Term Project</p>
             <p><a class="btn btn-lg btn-primary" href="https://github.com/ottermegazord/ottermegazord.github.io/tree/master/onexi" role="button">This site on GitHub</a></p>
           </div>
         </div>
@@ -114,19 +117,22 @@
       <div class="col-lg-4">
         <img class="rounded-circle" src="images/circle1.jpg" alt="Generic placeholder image" width="140" height="140">
         <h2></br>Introduction</h2>
-        <p></br>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</br></p>
+        <p></br>This project aims to understand how real estate valuations have been affected by the recession, and their steep increase in recent years.
+            Using machine learning models, we hope to predict prices for the near future and identify which neighborhoods are going to be affected the most.</br></p>
         <p><a class="btn btn-secondary" href="#introduction" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
         <img class="rounded-circle" src="images/circle2.jpg" alt="Generic placeholder image" width="140" height="140">
         <h2></br>Neighborhoods</h2>
-        <p></br>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</br></p>
+        <p></br>Boston's diverse neighborhoods serve as a political and cultural organizing mechanism. We use the latest version of 26 neighborhood geographical boundaries from MAPC. Aggregating parcel-level values to a neighborhood-level average,
+            we can see how the true value and our predictions change over time.</br></p>
         <p><a class="btn btn-secondary" href="#neighborhoods" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
         <img class="rounded-circle" src="images/circle3.jpg" alt="Generic placeholder image" width="140" height="140">
         <h2></br>Parcels</h2>
-        <p></br>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</br></p>
+        <p></br>Parcels owned by private parties are subject to a periodic real estate tax payable by the owners to local governments. They can change shape and size over time.
+            We present chloropleth maps of parcel centroids according to their assessed land value.</br></p>
         <p><a class="btn btn-secondary" href="#parcels" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
@@ -158,11 +164,13 @@
     <div class="row featurette" id="methodology">
       <div class="col-md-12 order-md-1">
         <h2 class="featurette-heading">Methodology.</h2>
+          <h3></br>Concept</h3>
+          <p class="lead"><br/>The singular challenge of this project lies in the fact that parcels change shape and size over time. We transform parcel polygons to centroid points and use them for analysis. To that effect, we obtain a set of independent variables [Time (Year), Latitude (Centroid Y), Longitude (Centroid X)] while the dependent variable is assessed value of that parcel. This is a feasible proxy of real estate prices in that parcel.
+              Our aim is to fit a function that approximates this curve in 4-dimensional space using two different machine learning techniques.</a></br></br></p>
 
-        <h3></br>Getting our data</h3>
-        <p class="lead"><br />The Department of Innovation and Technology, through <a href="https://data.boston.gov/dataset/property-assessment">Analyze Boston</a>, periodically releases data
-          for fair assessment of Boston’s taxable and non-taxable properties. This dataset (in CSV format) consists of property ownership information,
-          including value and identifiers (ZIP code, GIS ID etc) organized and released in fiscal year increments.</br></br></p>
+        <h3></br>Data sources</h3>
+        <p class="lead"><br />The Assessing Department <a href=https://www.boston.gov/departments/assessing>[3]</a> periodically releases data for fair assessment of Boston’s taxable and non-taxable properties. This dataset (in CSV format) consists of property ownership information, including value and identifiers (ZIP code, GIS ID etc), organized and released in fiscal year increments. We obtained this information for fiscal years from 2004 to 2017. Since parcel shapes change over time, we also require parcel shapefiles for this time period (one file for each year), which were graciously provided by William Toussaint from the Department of Innovation and Technology
+            <a href=https://www.boston.gov/departments/innovation-and-technology>[4].</a></br></br></p>
 
         <!-- HTML generated using hilite.me --><div style="background: #000000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
 2
@@ -177,7 +185,7 @@
 <span style="color: #cd0000">&quot;0100005000&quot;</span><span style="color: #cccccc">,,</span><span style="color: #cd0000">&quot;DIGIROLAMO JOHN F TS&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;203&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;LEXINGTON&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;ST&quot;</span><span style="color: #cccccc">,,</span><span style="color: #cd0000">&quot;02128&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;R2&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;104&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">2010</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;203 LEXINGTON ST&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;E BOSTON    MA&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;02128&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd0000">&quot;Y&quot;</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">3700</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">2546</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">330400</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">41500</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">288900</span><span style="color: #cccccc">,</span><span style="color: #cd00cd">3674.05</span><span style="color: #cccccc">,</span>
 </pre></td></tr></table></div>
 
-        <h3></br>Data Processing</h3>
+        <h3></br>Data processing</h3>
         <p class="lead"></br>Pandas is a Python library built on top of numpy that allows the creation of 2-dimensional arrays of data in Python. We begin by loading our CSV dataset to create a pandas dataframe.</br></p>
         <!-- HTML generated using hilite.me --><div style="background: #000000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
 
@@ -212,11 +220,13 @@
 <span style="color: #cccccc">df_y_test</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">df_test[[</span><span style="color: #cd0000">&quot;AV_PER_SQFT&quot;</span><span style="color: #cccccc">]]</span>
 </pre></td></tr></table></div>
 
+          <p class="lead"></br>All the features were standardized through the max-min transform such that the transformed values range between 0 and 1.</p>
+
 
 
         <h3></br>Machine Learning: Ridge Regression</h3>
-        <p class="lead"><br />Ridge regression is essentially an extension of the linear regression model, where a parsimonious model is created as the number of predictor variables in a dataset exceeds the number of observations.
-          In this model, a squared magnitude of coefficient is added to the L2 norm. We implement ridge regression using Scikit-learn.</br></p>
+        <p class="lead"><br />Ridge regression is an extension of the linear regression model, where a parsimonious model is created as the number of predictor variables in a dataset exceeds the number of observations. While an ordinary least squares (OLS) regression seeks to minimize the sum of squared residuals, a regularization term (usually the L2 norm of the weights) is added to the objective function for ridge regression.
+            We implemented this model using the scikit-learn library in Python.</br></p>
         <!-- HTML generated using hilite.me --><div style="background: #000000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
 2</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #cccccc">clf</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">Ridge(alpha</span><span style="color: #3399cc">=</span><span style="color: #cccccc">lam,</span> <span style="color: #cccccc">fit_intercept</span><span style="color: #3399cc">=</span><span style="color: #cd00cd">True</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">max_iter</span><span style="color: #3399cc">=</span><span style="color: #cd00cd">None</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">tol</span><span style="color: #3399cc">=</span><span style="color: #cd00cd">0.01</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">solver</span><span style="color: #3399cc">=</span><span style="color: #cd0000">&quot;auto&quot;</span><span style="color: #cccccc">)</span>
 <span style="color: #cccccc">clf</span><span style="color: #3399cc">.</span><span style="color: #cccccc">fit(train_X,</span> <span style="color: #cccccc">train_y)</span>
@@ -228,10 +238,10 @@
           <img src="images/formula.png">
         </div>
         <div>
-        <p class="lead"><br />with the bias and weights of the model illustrated in the chart below.</br></p>
+        <p class="lead"></br>with the bias and weights of the model illustrated in the chart below.</br></p>
           <div id="chartdiv"></div>
 
-        <p class="lead"><br />We represent the output of the model (value of land), in the form of the RGB color model as a function of the input parameters (time, longitude and latitude).</br></p>
+        <p class="lead"></br>We represent the output of the model (assessed value of land in dollars per square feet), in the form of a RGB color model as a function of the input parameters (time, longitude and latitude).</br></p>
           <div id="equation"></div>
           <!--<div id="equationRR">-->
           <!--<img src="images/formula.png">-->
@@ -239,17 +249,90 @@
         <!--<div>-->
 
         <h3></br>Machine Learning: Neural Networks</h3>
-        <p class="lead"><br />Ridge regression is essentially an extension of the linear regression model, where a parsimonious model is created as the number of predictor variables in a dataset exceeds the number of observations. In this model, a squared magnitude of coefficient is added to the L2 norm.</br></p>
+        <p class="lead"><br> Our second approach was to implement a fully-connected neural network. Our model contained a single layer with 14 hidden units each having a rectified linear unit
+          (ReLU) activation function <a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)">[5]</a>. Although the number of units in the input layer is equal to the size of the training data set, we present a simplified network architecture diagram below with only 5 input units.
+          Since this is a regression problem, we used only one unit in our output layer.</br></p>
         </div>
 
         <div class="archNN">
-          <img src="images/nn.png" class="img">
-        </div>
-        <p class="lead"><br />Ridge regression is essentially an extension of the linear regression model, where a parsimonious model is created as the number of predictor variables in a dataset exceeds the number of observations. In this model, a squared magnitude of coefficient is added to the L2 norm.</br></p>
+        <img src="images/nn.png" class="img">
+      </div>
+      <p class="lead"><br /> We implemented this model using the scikit-learn library in Python, and fit our training data to the model.</br></p>
 
-        <div id="chartdiv_nn"></div>
+        <!-- HTML generated using hilite.me --><div style="background: #000000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #cccccc">clf</span> <span style="color: #3399cc">=</span> <span style="color: #cccccc">MLPRegressor(hidden_layer_sizes</span><span style="color: #3399cc">=</span><span style="color: #cccccc">(</span><span style="color: #cd00cd">14</span><span style="color: #cccccc">,),</span> <span style="color: #cccccc">activation</span><span style="color: #3399cc">=</span><span style="color: #cd0000">&quot;relu&quot;</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">solver</span><span style="color: #3399cc">=</span><span style="color: #cd0000">&quot;adam&quot;</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">alpha</span><span style="color: #3399cc">=</span><span style="color: #cccccc">lam,</span>
+<span style="color: #cccccc">max_iter</span><span style="color: #3399cc">=</span><span style="color: #cd00cd">500</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">tol</span><span style="color: #3399cc">=</span><span style="color: #cd00cd">1e-04</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">early_stopping</span><span style="color: #3399cc">=</span><span style="color: #cd00cd">True</span><span style="color: #cccccc">,</span> <span style="color: #cccccc">validation_fraction</span><span style="color: #3399cc">=</span><span style="color: #cd00cd">0.1</span><span style="color: #cccccc">)</span>
+<span style="color: #cccccc">clf</span><span style="color: #3399cc">.</span><span style="color: #cccccc">fit(train_X_np,</span> <span style="color: #cccccc">train_y_np)</span>
+</pre></td></tr></table></div>
 
-        <!--<pre><code class="language-python">-->
+      <p class="lead"><br />Finally, the following set of parameters and biases describe our model of the neural network.</br></p>
+
+          <!-- HTML generated using hilite.me --><div style="background: #000000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #cccccc">odel</span> <span style="color: #cccccc">intercept:</span> <span style="color: #cccccc">[array([</span><span style="color: #3399cc">-</span><span style="color: #cd00cd">0.41511922</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">10.73554693</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">6.54986979</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">10.75183916</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">8.31814192</span><span style="color: #cccccc">,</span>
+       <span style="color: #cd00cd">11.37727751</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">10.71488517</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">2.27549549</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">11.12260243</span><span style="color: #cccccc">,</span> <span style="color: #cd00cd">10.90805006</span><span style="color: #cccccc">,</span>
+       <span style="color: #cd00cd">10.59062698</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">0.15267911</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">8.44566702</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">0.56223505</span><span style="color: #cccccc">]),</span> <span style="color: #cccccc">array([</span><span style="color: #cd00cd">9.85541238</span><span style="color: #cccccc">])]</span>
+<span style="color: #cccccc">Model</span> <span style="color: #cccccc">coefficients:</span> <span style="color: #cccccc">[array([[</span><span style="color: #3399cc">-</span><span style="color: #cd00cd">2.63811314e-11</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">1.17442809e+00</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">1.34837795e-01</span><span style="color: #cccccc">,</span>
+         <span style="color: #cd00cd">1.06802426e+00</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">1.26820032e-01</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">1.22567924e+00</span><span style="color: #cccccc">,</span>
+         <span style="color: #cd00cd">1.36144992e+00</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">1.00130408e-01</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">5.26078114e-01</span><span style="color: #cccccc">,</span>
+         <span style="color: #cd00cd">9.12693506e-01</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">3.84480287e-01</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">2.47966158e-11</span><span style="color: #cccccc">,</span>
+         <span style="color: #cd00cd">1.30265524e-01</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">3.05977550e-12</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span><span style="color: #3399cc">-</span><span style="color: #cd00cd">4.73796089e-11</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">1.19324237e+00</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">5.67827625e+00</span><span style="color: #cccccc">,</span>
+        <span style="color: #3399cc">-</span><span style="color: #cd00cd">1.41784432e+00</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">5.86228450e+00</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">1.37830997e+00</span><span style="color: #cccccc">,</span>
+        <span style="color: #3399cc">-</span><span style="color: #cd00cd">1.10476650e+00</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">1.51934560e+01</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">8.63107474e-01</span><span style="color: #cccccc">,</span>
+        <span style="color: #3399cc">-</span><span style="color: #cd00cd">1.04985229e+00</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">1.52525537e+00</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">4.37014319e-12</span><span style="color: #cccccc">,</span>
+        <span style="color: #3399cc">-</span><span style="color: #cd00cd">6.01177798e+00</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">4.20042717e-11</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span><span style="color: #3399cc">-</span><span style="color: #cd00cd">2.88577865e-08</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">8.05327734e+00</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">5.04038454e+00</span><span style="color: #cccccc">,</span>
+        <span style="color: #3399cc">-</span><span style="color: #cd00cd">8.24364853e+00</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">7.21832979e+00</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">7.55467400e+00</span><span style="color: #cccccc">,</span>
+        <span style="color: #3399cc">-</span><span style="color: #cd00cd">7.92350104e+00</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">6.05989590e+00</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">7.80190027e+00</span><span style="color: #cccccc">,</span>
+        <span style="color: #3399cc">-</span><span style="color: #cd00cd">8.16391841e+00</span><span style="color: #cccccc">,</span> <span style="color: #3399cc">-</span><span style="color: #cd00cd">7.24803920e+00</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">9.75346034e-09</span><span style="color: #cccccc">,</span>
+        <span style="color: #3399cc">-</span><span style="color: #cd00cd">7.29392102e+00</span><span style="color: #cccccc">,</span>  <span style="color: #cd00cd">3.24191561e-11</span><span style="color: #cccccc">]]),</span> <span style="color: #cccccc">array([[</span> <span style="color: #cd00cd">3.90899430e-04</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span> <span style="color: #cd00cd">1.27552667e+01</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span><span style="color: #3399cc">-</span><span style="color: #cd00cd">4.60892700e+01</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span> <span style="color: #cd00cd">1.36191226e+01</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span><span style="color: #3399cc">-</span><span style="color: #cd00cd">4.98379273e+01</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span> <span style="color: #cd00cd">1.13783946e+01</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span> <span style="color: #cd00cd">1.21494464e+01</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span><span style="color: #3399cc">-</span><span style="color: #cd00cd">9.30009599e+01</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span> <span style="color: #cd00cd">1.23889423e+01</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span> <span style="color: #cd00cd">1.30555821e+01</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span> <span style="color: #cd00cd">1.25687228e+01</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span> <span style="color: #cd00cd">7.69027653e-09</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span><span style="color: #3399cc">-</span><span style="color: #cd00cd">5.26047210e+01</span><span style="color: #cccccc">],</span>
+       <span style="color: #cccccc">[</span><span style="color: #3399cc">-</span><span style="color: #cd00cd">9.12034432e-10</span><span style="color: #cccccc">]])]</span>
+</pre></td></tr></table></div>
+
+
+          <!--<pre><code class="language-python">-->
           <!--import pandas as pd-->
 
         <!--dc_listings = pd.read_csv('dc_airbnb.csv')-->
@@ -271,8 +354,8 @@
         <h2 class="featurette-heading">Neighborhoods.</h2>
         <p class="lead"></br>
           Boston's diverse neighborhoods serve as a political and cultural organizing mechanism. Although the City of Boston's Office of Neighborhood Services
-          has designated 23 neighborhoods in the city <a href="https://www.boston.gov/departments/neighborhood-services">[3]</a>, we use 26 neighborhoods as defined by the Metropolitan Area Planning Council (MAPC)
-          <a href="https://www.mapc.org/">[4]</a>.
+          has designated 23 neighborhoods in the city <a href="https://www.boston.gov/departments/neighborhood-services">[6]</a>, we use 26 neighborhoods as defined by the Metropolitan Area Planning Council (MAPC)
+          <a href="https://www.mapc.org/">[7]</a>.
           It should be noted that as the city of Boston has grown and evolved, its neighborhoods have changed as well. We use the latest version (2018) of neighborhood geographical boundaries from MAPC.
           </br></br>See the interactive map on the right.
         </p>
@@ -284,7 +367,7 @@
 
     <div class="row featurette">
       <div class="col-md-6 order-md-2">
-        <p class="lead"></br></br>We make predictions for each parcel for each future time period (2018, 2019 and 2020) using the two machine learning models described above (ridge regression and neural network).
+        <p class="lead"></br></br>We make predictions for each parcel for each time period using the two machine learning models described above (ridge regression and neural network).
           Aggregating these parcel-level values to a neighborhood-level average, we can see how the true value and our predictions change over time for the 26 neighborhoods in Boston.
           </br></br>Note that there are only predicted values for 2018, 2019 and 2020
           as true values are not available.</p>
@@ -361,16 +444,29 @@
     <hr class="featurette-divider">
 
     <div class="row featurette" id="nextSteps">
-      <h2 class="featurette-heading">Next steps.</h2>
-      <p class="lead"><br />Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
-        commodo cursus magna,
-        asdasd asdas asd asd asd as
-        dasdpasokdpoam aslnmdoiasn asmdna iojsd vel scelerisque nisl claksdkladm kljadlsa ljsadaskn
-        asdojd onsectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      <!--<div class="col-md-5 order-md-2">-->
-      <!--<div id="equation"></div>-->
-      <!--&lt;!&ndash;<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">&ndash;&gt;-->
-      <!--</div>-->
+      <h2 class="featurette-heading">Conclusion.</h2>
+      <ul>
+        <div> </br> </div>
+        <li class="lead">Linear regression (ridge regression) is not a good predictor of price trends.</li>
+        <li class="lead">Neural networks are very effective at capturing spatio-temporal trends. Even a relatively simple single-layer neural network (like ours) provided decent predictions.</li>
+        <li class="lead">Neighborhood spatial effects are important indicators of real estate prices.</li>
+      </ul>
+      <!--<p class="lead"><br />Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent-->
+
+    </div>
+    <hr class="featurette-divider">
+    <div class="row featurette" id="researchPotential">
+      <h2 class="featurette-heading">Future research potential.</h2>
+        <p class="lead"> </br> Enhancing the model is essential to getting better predictions, but that comes with the requirement of computational resources. We provide four ideas future research efforts.</p>
+      <!--<p class="lead"><br />Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent-->
+      <ul>
+        <div> </br> </div>
+        <li class="lead">A simple extension would be using a Support Vector Machine with non-linear kernels since it is clear that the regression problem is not linear.</li>
+        <li class="lead">Explore alternative methods, such as the kernel method, that leverage data being in an Euclidean space (latitude and longitude). Consider feature approximations of the kernels of interest.</li>
+        <li class="lead">Consider locally weighted regression, where models are fitted at query time, when data points are near to a particular query. This follows the intuition that points in Allston (on the other side of the city from the query point in East Boston) are unlikely to influence its value.</li>
+        <li class="lead">Recurrent neural networks (RNN), like the Long Short Term Memory (LSTM) network with convolutional layers, help to incorporate spatial structure. This is quite since the prices of a place in a year are dependent on their prices in previous years. As the rate of development, and hence the price values, varies from neighborhood to neighborhood, having different weights for spatial regions in the RNN is an appropriate way to proceed.</li>
+      </ul>
+      <p class="lead"> </br>Additionally, obtaining more data to construct further features would greatly enhance the prediction capability. Having said that, we recognize that obtaining built-environment or demographic data in a annual time-series format might not always be feasible.</p>
 
     </div>
 
@@ -388,15 +484,15 @@
         <div class="col-lg-6">
           <img class="rounded-circle" src="images/idaly.jpeg" alt="Generic placeholder image" width="140" height="140">
           <h2></br>Idaly Ali</h2>
-          <p>
-            is a graduate student in the Parsons Laboratory at the Department of Civil and Environmental Engineering. His research focuses on designing and deploying environmental sensor systems to quantify carbon fluxes.
+          <p class="lead">
+            is a graduate student in the Parsons Laboratory at the Department of Civil and Environmental Engineering. His research focuses on designing, building and deploying environmental sensor systems to quantify carbon fluxes in peatlands of Borneo.
             In his spare time, he enjoys watching otters frolicking in the sun back home in Singapore.</br></p>
           <!--<p><a class="btn btn-secondary" href="#introduction" role="button">View details &raquo;</a></p>-->
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-6">
           <img class="rounded-circle" src="images/rounaq.jpeg" alt="Generic placeholder image" width="140" height="140">
           <h2></br>Rounaq Basu</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</br></p>
+          <p class="lead">is a graduate student at the Department of Urban Studies and Planning and the Department of Civil and Environmental Engineering. His current research interests include urban science, transportation planning and development economics. He enjoys taking long walks by the Charles and reading Stephen King novels in Killian Court (weather permitting).</br></p>
           <!--<p><a class="btn btn-secondary" href="#neighborhoods" role="button">View details &raquo;</a></p>-->
         </div><!-- /.col-lg-4 -->
 
